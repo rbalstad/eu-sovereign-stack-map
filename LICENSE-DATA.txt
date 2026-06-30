@@ -1,0 +1,29 @@
+Data licence -- Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+This licence applies to the DATA in this repository: data/stack.json (the layers,
+nodes, tiers, scores, partnerships, news and goals). The code is licensed
+separately under MIT (see LICENSE).
+
+You are free to:
+  - Share -- copy and redistribute the data in any medium or format.
+  - Adapt -- remix, transform, and build upon it for any purpose, including
+    commercially.
+
+Under the following terms:
+  - Attribution -- You must give appropriate credit ("European Tech Sovereignty
+    Stack, by Reidar Balstad / RB Consult AB"), provide a link to this
+    repository, and indicate if changes were made. You may do so in any
+    reasonable manner, but not in any way that suggests the licensor endorses
+    you or your use.
+  - No additional restrictions -- You may not apply legal terms or technological
+    measures that legally restrict others from doing anything the licence
+    permits.
+
+The individual claims in the data point to third-party public sources (each node,
+edge and headline carries its own source URL). Those underlying sources remain
+the property of their respective publishers; CC BY 4.0 covers this map's
+compilation, structure, tiering and scoring of them, not the source material
+itself.
+
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/

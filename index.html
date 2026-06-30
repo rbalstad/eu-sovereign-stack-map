@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Europe's Sovereign Full Stack -- silicon to market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+ --ink:#1a1d22; --muted:#4b5563; --paper:#fbfaf3;
+ --eu:#2f9e5f; --eu-bg:#e9f7ee;
+ --op:#d98a1f; --op-bg:#fcf2dd;
+ --dep:#c2412d; --dep-bg:#fbe7e2;
+ --blue:#1f6fc4; --violet:#7c5cc4;
+ --shadow:0 14px 34px rgba(20,24,28,.13);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{
+ color:var(--ink); font-family:"Patrick Hand","Segoe Print","Comic Sans MS","Trebuchet MS",system-ui,sans-serif;
+ background:
+  radial-gradient(circle at 17px 21px, rgba(31,111,196,.09) 0 1.2px, transparent 1.7px) 0 0/27px 27px,
+  radial-gradient(circle at 9px 13px, rgba(0,0,0,.045) 0 .8px, transparent 1.2px) 0 0/18px 18px,
+  linear-gradient(135deg,#fffdf7,#f6fbff 60%,#fff7ea);
+ overflow-x:hidden;
+}
+.wrap{max-width:1500px;margin:0 auto;padding:22px 20px 56px}
+h1,h2,h3,.hand{font-family:"Caveat","Segoe Print","Comic Sans MS",cursive}
+.hero{position:relative;padding:20px 24px;background:rgba(255,253,244,.86);border:3px solid var(--ink);border-radius:26px;box-shadow:var(--shadow);transform:rotate(-.2deg)}
+.hero::before,.hero::after{content:"";position:absolute;width:92px;height:26px;background:rgba(248,231,161,.7);top:-14px;border:1px dashed rgba(0,0,0,.18)}
+.hero::before{left:40px;transform:rotate(-7deg)}.hero::after{right:54px;transform:rotate(6deg)}
+h1{margin:0 0 6px;font-size:clamp(2.1rem,4.4vw,4rem);line-height:.92;letter-spacing:-.01em}
+.subtitle{max-width:1050px;font-size:1.06rem;color:#26303d;line-height:1.5;margin:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:18px 0 6px}
+.group{display:flex;flex-wrap:wrap;gap:7px;align-items:center;background:rgba(255,255,255,.74);border:2px solid var(--ink);border-radius:18px;padding:7px 9px;box-shadow:4px 5px 0 rgba(0,0,0,.09)}
+.group .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:2px}
+button{font:inherit;appearance:none;border:2px solid var(--ink);border-radius:999px;padding:7px 13px;background:#fff;color:var(--ink);cursor:pointer;transform:rotate(-.4deg);box-shadow:3px 4px 0 rgba(0,0,0,.12);transition:transform .12s,background .12s}
+button:nth-child(even){transform:rotate(.5deg)}
+button:hover{transform:translateY(-1px) rotate(0)}
+button.active{background:var(--blue);color:#fff;box-shadow:3px 4px 0 rgba(31,111,196,.25)}
+button.tier.active[data-tier="eu"]{background:var(--eu);box-shadow:3px 4px 0 rgba(47,158,95,.25)}
+button.tier.active[data-tier="operated"]{background:var(--op);box-shadow:3px 4px 0 rgba(217,138,31,.25)}
+button.tier.active[data-tier="dependency"]{background:var(--dep);box-shadow:3px 4px 0 rgba(194,65,45,.25)}
+button.tier{opacity:.5;filter:grayscale(.4)}
+button.tier.active{opacity:1;filter:none}
+input{font:inherit;min-width:min(280px,100%);padding:9px 13px;border:2px solid var(--ink);border-radius:999px;background:#fffefa;box-shadow:3px 4px 0 rgba(0,0,0,.10)}
+.hint{font-size:.86rem;color:var(--muted);margin:8px 2px 14px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 396px;gap:18px;align-items:start}
+.board{position:relative;padding:14px;background:rgba(255,255,250,.84);border:4px solid var(--ink);border-radius:30px;box-shadow:16px 20px 0 rgba(20,24,28,.06),var(--shadow)}
+.layer{position:relative;border:2px dashed rgba(26,29,34,.22);border-radius:18px;padding:10px 12px 12px;margin:12px 0}
+.layer-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 2px 9px}
+.layer-head h3{margin:0;font-size:1.5rem;line-height:1}
+.layer-head .verdict{font-size:.92rem;color:#33414f;flex:1;min-width:240px}
+.layer-no{font-family:"Caveat",cursive;font-size:1.2rem;color:var(--blue);border:2px solid var(--blue);border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.cards{display:flex;flex-wrap:wrap;gap:11px}
+.card{position:relative;width:228px;min-height:96px;padding:11px 12px 26px;background:#fff;border-radius:16px;cursor:pointer;box-shadow:4px 6px 0 rgba(0,0,0,.10);border-left:7px solid var(--muted);transition:transform .12s,opacity .12s,filter .12s}
+.card:nth-child(3n){transform:rotate(.5deg)}.card:nth-child(3n+1){transform:rotate(-.6deg)}
+.card:hover{transform:translateY(-3px) rotate(0)}
+.card.eu{border-left-color:var(--eu);background:linear-gradient(180deg,var(--eu-bg),#fff 60%)}
+.card.operated{border-left-color:var(--op);background:linear-gradient(180deg,var(--op-bg),#fff 60%)}
+.card.dependency{border-left-color:var(--dep);background:linear-gradient(180deg,var(--dep-bg),#fff 60%)}
+.card.active{outline:3px solid rgba(31,111,196,.4)}
+.card.hidden{display:none}
+.card h4{margin:0 0 3px;font-family:"Caveat",cursive;font-size:1.24rem;line-height:1.02}
+.card p{margin:0;font-size:.83rem;color:#36414f;line-height:1.22}
+.card .champ{position:absolute;right:-9px;top:-11px;background:var(--violet);color:#fff;font-family:"Caveat",cursive;font-size:.86rem;padding:1px 9px;border:2px solid var(--ink);border-radius:999px;transform:rotate(6deg)}
+.card .score{position:absolute;left:11px;bottom:7px;font-size:.74rem;color:var(--muted);letter-spacing:1px}
+.card .tierdot{position:absolute;right:10px;bottom:6px;font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+.card.eu .tierdot{color:var(--eu)}.card.operated .tierdot{color:var(--op)}.card.dependency .tierdot{color:var(--dep)}
+.card .gtm-ribbon{display:none;margin-top:7px;font-size:.78rem;color:#5a4410;background:rgba(248,231,161,.5);border-radius:8px;padding:5px 7px;line-height:1.2}
+body.depth-engine .card .gtm-ribbon{display:block}
+.drawer{position:sticky;top:14px;padding:18px;background:#fffef8;border:4px solid var(--ink);border-radius:26px;min-height:460px;box-shadow:12px 15px 0 rgba(0,0,0,.07),var(--shadow);transform:rotate(.2deg)}
+.drawer::before{content:"";position:absolute;left:36px;top:-14px;width:90px;height:24px;background:rgba(248,231,161,.72);border:1px dashed rgba(0,0,0,.2);transform:rotate(-6deg)}
+.kick{display:inline-block;font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-size:.72rem;padding:2px 8px;border-radius:999px;color:#fff;margin-top:4px}
+.kick.eu{background:var(--eu)}.kick.operated{background:var(--op)}.kick.dependency{background:var(--dep)}
+.drawer h2{font-size:1.9rem;margin:8px 0 4px;line-height:1}
+.drawer .layref{font-size:.85rem;color:var(--muted);margin:0 0 10px}
+.drawer p{font-size:.95rem;line-height:1.48;color:#27313d}
+.scorebar{display:flex;gap:4px;align-items:center;margin:8px 0 4px}
+.scorebar .dot{width:15px;height:15px;border:2px solid var(--ink);border-radius:50%}
+.scorebar .dot.on{background:var(--eu)}
+.scorebar .lab{font-size:.8rem;color:var(--muted);margin-left:6px}
+.box{border-left:5px solid var(--blue);background:#f4faff;padding:9px 11px;border-radius:0 14px 14px 0;margin-top:10px;font-size:.9rem;line-height:1.4}
+.box.weak{border-left-color:var(--dep);background:#fdf0ed}
+.box.mat{border-left-color:var(--muted);background:#f5f5f3}
+.box.gtm{border-left-color:var(--op);background:#fff8df}
+body.depth-champion .box.gtm{display:none}
+body:not(.depth-engine) .box.gtm{display:none}
+.legend,.sources{margin-top:16px;padding:15px 18px;border:3px solid var(--ink);border-radius:22px;background:rgba(255,255,250,.85);box-shadow:8px 10px 0 rgba(0,0,0,.06)}
+.legend h2,.sources h2{margin:0 0 8px;font-size:1.4rem}
+.legend p,.sources p{font-size:.92rem;line-height:1.45;margin:.4rem 0}
+.legkey{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+.legkey span{display:inline-flex;align-items:center;gap:7px;font-size:.88rem}
+.swatch{width:18px;height:18px;border:2px solid var(--ink);border-radius:5px}
+.sources details{margin-top:6px}.sources summary{cursor:pointer;font-family:"Caveat",cursive;font-size:1.1rem}
+.sources a{color:var(--blue);word-break:break-word}
+.sources li{font-size:.82rem;margin:3px 0;line-height:1.35}
+.dclose{display:none}
+@media (max-width:1080px){.layout{grid-template-columns:1fr}.card{width:calc(50% - 6px)}
+.drawer{position:fixed;left:50%;top:50%;bottom:auto;right:auto;margin:0;width:min(396px,calc(100vw - 24px));max-height:82vh;overflow:auto;border-radius:22px;transform:translate(-50%,-46%);opacity:0;pointer-events:none;transition:transform .25s ease,opacity .2s ease;z-index:60;box-shadow:0 18px 55px rgba(0,0,0,.4)}
+.drawer.open{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}
+.drawer::before{display:none}
+.dclose{display:block;position:sticky;top:0;margin:-18px -18px 8px -18px;padding:7px 15px;width:calc(100% + 36px);text-align:right;font-size:1.6rem;line-height:1;background:#fffef8;border:0;border-bottom:2px solid rgba(26,29,34,.15);cursor:pointer;color:var(--ink);border-radius:22px 22px 0 0}
+html[data-theme="dark"] .dclose{background:#23262e;color:#e9e7e0}}
+@media (max-width:620px){.card{width:100%}}
+.gtmpanel{display:none;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 2px 11px}
+body.depth-engine .gtmpanel{display:grid}
+.gtmpanel div{font-size:.8rem;border-left:4px solid var(--op);background:#fff8df;border-radius:0 10px 10px 0;padding:6px 9px;line-height:1.25}
+.gtmpanel b{display:block;color:#8a6d12;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+.card{transition:transform .12s,opacity .28s ease,filter .28s ease}
+.card.faded{opacity:.17;filter:grayscale(.65)}
+.goalbar{display:none;flex-wrap:wrap;gap:7px;margin:0 2px 8px;align-items:center}
+body.insight-build .goalbar{display:flex}
+.goalbar .gl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:2px}
+.goalbar button{font-size:.92rem}
+.goalbar button.active{background:var(--eu);color:#fff;box-shadow:3px 4px 0 rgba(47,158,95,.25)}
+.insightbanner{font-size:.98rem;color:#33414f;margin:0 2px 12px;min-height:1.2em;max-width:1120px}
+.insightbanner .brk{color:var(--dep);font-weight:700}
+.insightbanner .ok{color:var(--eu);font-weight:700}
+.insightbanner .optcount{display:block;margin-top:4px;font-size:.85rem;color:var(--muted)}
+#insight button.active{background:var(--eu);color:#fff;box-shadow:3px 4px 0 rgba(47,158,95,.25)}
+/* lit candidate = credible European option (dashed); proven = documented deployment (solid + tag) */
+.card.cand{outline:2.5px dashed var(--eu);outline-offset:2px}
+.card.cand.proven{outline-style:solid;outline-width:3px}
+.card.cand.proven::after{content:"proven";position:absolute;left:10px;top:-10px;background:var(--eu);color:#fff;font-size:.62rem;font-family:"Patrick Hand",sans-serif;padding:0 7px;border-radius:8px;border:1.5px solid var(--ink);transform:rotate(-4deg)}
+.card.brk-node{outline:3px solid var(--dep);outline-offset:2px;animation:pulsebrk 1.3s infinite}
+@keyframes pulsebrk{0%,100%{outline-color:var(--dep)}50%{outline-color:rgba(194,65,45,.22)}}
+/* layer-level gestalt: green where Europe can field options, red where it can't, dim where the goal doesn't reach */
+body.insight-build .layer{transition:opacity .3s ease,border-color .3s ease,background-color .3s ease}
+.layer.lit{border-color:var(--eu);border-style:solid;background:rgba(47,158,95,.06)}
+.layer.broke{border-color:var(--dep);border-style:solid;border-width:3px;background:rgba(194,65,45,.15)}
+.layer.dim{opacity:.34}
+.layer-readout{font-family:"Caveat",cursive;font-size:1.12rem;flex:0 0 auto;padding:0 11px;border-radius:999px;border:2px solid currentColor;white-space:nowrap}
+.layer-readout.r-lit{color:var(--eu)}
+.layer-readout.r-broke{color:var(--dep)}
+.layer-readout.r-dim{color:var(--muted);font-size:1rem}
+body.insight-build .card .champ{display:none}
+@media (prefers-reduced-motion:reduce){.card,body.insight-build .layer{transition-duration:.01ms}.card.brk-node{animation:none}}
+
+#themeBtn{font-size:.85rem}
+html[data-theme="dark"]{--ink:#e9e7e0}
+html[data-theme="dark"] body{background:radial-gradient(circle at 17px 21px, rgba(150,170,230,.08) 0 1.2px, transparent 1.7px) 0 0/27px 27px,linear-gradient(135deg,#15171c,#191c23 60%,#1c1813);color:#e9e7e0}
+html[data-theme="dark"] .hero,html[data-theme="dark"] .board,html[data-theme="dark"] .drawer,html[data-theme="dark"] .legend,html[data-theme="dark"] .sources{background:rgba(32,35,42,.93);border-color:#0c0d10}
+html[data-theme="dark"] .subtitle,html[data-theme="dark"] .layer-head .verdict,html[data-theme="dark"] .card p,html[data-theme="dark"] .drawer p,html[data-theme="dark"] .legend p,html[data-theme="dark"] .sources p{color:#c5c8d0}
+html[data-theme="dark"] .card{background:#23262e;box-shadow:4px 6px 0 rgba(0,0,0,.4)}
+html[data-theme="dark"] .card.eu{background:linear-gradient(180deg,#1f2b24,#23262e 60%)}
+html[data-theme="dark"] .card.operated{background:linear-gradient(180deg,#2c2517,#23262e 60%)}
+html[data-theme="dark"] .card.dependency{background:linear-gradient(180deg,#2e1d1a,#23262e 60%)}
+html[data-theme="dark"] .group,html[data-theme="dark"] button{background:#23262e;color:#e9e7e0;border-color:#0c0d10}
+html[data-theme="dark"] button.active{color:#fff}
+html[data-theme="dark"] input{background:#1d2027;color:#e9e7e0}
+html[data-theme="dark"] .layer{border-color:#3a3f48}
+html[data-theme="dark"] .box{background:#1d2027}
+html[data-theme="dark"] .box.weak{background:#2a1c1a}
+html[data-theme="dark"] .box.gtm,html[data-theme="dark"] .gtmpanel div{background:#2a2614}
+html[data-theme="dark"] .box.part{background:#241f2e}
+html[data-theme="dark"] .box.latest{background:#1b2a20}
+.wires{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:visible}
+.box.part{border-left-color:var(--violet);background:#f3eefc}
+.box.part ul{margin:6px 0 0 16px;padding:0}
+.box.part li{font-size:.86rem;margin:4px 0;line-height:1.3}
+.box.latest{border-left-color:#2f9e5f;background:#edfaf0}
+.box.latest a,.box.part a{color:#1f6fc4;text-decoration:none;font-weight:700;white-space:nowrap}
+.box.part a:hover{text-decoration:underline}
+#overlay button.active{background:var(--violet);color:#fff;box-shadow:3px 4px 0 rgba(124,92,196,.25)}
+</style>
+</head>
+<body class="depth-full">
+<div class="wrap">
+ <header class="hero">
+  <h1>Europe's sovereign full stack</h1>
+  <p style="margin:0 0 6px;font-family:'Caveat',cursive;font-size:1.15rem;color:#7c5cc4">Pick a goal. See where Europe can build it end to end -- and where the stack snaps.</p>
+  <p class="subtitle">The uncomfortable question, drawn out from silicon to market: what can Europe actually own, run, audit and replace -- and where is it just renting American kit with a European label? Hit <b>build &amp; break</b>, pick a goal, and the map lights every European option it has at each layer -- then turns red at the layers where it has none. The rest of the map is the <b>full landscape</b>: every contender and dependency. Toggle the three <b>tiers</b> to separate genuine ownership from sovereign-by-deployment from imported dependency, and flip on the <b>partnership overlay</b> to see who has signed with whom. Click any box.</p>
+ </header>
+
+ <div class="toolbar">
+  <div class="group" id="insight">
+   <span class="lbl">Insight</span>
+   <button class="active" data-view="full">full landscape</button>
+   <button data-view="build">build &amp; break &#9656;</button>
+  </div>
+  <div class="group" id="tiers">
+   <span class="lbl">Tiers</span>
+   <button class="tier active" data-tier="eu">European-owned</button>
+   <button class="tier active" data-tier="operated">EU-operated</button>
+   <button class="tier active" data-tier="dependency">imported</button>
+  </div>
+  <div class="group" id="overlay"><span class="lbl">Overlay</span><button data-ov="partners">partnerships</button><button id="themeBtn" title="toggle light/dark">dark</button></div>
+  <input id="search" placeholder="search: SiPearl, SUSE, OVHcloud, CUDA, openDesk..."/>
+ </div>
+ <p class="hint" id="hint"></p>
+ <div id="goalbar" class="goalbar"></div>
+ <div id="insightbanner" class="insightbanner"></div>
+
+ <main class="layout">
+  <section class="board" id="board"></section>
+  <aside class="drawer" id="drawer" aria-live="polite"></aside>
+ </main>
+
+ <section class="legend">
+  <h2>How to read it</h2>
+  <p><b>Build &amp; break</b> is the quickest way in: pick a goal and the map fades, then lights every European option it has at each layer the goal needs. A layer turns green when Europe can field at least one option, red when it has none. The soft goals -- a sovereign workplace, a sovereign cloud -- come up all green. The AI and compute goals snap red at the same two rungs every time: the AI accelerator and the leading-edge fab. That repeat is the whole argument. A lit ring marks a credible European option, not a packaged sovereign product you can buy off a shelf -- the map names the contenders at each layer, it doesn't crown a winner.</p>
+  <p><b>Full landscape</b> shows every contender and every dependency across the seven layers. The score dots are a sovereignty read across ownership, jurisdiction, operations, supply chain, substitutability and exit -- a low score is not a disqualification, it tells you where the risk lives. The <b>partnership overlay</b> wires up the named deals between players, coloured by deal type (see the key). "European-owned" spans the EU plus EEA/EFTA, Switzerland and the UK by ownership and control -- but ownership and jurisdiction are different axes: a Swiss or UK firm (Proton, Arm) is European yet sits outside the EU legal perimeter, so it scores lower on jurisdiction even when the cap table is European.</p>
+  <div class="legkey">
+   <span><span class="swatch" style="background:var(--eu-bg);border-color:var(--eu)"></span>European-owned (EU + EEA/EFTA, CH, UK)</span>
+   <span><span class="swatch" style="background:var(--op-bg);border-color:var(--op)"></span>Sovereign by deployment (US parent)</span>
+   <span><span class="swatch" style="background:var(--dep-bg);border-color:var(--dep)"></span>Imported dependency</span>
+  </div>
+ </section>
+
+ <section class="sources">
+  <h2>Source discipline</h2>
+  <p>This is a public market map built from public material -- Commission and EuroHPC releases, company announcements and credible trade press, as of June 2026. Vendors are named as public contenders, not as participants in any confidential process. Tie each claim to a public source before publishing.</p>
+  <details>
+   <summary>Key sources</summary>
+   <ul>
+    <li>AWS European Sovereign Cloud GA, Jan 2026 -- <a href="https://aws.amazon.com/blogs/aws/opening-the-aws-european-sovereign-cloud/">aws.amazon.com</a>, <a href="https://www.datacenterdynamics.com/en/news/aws-european-sovereign-cloud-now-generally-available/">DCD</a></li>
+    <li>SiPearl Rhea1 power-on / JUPITER -- <a href="https://sipearl.com/rhea1">sipearl.com</a>, <a href="https://www.theregister.com/2025/07/09/sipearl_rhea1_tape_out/">The Register</a></li>
+    <li>EuroHPC AI Factories &amp; Gigafactories -- <a href="https://www.eurohpc-ju.europa.eu/ai-factories_en">eurohpc-ju.europa.eu</a>, <a href="https://commission.europa.eu/topics/competitiveness/competitiveness-coordination-tool-projects/ai-gigafactories_en">European Commission</a></li>
+    <li>Mistral AI Series C / ASML -- <a href="https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai/">mistral.ai</a>, <a href="https://www.cnbc.com/2025/09/09/ai-firm-mistral-valued-at-14-billion-as-asml-takes-major-stake.html">CNBC</a></li>
+    <li>EU Cloud Sovereignty Framework / SEAL award -- <a href="https://commission.europa.eu/news-and-media/news/commission-advances-cloud-sovereignty-through-strategic-procurement-2026-04-17_en">European Commission</a></li>
+    <li>S3NS / Bleu / Delos -- <a href="https://www.s3ns.io/en">s3ns.io</a>, <a href="https://futurumgroup.com/insights/s3ns-sovereignty-can-thales-google-venture-make-ai-sovereignty-work-at-scale/">Futurum</a></li>
+    <li>DARE RISC-V (OpenChip/Axelera/Codasip) -- <a href="https://www.eurohpc-ju.europa.eu/research-innovation/our-projects/dare_en">EuroHPC</a>, <a href="https://www.eetimes.com/european-project-gets-260-million-for-hpc-chip-sovereignty/">EE Times</a></li>
+    <li>openDesk / Schleswig-Holstein -- <a href="https://www.heise.de/en/news/Digital-Sovereignty-OpenDesk-Not-Full-Microsoft-Alternative-Study-Finds-11303164.html">heise</a>, <a href="https://www.raconteur.net/technology/schleswig-holstein-open-source">Raconteur</a></li>
+    <li>EU Tech Sovereignty Package / EuroStack -- <a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1187">European Commission</a>, <a href="https://spectrum.ieee.org/europe-tech-sovereignty-package">IEEE Spectrum</a></li>
+    <li>Quantum (IQM/Pasqal/Alice&amp;Bob) -- <a href="https://www.datacenterdynamics.com/en/news/iqm-signs-agreement-with-eurohpc-to-deliver-two-quantum-computers-by-2026/">DCD</a>, <a href="https://www.eurohpc-ju.europa.eu/inauguration-euro-q-exa-expanding-european-quantum-computing-infrastructure-2026-02-12_en">EuroHPC</a></li>
+    <li>Broadcom/VMware sovereignty trigger -- <a href="https://www.networkworld.com/article/4081344/broadcom-refuses-to-backtrack-on-huge-vmware-price-increases-claims-european-cloud-watchdog.html">Network World</a>, <a href="https://hystax.com/cispe-broadcom-red-alert-european-cloud-competitiveness/">CISPE</a></li>
+   </ul>
+  </details>
+ </section>
+</div>
+
+<script>
+let LAYERS=[],CARDS=[],PARTNERS=[],NEWS={},GOALS=[];
+const TYPECOLOR={invest:'#c9a227',partner:'#1f6fc4',codev:'#1ea69a',deploy:'#2f9e5f',award:'#7c5cc4',dependency:'#c2412d',policy:'#6b7280',risk:'#e8553a'};
+const TIERLAB={eu:"European-owned & controlled",operated:"Sovereign by deployment",dependency:"Imported dependency"};
+const board=document.getElementById('board');
+const drawer=document.getElementById('drawer');
+const hint=document.getElementById('hint');
+let depth='full';
+let tiers={eu:true,operated:true,dependency:true};
+let activeId=null;
+
+function dots(score){
+ let s='<div class="scorebar">';
+ for(let i=1;i<=5;i++) s+=`<span class="dot ${i<=score?'on':''}"></span>`;
+ s+=`<span class="lab">sovereignty read ${score}/5</span></div>`;
+ return s;
+}
+function render(){
+ board.innerHTML='';
+ const _w=document.createElementNS('http://www.w3.org/2000/svg','svg');_w.id='wires';_w.setAttribute('class','wires');board.appendChild(_w);
+ LAYERS.forEach((L,idx)=>{
+  const sec=document.createElement('div');sec.className='layer';sec.dataset.layer=L.key;
+  const g=L.gtm?`<div class="gtmpanel"><div><b>Buyer</b>${L.gtm.buyer}</div><div><b>Trigger</b>${L.gtm.trigger}</div><div><b>Route</b>${L.gtm.route}</div><div><b>Watch</b>${L.gtm.watch}</div></div>`:'';
+  sec.innerHTML=`<div class="layer-head"><span class="layer-no">${idx+1}</span><h3>${L.name}</h3><span class="verdict">${L.verdict}</span></div>${g}<div class="cards"></div>`;
+  const cwrap=sec.querySelector('.cards');
+  CARDS.filter(c=>c.layer===L.key).forEach(c=>{
+   const el=document.createElement('article');
+   el.className='card '+c.tier;
+   el.dataset.id=c.id;el.dataset.tier=c.tier;el.dataset.champ=c.champ?'1':'0';
+   el.dataset.text=(c.name+' '+c.tag+' '+c.what).toLowerCase();
+   el.innerHTML=`<h4>${c.name}</h4><p>${c.tag}</p>`+
+     (c.gtm?`<div class="gtm-ribbon"><b>GTM:</b> ${c.gtm.split('.')[0]}.</div>`:'')+
+     `<span class="score">${'●'.repeat(c.score)}${'○'.repeat(5-c.score)}</span><span class="tierdot">${c.tier==='eu'?'owned':c.tier==='operated'?'operated':'imported'}</span>`;
+   el.addEventListener('click',()=>cardClick(c.id));
+   cwrap.appendChild(el);
+  });
+  board.appendChild(sec);
+ });
+ applyFilters();
+ select(activeId||'seal');
+}
+function applyFilters(){
+ const q=document.getElementById('search').value.trim().toLowerCase();
+ document.querySelectorAll('.card').forEach(el=>{
+  const c=CARDS.find(x=>x.id===el.dataset.id);
+  const tierOn=tiers[c.tier];
+  const qOn = !q || el.dataset.text.includes(q);
+  el.classList.toggle('hidden', !(tierOn && qOn));
+ });
+ // hide empty layers
+ document.querySelectorAll('.layer').forEach(sec=>{
+  const any=[...sec.querySelectorAll('.card')].some(e=>!e.classList.contains('hidden'));
+  sec.style.display=any?'':'none';
+ });
+ const n=document.querySelectorAll('.card:not(.hidden)').length;
+ const dlab={full:'Full landscape -- every contender and dependency.',engine:'GTM engine room -- buyer, trigger, blocker on every box.'}[depth]||'';
+ hint.textContent=`${dlab}  Showing ${n} of ${CARDS.length} nodes.`;
+ drawWires();
+}
+function select(id){
+ const c=CARDS.find(x=>x.id===id);if(!c)return;activeId=id;
+ document.querySelectorAll('.card').forEach(e=>e.classList.toggle('active',e.dataset.id===id));
+ const _conn=new Set([id]),_w=document.body.classList.contains('show-wires');
+ if(_w)PARTNERS.forEach(p=>{if(p.a===id)_conn.add(p.b);if(p.b===id)_conn.add(p.a);});
+ if(insight!=='build')document.querySelectorAll('.card').forEach(el=>el.classList.toggle('faded',_w&&!_conn.has(el.dataset.id)));
+ const L=LAYERS.find(x=>x.key===c.layer);
+ const pls=PARTNERS.filter(p=>p.a===id||p.b===id).map(p=>{const o=p.a===id?p.b:p.a;const on=CARDS.find(x=>x.id===o);return `<li><b>${on?on.name:o}</b> -- ${p.label}${p.year?` (${p.year})`:''}${p.url?` &middot; <a href="${p.url}" target="_blank" rel="noopener">${p.src||'press release'} ↗</a>`:''}</li>`;}).join('');
+ drawer.innerHTML=`<button class="dclose" aria-label="Close detail">&times;</button><span class="kick ${c.tier}">${TIERLAB[c.tier]}</span>
+  <h2>${c.name}</h2>
+  <p class="layref">Layer: ${L.name} &nbsp;|&nbsp; maturity: ${c.maturity}</p>
+  ${dots(c.score)}
+  ${NEWS[c.id]?`<div class="box latest"><b>Latest &middot; ${NEWS[c.id].date}:</b> ${NEWS[c.id].headline} &middot; <a href="${NEWS[c.id].url}" target="_blank" rel="noopener">${NEWS[c.id].source} ↗</a></div>`:''}
+  <p>${c.what}</p>
+  <div class="box weak"><b>Weak link:</b> ${c.weak}</div>
+  ${pls?`<div class="box part"><b>Partnerships:</b><ul>${pls}</ul></div>`:''}
+  ${c.gtm?`<div class="box gtm"><b>GTM engine room:</b> ${c.gtm}</div>`:''}`;
+ drawWires();
+}
+function drawWires(){
+ const svg=document.getElementById('wires');if(!svg)return;
+ if(insight==='build'){svg.innerHTML='';return;}
+ if(insight==='choke'||insight==='quadrant'){svg.innerHTML='';return;}
+ const show=document.body.classList.contains('show-wires');
+ svg.setAttribute('width',board.scrollWidth);svg.setAttribute('height',board.scrollHeight);
+ svg.innerHTML='';if(!show)return;
+ const br=board.getBoundingClientRect();
+ const pos=id=>{const el=document.querySelector(`.card[data-id="${id}"]`);if(!el||el.classList.contains('hidden'))return null;const r=el.getBoundingClientRect();return {x:r.left-br.left+r.width/2,y:r.top-br.top+r.height/2};};
+ const NS='http://www.w3.org/2000/svg';
+ const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+ const ctrl=(p,q)=>({x:(p.x+q.x)/2,y:(p.y+q.y)/2-26});
+ const dstr=(p,q,c)=>`M ${p.x} ${p.y} Q ${c.x} ${c.y} ${q.x} ${q.y}`;
+ const dash=t=>(t==='dependency'||t==='risk');
+ PARTNERS.forEach(p=>{const a=pos(p.a),b=pos(p.b);if(!a||!b)return;if(activeId===p.a||activeId===p.b)return;
+  const col=TYPECOLOR[p.type]||'#888',c=ctrl(a,b);
+  svg.appendChild(mk('path',{d:dstr(a,b,c),fill:'none',stroke:col,'stroke-opacity':0.22,'stroke-width':1.5,'stroke-dasharray':dash(p.type)?'5 6':'2 8','stroke-linecap':'round'}));});
+ if(activeId){
+  PARTNERS.forEach(p=>{if(activeId!==p.a&&activeId!==p.b)return;
+   const s=pos(activeId===p.a?p.a:p.b),e=pos(activeId===p.a?p.b:p.a);if(!s||!e)return;
+   const col=TYPECOLOR[p.type]||'#7c5cc4',c=ctrl(s,e),d=dstr(s,e,c);
+   svg.appendChild(mk('path',{d,fill:'none',stroke:col,'stroke-width':2.6,'stroke-linecap':'round','stroke-opacity':0.92,'stroke-dasharray':dash(p.type)?'8 6':'none'}));
+   svg.appendChild(mk('circle',{cx:s.x,cy:s.y,r:5,fill:col}));
+   const ang=Math.atan2(e.y-c.y,e.x-c.x),L=12,W=6.5,tx=e.x,ty=e.y;
+   const ax=tx-L*Math.cos(ang)+W*Math.sin(ang),ay=ty-L*Math.sin(ang)-W*Math.cos(ang);
+   const bx=tx-L*Math.cos(ang)-W*Math.sin(ang),by=ty-L*Math.sin(ang)+W*Math.cos(ang);
+   svg.appendChild(mk('path',{d:`M ${tx} ${ty} L ${ax} ${ay} L ${bx} ${by} Z`,fill:col}));
+   [0,0.8].forEach(off=>{const cc=mk('circle',{r:4,fill:col});
+    cc.appendChild(mk('animateMotion',{dur:'1.6s',repeatCount:'indefinite',path:d,begin:off+'s'}));
+    cc.appendChild(mk('animate',{attributeName:'opacity',values:'0;1;1;0',keyTimes:'0;0.15;0.7;1',dur:'1.6s',repeatCount:'indefinite',begin:off+'s'}));
+    cc.appendChild(mk('animate',{attributeName:'r',values:'2.5;6;2.5',dur:'1.6s',repeatCount:'indefinite',begin:off+'s'}));
+    svg.appendChild(cc);});
+   const mx=c.x,my=c.y,tw=p.label.length*6.6+34,dk=document.documentElement.dataset.theme==='dark';
+   svg.appendChild(mk('rect',{x:mx-tw/2,y:my-15,width:tw,height:20,rx:6,fill:dk?'#23262e':'#fff',stroke:col,'stroke-width':1.4,opacity:.97}));
+   const t=mk('text',{x:mx,y:my-1,'text-anchor':'middle',fill:col,'font-size':12,'font-family':'"Patrick Hand",sans-serif'});
+   t.textContent=p.label+(p.year?` (${p.year})`:'');svg.appendChild(t);
+  });
+ }
+}
+function setDepth(d){depth=d;document.body.classList.remove('depth-champion','depth-full','depth-engine');document.body.classList.add('depth-'+d);applyFilters();updateModeButtons();}
+function updateModeButtons(){const cur=insight==='build'?'build':depth;document.querySelectorAll('#insight button').forEach(b=>b.classList.toggle('active',b.dataset.view===cur));}
+document.getElementById('tiers').addEventListener('click',e=>{
+ if(!e.target.matches('button'))return;
+ const t=e.target.dataset.tier;tiers[t]=!tiers[t];
+ e.target.classList.toggle('active',tiers[t]);
+ applyFilters();
+});
+document.getElementById('search').addEventListener('input',applyFilters);
+document.getElementById('overlay').addEventListener('click',e=>{if(e.target.id==='themeBtn'){const d=document.documentElement.dataset.theme==='dark';document.documentElement.dataset.theme=d?'':'dark';e.target.textContent=d?'dark':'light';drawWires();return;}if(!e.target.matches('button'))return;const on=document.body.classList.toggle('show-wires');e.target.classList.toggle('active',on);if(activeId){select(activeId);}else{drawWires();}});
+window.addEventListener('resize',drawWires);
+if(/partners/i.test(location.hash)){document.body.classList.add('show-wires');document.querySelector('#overlay button').classList.add('active');}
+if(/dark/i.test(location.hash)){document.documentElement.dataset.theme='dark';const tb=document.getElementById('themeBtn');if(tb)tb.textContent='light';}
+{const m=location.hash.match(/sel-([a-z0-9-]+)/i);if(m)activeId=m[1];}
+// ---------- Insight modes ----------
+let byId={};
+let insight='off',curGoal=null;
+function cardClick(id){select(id);openSheet();}
+function openSheet(){if(window.matchMedia("(max-width:1080px)").matches)drawer.classList.add("open");}
+drawer.addEventListener("click",e=>{if(e.target.classList.contains("dclose"))drawer.classList.remove("open");});
+function showAllNodes(){depth='full';document.body.classList.remove('depth-champion','depth-engine');document.body.classList.add('depth-full');tiers={eu:true,operated:true,dependency:true};document.querySelectorAll('#tiers button').forEach(b=>b.classList.add('active'));applyFilters();}
+function clearGoal(){curGoal=null;document.querySelectorAll('.card').forEach(el=>{el.classList.remove('cand','proven','brk-node','faded');el.style.transitionDelay='';});document.querySelectorAll('.layer').forEach(s=>{s.classList.remove('lit','broke','dim');s.style.transitionDelay='';s.querySelectorAll('.layer-readout').forEach(r=>r.remove());});}
+function clearInsight(){clearGoal();const w=document.getElementById('wires');if(w)w.innerHTML='';document.getElementById('insightbanner').innerHTML='';document.getElementById('goalbar').innerHTML='';}
+function setInsight(m){const was=insight;insight=m;document.body.classList.remove('insight-build');if(m!=='off')document.body.classList.add('insight-'+m);clearInsight();const gb=document.getElementById('goalbar'),bn=document.getElementById('insightbanner');
+ if(m==='build'){showAllNodes();gb.innerHTML='<span class="gl">Pick a goal:</span>'+GOALS.map(g=>`<button data-goal="${g.id}">${g.name}</button>`).join('');bn.innerHTML='Pick a goal -- Europe lights up every European option it has at each layer, and the layers where it has none turn red.';}
+ if(m==='off'&&was!=='off')applyFilters();
+ updateModeButtons();drawWires();}
+function selectGoal(id){const g=GOALS.find(x=>x.id===id);if(!g)return;
+ const q=n=>document.querySelector(`.card[data-id="${n}"]`);
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ clearGoal();curGoal=id;
+ document.querySelectorAll('#goalbar button').forEach(b=>b.classList.toggle('active',b.dataset.goal===id));
+ document.querySelectorAll('.card').forEach(el=>el.classList.add('faded'));
+ const litBy={},provBy={},brkBy={};let opt=0;
+ g.needs.forEach(nd=>{nd.cand.forEach(n=>{const c=byId[n];if(!c)return;(litBy[c.layer]=litBy[c.layer]||[]).push(n);if(nd.proven&&nd.proven.indexOf(n)>=0)(provBy[c.layer]=provBy[c.layer]||[]).push(n);});});
+ g.breaks.forEach(bk=>{const c=byId[bk.node];if(!c)return;(brkBy[c.layer]=brkBy[c.layer]||[]).push(bk);});
+ LAYERS.forEach((L,idx)=>{
+  const lit=litBy[L.key]||[],prov=provBy[L.key]||[],brk=brkBy[L.key]||[];
+  const sec=document.querySelector(`.layer[data-layer="${L.key}"]`);if(!sec)return;
+  if(!reduce)sec.style.transitionDelay=(idx*0.04)+'s';
+  lit.forEach(n=>{const el=q(n);if(!el)return;el.classList.remove('faded');el.classList.add('cand');if(prov.indexOf(n)>=0)el.classList.add('proven');opt++;});
+  brk.forEach(bk=>{const el=q(bk.node);if(el){el.classList.remove('faded');el.classList.add('brk-node');}});
+  const head=sec.querySelector('.layer-head');
+  if(lit.length){sec.classList.add('lit');if(head)head.insertAdjacentHTML('beforeend',`<span class="layer-readout r-lit">${lit.length} ${lit.length>1?'options':'option'}${prov.length?' &middot; '+prov.length+' proven':''}</span>`);}
+  if(brk.length){if(!lit.length)sec.classList.add('broke');if(head)head.insertAdjacentHTML('beforeend',`<span class="layer-readout r-broke">${lit.length?'breaks at '+brk.map(b=>b.label).join(', '):'no European answer'}</span>`);}
+  if(!lit.length&&!brk.length){sec.classList.add('dim');if(head)head.insertAdjacentHTML('beforeend','<span class="layer-readout r-dim">not needed here</span>');}
+ });
+ const brkline=g.breaks.length?` <span class="brk">Breaks at: ${g.breaks.map(b=>b.label).join(', ')}</span>`:` <span class="ok">No hard break -- buildable in Europe.</span>`;
+ document.getElementById('insightbanner').innerHTML=`<b>${g.name}:</b> ${g.verdict}${brkline}<span class="optcount">${opt} European options lit across ${g.needs.length} layers${g.breaks.length?'; '+g.breaks.length+' layer(s) with no European answer':''}. Each lit ring is a credible European option, not a packaged sovereign product you can buy off a shelf.</span>`;
+ const w=document.getElementById('wires');if(w)w.innerHTML='';}
+document.getElementById('insight').addEventListener('click',e=>{if(!e.target.matches('button'))return;const v=e.target.dataset.view;if(v==='build'){setInsight('build');}else{setInsight('off');setDepth(v);}});
+document.getElementById('goalbar').addEventListener('click',e=>{if(!e.target.matches('button'))return;selectGoal(e.target.dataset.goal);});
+
+fetch('data/stack.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(d=>{
+  LAYERS=d.LAYERS;CARDS=d.CARDS;PARTNERS=d.PARTNERS;NEWS=d.NEWS;GOALS=d.GOALS;
+  byId=Object.fromEntries(CARDS.map(c=>[c.id,c]));
+  render();
+  if(/engine/i.test(location.hash))setDepth('engine');
+  if(/build/i.test(location.hash)){setInsight('build');const gm=location.hash.match(/goal-([a-z]+)/i);if(gm)selectGoal(gm[1]);}
+}).catch(e=>{document.getElementById('board').innerHTML='<p style="padding:24px;font-size:1.05rem;line-height:1.5">Could not load <code>data/stack.json</code> ('+e+'). Browsers block <code>file://</code> data loads, so open the <b>live demo</b> link, or run a local server in the repo folder: <code>python -m http.server</code> then visit <code>http://localhost:8000/</code>. See the README.</p>';});
+</script>
+</body>
+</html>
