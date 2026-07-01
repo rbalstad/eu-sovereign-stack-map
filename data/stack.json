@@ -571,13 +571,24 @@
       "weak": "No leading-edge (sub-5nm) logic manufacturing in Europe. The hardest gap to close."
     },
     {
+      "id": "arm",
+      "layer": "silicon",
+      "tier": "dependency",
+      "name": "Arm (ISA licensing)",
+      "score": 2,
+      "tag": "Europe's CPUs are designed on an ISA licensed from outside the EU.",
+      "what": "The dominant CPU instruction-set architecture. Born in Cambridge, but SoftBank-owned and Nasdaq-listed since 2023 (SoftBank ~90%). Almost every European CPU effort licenses it: SiPearl's Rhea1 runs 80 Arm Neoverse V1 cores. March 2026: Arm shipped its first in-house chip in 35 years, now competing with the licensees it used to only sell to. RISC-V (OpenChip, Codasip, Quintauris) is the sovereignty hedge against exactly this ISA-licensing dependency.",
+      "maturity": "Incumbent",
+      "weak": "European heritage, non-European control: the ISA and its licensing terms sit with SoftBank and US markets, not the EU. Licensable and shippable -- SiPearl proves it -- so a dependency, not one of the map's two hard breaks."
+    },
+    {
       "id": "silicon-dep",
       "layer": "silicon",
       "tier": "dependency",
-      "name": "Arm / TSMC / Nvidia / Intel-AMD",
+      "name": "TSMC / Nvidia / Intel-AMD",
       "score": 1,
       "tag": "The borrowed foundations under every European chip.",
-      "what": "Arm (UK/SoftBank) owns the ISA most EU CPUs license; TSMC (Taiwan) makes the advanced silicon; Nvidia owns AI compute and CUDA; Intel/AMD own x86. The honest base of the stack.",
+      "what": "TSMC (Taiwan) makes the advanced silicon; Nvidia owns AI compute and CUDA; Intel/AMD own x86. The honest base of the stack.",
       "maturity": "Incumbent",
       "weak": "These are the layers Europe borrows. Naming them is what makes the sovereignty case credible."
     }
@@ -784,7 +795,16 @@
     {
       "a": "sipearl",
       "b": "silicon-dep",
-      "label": "European CPU design on borrowed Arm ISA + TSMC fab",
+      "label": "Rhea1 fabbed at TSMC (imported foundry)",
+      "year": 2026,
+      "type": "dependency",
+      "src": "SiPearl",
+      "url": "https://sipearl.com/rhea1"
+    },
+    {
+      "a": "sipearl",
+      "b": "arm",
+      "label": "Rhea1's 80 cores are Arm Neoverse V1 (licensed ISA)",
       "year": 2026,
       "type": "dependency",
       "src": "SiPearl",
@@ -848,6 +868,12 @@
       "headline": "TSMC's ESMC Dresden fab wraps structural build, equipment move-in 2H26",
       "source": "TrendForce",
       "url": "https://www.trendforce.com/news/2025/11/20/news-tsmc-dresden-fab-reportedly-wraps-structural-build-eyes-equipment-move-in-in-2h26/"
+    },
+    "arm": {
+      "date": "2026-03-24",
+      "headline": "Arm ships its first in-house chip in 35 years, turning from licensor into competitor",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/03/24/arm-is-releasing-its-first-in-house-chip-in-its-35-year-history/"
     },
     "silicon-dep": {
       "date": "2026-06-22",
