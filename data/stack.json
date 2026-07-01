@@ -522,7 +522,7 @@
       "name": "Quintauris, Semidynamics, VSORA",
       "score": 3,
       "tag": "The wider RISC-V and accelerator field.",
-      "what": "Quintauris (Bosch/Infineon/NXP/STMicro/Qualcomm JV, automotive RISC-V), Semidynamics (RISC-V cores), VSORA and GreenWaves (edge AI). A real but fragmented contender field.",
+      "what": "Quintauris (Bosch/Infineon/Nordic/NXP/Qualcomm automotive RISC-V JV; STMicro joined as sixth shareholder in 2024), Semidynamics (RISC-V cores), VSORA and GreenWaves (edge AI). A real but fragmented contender field.",
       "maturity": "Mixed",
       "weak": "Fragmentation; few design wins at volume yet."
     },
