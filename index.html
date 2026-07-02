@@ -127,6 +127,9 @@ body.insight-build .goalbar{display:flex}
 .card.cand.proven::after{content:"proven";position:absolute;left:10px;top:-10px;background:var(--eu);color:#fff;font-size:.62rem;font-family:"Patrick Hand",sans-serif;padding:0 7px;border-radius:8px;border:1.5px solid var(--ink);transform:rotate(-4deg)}
 .card.brk-node{outline:3px solid var(--dep);outline-offset:2px;animation:pulsebrk 1.3s infinite}
 @keyframes pulsebrk{0%,100%{outline-color:var(--dep)}50%{outline-color:rgba(194,65,45,.22)}}
+/* show-imports mode: imported-tier nodes lit steady red (no pulse -- the imports are the resting state, not an alarm) */
+.card.imp-node{outline:3px solid var(--dep);outline-offset:2px}
+#insight button.active[data-view="imports"]{background:var(--dep);color:#fff;box-shadow:3px 4px 0 rgba(194,65,45,.25)}
 /* layer-level gestalt: green where Europe can field options, red where it can't, dim where the goal doesn't reach */
 body.insight-build .layer{transition:opacity .3s ease,border-color .3s ease,background-color .3s ease}
 .layer.lit{border-color:var(--eu);border-style:solid;background:rgba(47,158,95,.06)}
@@ -180,6 +183,7 @@ html[data-theme="dark"] .box.latest{background:#1b2a20}
    <span class="lbl">Insight</span>
    <button class="active" data-view="full">full landscape</button>
    <button data-view="build">build &amp; break &#9656;</button>
+   <button data-view="imports">show imports &#9656;</button>
   </div>
   <div class="group" id="tiers">
    <span class="lbl">Tiers</span>
@@ -296,7 +300,7 @@ function select(id){
  document.querySelectorAll('.card').forEach(e=>e.classList.toggle('active',e.dataset.id===id));
  const _conn=new Set([id]),_w=document.body.classList.contains('show-wires');
  if(_w)PARTNERS.forEach(p=>{if(p.a===id)_conn.add(p.b);if(p.b===id)_conn.add(p.a);});
- if(insight!=='build')document.querySelectorAll('.card').forEach(el=>el.classList.toggle('faded',_w&&!_conn.has(el.dataset.id)));
+ if(insight!=='build'&&insight!=='imports')document.querySelectorAll('.card').forEach(el=>el.classList.toggle('faded',_w&&!_conn.has(el.dataset.id)));
  const L=LAYERS.find(x=>x.key===c.layer);
  const pls=PARTNERS.filter(p=>p.a===id||p.b===id).map(p=>{const o=p.a===id?p.b:p.a;const on=CARDS.find(x=>x.id===o);return `<li><b>${on?on.name:o}</b> -- ${p.label}${p.year?` (${p.year})`:''}${p.url?` &middot; <a href="${p.url}" target="_blank" rel="noopener">${p.src||'press release'} ↗</a>`:''}</li>`;}).join('');
  drawer.innerHTML=`<button class="dclose" aria-label="Close detail">&times;</button><span class="kick ${c.tier}">${TIERLAB[c.tier]}</span>
@@ -316,7 +320,7 @@ function drawWires(){
  if(insight==='choke'||insight==='quadrant'){svg.innerHTML='';return;}
  const show=document.body.classList.contains('show-wires');
  svg.setAttribute('width',board.scrollWidth);svg.setAttribute('height',board.scrollHeight);
- svg.innerHTML='';if(!show)return;
+ svg.innerHTML='';if(!show&&insight!=='imports')return;
  const br=board.getBoundingClientRect();
  const pos=id=>{const el=document.querySelector(`.card[data-id="${id}"]`);if(!el||el.classList.contains('hidden'))return null;const r=el.getBoundingClientRect();return {x:r.left-br.left+r.width/2,y:r.top-br.top+r.height/2};};
  const NS='http://www.w3.org/2000/svg';
@@ -324,6 +328,11 @@ function drawWires(){
  const ctrl=(p,q)=>({x:(p.x+q.x)/2,y:(p.y+q.y)/2-26});
  const dstr=(p,q,c)=>`M ${p.x} ${p.y} Q ${c.x} ${c.y} ${q.x} ${q.y}`;
  const dash=t=>(t==='dependency'||t==='risk');
+ if(insight==='imports'){
+  impEdges().forEach(p=>{const a=pos(p.a),b=pos(p.b);if(!a||!b)return;const c=ctrl(a,b);
+   svg.appendChild(mk('path',{d:dstr(a,b,c),fill:'none',stroke:TYPECOLOR[p.type]||'#c2412d','stroke-width':2.2,'stroke-opacity':0.6,'stroke-dasharray':'7 5','stroke-linecap':'round'}));});
+  return;
+ }
  PARTNERS.forEach(p=>{const a=pos(p.a),b=pos(p.b);if(!a||!b)return;if(activeId===p.a||activeId===p.b)return;
   const col=TYPECOLOR[p.type]||'#888',c=ctrl(a,b);
   svg.appendChild(mk('path',{d:dstr(a,b,c),fill:'none',stroke:col,'stroke-opacity':0.22,'stroke-width':1.5,'stroke-dasharray':dash(p.type)?'5 6':'2 8','stroke-linecap':'round'}));});
@@ -350,7 +359,7 @@ function drawWires(){
  }
 }
 function setDepth(d){depth=d;document.body.classList.remove('depth-champion','depth-full','depth-engine');document.body.classList.add('depth-'+d);applyFilters();updateModeButtons();}
-function updateModeButtons(){const cur=insight==='build'?'build':depth;document.querySelectorAll('#insight button').forEach(b=>b.classList.toggle('active',b.dataset.view===cur));}
+function updateModeButtons(){const cur=insight==='build'?'build':insight==='imports'?'imports':depth;document.querySelectorAll('#insight button').forEach(b=>b.classList.toggle('active',b.dataset.view===cur));}
 document.getElementById('tiers').addEventListener('click',e=>{
  if(!e.target.matches('button'))return;
  const t=e.target.dataset.tier;tiers[t]=!tiers[t];
@@ -370,12 +379,32 @@ function cardClick(id){select(id);openSheet();}
 function openSheet(){if(window.matchMedia("(max-width:1080px)").matches)drawer.classList.add("open");}
 drawer.addEventListener("click",e=>{if(e.target.classList.contains("dclose"))drawer.classList.remove("open");});
 function showAllNodes(){depth='full';document.body.classList.remove('depth-champion','depth-engine');document.body.classList.add('depth-full');tiers={eu:true,operated:true,dependency:true};document.querySelectorAll('#tiers button').forEach(b=>b.classList.add('active'));applyFilters();}
-function clearGoal(){curGoal=null;document.querySelectorAll('.card').forEach(el=>{el.classList.remove('cand','proven','brk-node','faded');el.style.transitionDelay='';});document.querySelectorAll('.layer').forEach(s=>{s.classList.remove('lit','broke','dim');s.style.transitionDelay='';s.querySelectorAll('.layer-readout').forEach(r=>r.remove());});}
+function clearGoal(){curGoal=null;document.querySelectorAll('.card').forEach(el=>{el.classList.remove('cand','proven','brk-node','imp-node','faded');el.style.transitionDelay='';});document.querySelectorAll('.layer').forEach(s=>{s.classList.remove('lit','broke','dim');s.style.transitionDelay='';s.querySelectorAll('.layer-readout').forEach(r=>r.remove());});}
 function clearInsight(){clearGoal();const w=document.getElementById('wires');if(w)w.innerHTML='';document.getElementById('insightbanner').innerHTML='';document.getElementById('goalbar').innerHTML='';}
-function setInsight(m){const was=insight;insight=m;document.body.classList.remove('insight-build');if(m!=='off')document.body.classList.add('insight-'+m);clearInsight();const gb=document.getElementById('goalbar'),bn=document.getElementById('insightbanner');
+function setInsight(m){const was=insight;insight=m;document.body.classList.remove('insight-build','insight-imports');if(m!=='off')document.body.classList.add('insight-'+m);clearInsight();const gb=document.getElementById('goalbar'),bn=document.getElementById('insightbanner');
  if(m==='build'){showAllNodes();gb.innerHTML='<span class="gl">Pick a goal:</span>'+GOALS.map(g=>`<button data-goal="${g.id}">${g.name}</button>`).join('');bn.innerHTML='Pick a goal -- Europe lights up every European option it has at each layer, and the layers where it has none turn red.';}
+ if(m==='imports')applyImports();
  if(m==='off'&&was!=='off')applyFilters();
  updateModeButtons();drawWires();}
+// ---------- Show imports: the cross-cutting import spine ----------
+function impEdges(){
+ const es=PARTNERS.filter(p=>p.type==='dependency'||p.type==='risk').slice();
+ // depends_on is the durable backing: any card declaring one shows up here even without a hand-drawn edge
+ CARDS.forEach(c=>(c.depends_on||[]).forEach(b=>{if(!es.some(p=>p.a===c.id&&p.b===b))es.push({a:c.id,b,label:'depends on',type:'dependency',_synth:true});}));
+ return es;
+}
+function applyImports(){
+ showAllNodes();
+ document.querySelectorAll('.card').forEach(el=>el.classList.add('faded'));
+ const es=impEdges(),q=n=>document.querySelector(`.card[data-id="${n}"]`);
+ const touched=new Set();es.forEach(p=>{touched.add(p.a);touched.add(p.b);});
+ touched.forEach(n=>{const el=q(n);if(!el)return;el.classList.remove('faded');const c=byId[n];if(c&&c.tier==='dependency')el.classList.add('imp-node');});
+ const dep=es.filter(p=>p.type==='dependency'&&byId[p.b]&&byId[p.b].tier==='dependency');
+ const byTarget={};dep.forEach(p=>{(byTarget[p.b]=byTarget[p.b]||new Set()).add(p.a);});
+ const parts=Object.entries(byTarget).sort((x,y)=>y[1].size-x[1].size).map(([b,s])=>`${s.size} &rarr; ${byId[b].name}`);
+ const srcs=new Set(dep.map(p=>p.a));
+ document.getElementById('insightbanner').innerHTML=`<b>The import spine:</b> ${srcs.size} nodes on this map lean on imported kit or foreign control. <span class="brk">${parts.join(' &nbsp;&middot;&nbsp; ')}</span><span class="optcount">Dashed red wires are the drawn dependencies. Note what repeats: the same few imports recur across the stack -- the hard breaks are still exactly two, the AI accelerator and the leading-edge fab. Click any lit box for the sourced detail.</span>`;
+}
 function selectGoal(id){const g=GOALS.find(x=>x.id===id);if(!g)return;
  const q=n=>document.querySelector(`.card[data-id="${n}"]`);
  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -399,7 +428,7 @@ function selectGoal(id){const g=GOALS.find(x=>x.id===id);if(!g)return;
  const brkline=g.breaks.length?` <span class="brk">Breaks at: ${g.breaks.map(b=>b.label).join(', ')}</span>`:` <span class="ok">No hard break -- buildable in Europe.</span>`;
  document.getElementById('insightbanner').innerHTML=`<b>${g.name}:</b> ${g.verdict}${brkline}<span class="optcount">${opt} European options lit across ${g.needs.length} layers${g.breaks.length?'; '+g.breaks.length+' layer(s) with no European answer':''}. Each lit ring is a credible European option, not a packaged sovereign product you can buy off a shelf.</span>`;
  const w=document.getElementById('wires');if(w)w.innerHTML='';}
-document.getElementById('insight').addEventListener('click',e=>{if(!e.target.matches('button'))return;const v=e.target.dataset.view;if(v==='build'){setInsight('build');}else{setInsight('off');setDepth(v);}});
+document.getElementById('insight').addEventListener('click',e=>{if(!e.target.matches('button'))return;const v=e.target.dataset.view;if(v==='build'){setInsight('build');}else if(v==='imports'){setInsight('imports');}else{setInsight('off');setDepth(v);}});
 document.getElementById('goalbar').addEventListener('click',e=>{if(!e.target.matches('button'))return;selectGoal(e.target.dataset.goal);});
 
 fetch('data/stack.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(d=>{
@@ -408,6 +437,7 @@ fetch('data/stack.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.js
   render();
   if(/engine/i.test(location.hash))setDepth('engine');
   if(/build/i.test(location.hash)){setInsight('build');const gm=location.hash.match(/goal-([a-z]+)/i);if(gm)selectGoal(gm[1]);}
+  if(/imports/i.test(location.hash))setInsight('imports');
 }).catch(e=>{document.getElementById('board').innerHTML='<p style="padding:24px;font-size:1.05rem;line-height:1.5">Could not load <code>data/stack.json</code> ('+e+'). Browsers block <code>file://</code> data loads, so open the <b>live demo</b> link, or run a local server in the repo folder: <code>python -m http.server</code> then visit <code>http://localhost:8000/</code>. See the README.</p>';});
 </script>
 </body>

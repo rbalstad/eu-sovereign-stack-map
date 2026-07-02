@@ -84,7 +84,10 @@
       "tag": "~19 AI Factories + 13 antennas; up to 5 Gigafactories.",
       "what": "EuroHPC has selected ~19 AI Factories plus 13 antennas across the EU and partner states (incl. UK, Switzerland, Iceland). InvestAI adds a EUR 20bn fund for up to 5 AI Gigafactories (100k+ accelerators each); 77 proposals across 16 states, official call summer 2026.",
       "maturity": "Rolling 2025-2028",
-      "weak": "The compute inside is overwhelmingly Nvidia. Access channel, not silicon sovereignty."
+      "weak": "The compute inside is overwhelmingly Nvidia. Access channel, not silicon sovereignty.",
+      "depends_on": [
+        "sys-dep"
+      ]
     },
     {
       "id": "eurostack",
@@ -117,7 +120,10 @@
       "tag": "The crown jewel. ERP for half the planet's big companies.",
       "what": "Germany's SAP is Europe's one genuine enterprise-software giant: S/4HANA, Business AI (Joule), and RISE landing on sovereign clouds (S3NS H2 2026, Bleu, Delos). Investing up to EUR 300M in France for sovereign cloud + Business AI.",
       "maturity": "Production",
-      "weak": "Increasingly runs RISE on hyperscaler infrastructure; sovereignty depends on which cloud underneath."
+      "weak": "Increasingly runs RISE on hyperscaler infrastructure; sovereignty depends on which cloud underneath.",
+      "depends_on": [
+        "hyperscalers"
+      ]
     },
     {
       "id": "dassault",
@@ -205,7 +211,10 @@
       "tag": "Europe's flagship AI lab, now building its own compute.",
       "what": "French frontier-and-open-weight lab. Sep 2025 Series C of EUR 1.7bn led by ASML (EUR 1.3bn, ~11%) at ~EUR 11.7-14bn; reportedly raising again near EUR 20bn. Mistral Compute targets up to 200MW by 2027 for EU customers wanting non-US infrastructure.",
       "maturity": "Scaling",
-      "weak": "Compute base still leans on Nvidia; capital depth far below US labs."
+      "weak": "Compute base still leans on Nvidia; capital depth far below US labs.",
+      "depends_on": [
+        "sys-dep"
+      ]
     },
     {
       "id": "sap-ai",
@@ -216,7 +225,10 @@
       "tag": "AI wired into the systems enterprises already run.",
       "what": "HANA (in-memory DB) and Business AI/Joule embed AI into ERP where the enterprise data already lives. Distribution is the moat Mistral lacks.",
       "maturity": "Production",
-      "weak": "Runs increasingly on hyperscaler infra; sovereignty inherited from the cloud beneath."
+      "weak": "Runs increasingly on hyperscaler infra; sovereignty inherited from the cloud beneath.",
+      "depends_on": [
+        "hyperscalers"
+      ]
     },
     {
       "id": "suse",
@@ -304,7 +316,10 @@
       "tag": "Iliad's cloud, strong on EU GPU capacity. SEAL-3.",
       "what": "French (Iliad group), aggressive on sovereign AI compute with Nvidia GPU clusters in EU datacentres. Also in the EU sovereign-cloud award.",
       "maturity": "Production",
-      "weak": "GPU fleet is Nvidia; sovereign operations, imported silicon."
+      "weak": "GPU fleet is Nvidia; sovereign operations, imported silicon.",
+      "depends_on": [
+        "sys-dep"
+      ]
     },
     {
       "id": "eu-cloud2",
@@ -337,7 +352,10 @@
       "tag": "A lab building sovereign GPU capacity for others.",
       "what": "Mistral's compute arm, targeting up to 200MW by 2027, explicitly for EU governments and enterprises wanting AI capacity not governed by US infrastructure.",
       "maturity": "Building",
-      "weak": "GPUs are Nvidia; sovereignty is in operation and jurisdiction, not silicon."
+      "weak": "GPUs are Nvidia; sovereignty is in operation and jurisdiction, not silicon.",
+      "depends_on": [
+        "sys-dep"
+      ]
     },
     {
       "id": "evroc",
@@ -359,7 +377,10 @@
       "tag": "GA Jan 2026, Brandenburg. EU-controlled entity.",
       "what": "Generally available 15 Jan 2026, physically and logically separate from other AWS regions, run by EU-resident staff under an EU-controlled legal structure; 90+ services; EUR 7.8bn invested; NL/BE/PT to follow.",
       "maturity": "GA 2026",
-      "weak": "Parent is Amazon (US). Independent governance reduces but does not erase CLOUD Act and ownership questions."
+      "weak": "Parent is Amazon (US). Independent governance reduces but does not erase CLOUD Act and ownership questions.",
+      "depends_on": [
+        "hyperscalers"
+      ]
     },
     {
       "id": "ms-clouds",
@@ -370,7 +391,10 @@
       "tag": "Microsoft Azure behind a French/German legal wall.",
       "what": "Bleu (Capgemini + Orange + Microsoft) targets ANSSI SecNumCloud in France. Delos Cloud (SAP/Arvato + Microsoft) targets BSI for German public sector. SAP's RISE will run on both.",
       "maturity": "Ramping 2025-26",
-      "weak": "Azure technology and Microsoft IP underneath. Local operator, foreign control plane."
+      "weak": "Azure technology and Microsoft IP underneath. Local operator, foreign control plane.",
+      "depends_on": [
+        "hyperscalers"
+      ]
     },
     {
       "id": "s3ns",
@@ -381,7 +405,10 @@
       "tag": "SecNumCloud 3.2 qualified (Dec 2025).",
       "what": "Thales-Google JV; passed SecNumCloud 3.2 in Dec 2025, the strongest French qualification among the operated tier. SAP available on it H2 2026; part of a Proximus-led EU award.",
       "maturity": "Qualified 2025",
-      "weak": "Google Cloud tech underneath; Thales controls operation and keys."
+      "weak": "Google Cloud tech underneath; Thales controls operation and keys.",
+      "depends_on": [
+        "hyperscalers"
+      ]
     },
     {
       "id": "hyperscalers",
@@ -403,7 +430,10 @@
       "tag": "Europe's exascale machine, in Julich.",
       "what": "JUPITER at Forschungszentrum Julich is Europe's first exascale system; its CPU cluster uses SiPearl Rhea1, with full readiness targeted end-2026. The JEDI development instrument already ran top-5 on the Top500.",
       "maturity": "Standing up 2026",
-      "weak": "The AI/GPU partition is Nvidia Grace-Hopper. European CPU, imported accelerators."
+      "weak": "The AI/GPU partition is Nvidia Grace-Hopper. European CPU, imported accelerators.",
+      "depends_on": [
+        "sys-dep"
+      ]
     },
     {
       "id": "dc-ops",
@@ -425,7 +455,10 @@
       "tag": "Up to 5 mega-sites, EUR 20bn, call summer 2026.",
       "what": "InvestAI's EUR 20bn fund backs up to 5 AI Gigafactories of 100k+ accelerators each; 77 proposals across 16 member states and 60 sites; official EuroHPC call expected summer 2026.",
       "maturity": "Pre-procurement",
-      "weak": "Accelerators will be overwhelmingly Nvidia. Scale, not silicon sovereignty."
+      "weak": "Accelerators will be overwhelmingly Nvidia. Scale, not silicon sovereignty.",
+      "depends_on": [
+        "sys-dep"
+      ]
     },
     {
       "id": "connectivity",
@@ -447,7 +480,10 @@
       "tag": "Europe's supercomputer factory -- now state-owned.",
       "what": "Builds BullSequana HPC systems and integrates Europe's exascale machines (JUPITER, and the AMD+SiPearl Alice Recoque). In early 2026 the French State bought Bull's Advanced Computing (HPC, quantum, AI) from Atos for up to EUR 404M -- Europe's only supercomputer manufacturing plant, in Angers, is now sovereign-owned.",
       "maturity": "Production",
-      "weak": "The European layer is integration and the box; the accelerators inside are still Nvidia."
+      "weak": "The European layer is integration and the box; the accelerators inside are still Nvidia.",
+      "depends_on": [
+        "sys-dep"
+      ]
     },
     {
       "id": "sys-builders",
@@ -458,7 +494,10 @@
       "tag": "Systems and high-density / immersion builders.",
       "what": "2CRSi (servers, France) and Eclairion (high-density AI datacentre builds) plus regional integrators turn silicon into operable capacity.",
       "maturity": "Production",
-      "weak": "Component supply (GPUs, advanced parts) is imported."
+      "weak": "Component supply (GPUs, advanced parts) is imported.",
+      "depends_on": [
+        "sys-dep"
+      ]
     },
     {
       "id": "networking",
@@ -491,7 +530,11 @@
       "tag": "Europe's HPC CPU. Powered on May 2026.",
       "what": "French. Rhea1 taped out (TSMC N6, 80 Arm Neoverse V1 cores), powered on 13 May 2026, sampling 2026, headed into JUPITER's CPU cluster. EUR 130M Series A; Series B prepping.",
       "maturity": "Sampling 2026",
-      "weak": "Arm ISA (not EU) + TSMC manufacturing. European design, borrowed foundations."
+      "weak": "Arm ISA (not EU) + TSMC manufacturing. European design, borrowed foundations.",
+      "depends_on": [
+        "silicon-dep",
+        "arm"
+      ]
     },
     {
       "id": "openchip",
@@ -660,11 +703,11 @@
     {
       "a": "mistral",
       "b": "sys-dep",
-      "label": "13,800 Nvidia GB300 GPUs, Essonne 44MW",
+      "label": "Compute base leans on Nvidia (strategic partnership)",
       "year": 2026,
       "src": "Mistral AI",
       "url": "https://mistral.ai/news/mistral-ai-and-nvidia-partner-to-accelerate-open-frontier-models/",
-      "type": "deploy"
+      "type": "dependency"
     },
     {
       "a": "mistral",
@@ -818,6 +861,105 @@
       "type": "deploy",
       "src": "EuroHPC JU",
       "url": "https://www.eurohpc-ju.europa.eu/jupiter-launching-europes-exascale-era-2025-09-05_en"
+    },
+    {
+      "a": "scaleway",
+      "b": "sys-dep",
+      "label": "GPU fleet is Nvidia (H100/B300)",
+      "year": 2026,
+      "type": "dependency",
+      "src": "Scaleway",
+      "url": "https://www.scaleway.com/en/gpu-instances/"
+    },
+    {
+      "a": "mistral-compute",
+      "b": "sys-dep",
+      "label": "Essonne cluster is 13,800 Nvidia GB300 GPUs",
+      "year": 2026,
+      "type": "dependency",
+      "src": "DCD",
+      "url": "https://www.datacenterdynamics.com/en/news/mistral-ai-raises-830m-in-debt-financing-for-data-center-in-paris-france/"
+    },
+    {
+      "a": "jupiter",
+      "b": "sys-dep",
+      "label": "Booster partition is ~24,000 Nvidia GH200 superchips",
+      "year": 2025,
+      "type": "dependency",
+      "src": "EuroHPC JU",
+      "url": "https://www.eurohpc-ju.europa.eu/jupiter-launching-europes-exascale-era-2025-09-05_en"
+    },
+    {
+      "a": "gigafactory",
+      "b": "sys-dep",
+      "label": "Gigafactory accelerators expected to be Nvidia (CUDA lock-in)",
+      "year": 2026,
+      "type": "dependency",
+      "src": "Polytechnique Insights",
+      "url": "https://www.polytechnique-insights.com/en/columns/digital/european-ai-gigafactories-the-true-the-false-and-the-uncertain/"
+    },
+    {
+      "a": "eviden",
+      "b": "sys-dep",
+      "label": "BullSequana AI ships with Nvidia GH200 / H100",
+      "year": 2024,
+      "type": "dependency",
+      "src": "Eviden",
+      "url": "https://www.globenewswire.com/fr/news-release/2024/05/02/2873890/0/en/Introducing-Eviden-s-new-AI-computing-portfolio-the-ultimate-solution-to-unlock-AI-s-full-potential.html"
+    },
+    {
+      "a": "sys-builders",
+      "b": "sys-dep",
+      "label": "Component supply (GPUs, advanced parts) is imported",
+      "year": 2025,
+      "type": "dependency",
+      "src": "BeBeez / DCD",
+      "url": "https://bebeez.eu/2025/09/11/vive-la-revolution-the-inside-story-of-the-big-french-ai-data-center-build-out/"
+    },
+    {
+      "a": "sap",
+      "b": "hyperscalers",
+      "label": "RISE runs on hyperscaler infrastructure (Azure / AWS / GCP)",
+      "year": 2026,
+      "type": "dependency",
+      "src": "SAP Learning",
+      "url": "https://learning.sap.com/courses/discovering-sap-activate-implementation-tools-and-methodology/describing-rise-with-sap"
+    },
+    {
+      "a": "sap-ai",
+      "b": "hyperscalers",
+      "label": "Business AI offerings run on hyperscaler tech (Delos / Azure)",
+      "year": 2025,
+      "type": "dependency",
+      "src": "SAP",
+      "url": "https://news.sap.com/2025/09/sap-openai-partner-launch-sovereign-openai-germany/"
+    },
+    {
+      "a": "aws-esc",
+      "b": "hyperscalers",
+      "label": "Built and operated by Amazon (US parent)",
+      "year": 2026,
+      "type": "dependency",
+      "src": "AWS",
+      "url": "https://aws.amazon.com/blogs/aws/opening-the-aws-european-sovereign-cloud/"
+    },
+    {
+      "a": "s3ns",
+      "b": "hyperscalers",
+      "label": "Runs Google Cloud IaaS / PaaS technology",
+      "year": 2026,
+      "type": "dependency",
+      "src": "S3NS",
+      "url": "https://www.s3ns.io/en"
+    },
+    {
+      "a": "ms-clouds",
+      "b": "hyperscalers",
+      "label": "Microsoft provides the technology stack (Azure)",
+      "year": 2025,
+      "type": "dependency",
+      "src": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-sovereign-clouds/partner/overview-national-partner-clouds"
     }
   ],
   "NEWS": {
