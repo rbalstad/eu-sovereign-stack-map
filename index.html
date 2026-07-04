@@ -130,6 +130,21 @@ body.insight-build .goalbar{display:flex}
 /* show-imports mode: imported-tier nodes lit steady red (no pulse -- the imports are the resting state, not an alarm) */
 .card.imp-node{outline:3px solid var(--dep);outline-offset:2px}
 #insight button.active[data-view="imports"]{background:var(--dep);color:#fff;box-shadow:3px 4px 0 rgba(194,65,45,.25)}
+/* four-axis readout (detail panel) + axis lens: the why underneath the tiers */
+.axes{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.axchip{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;border:2px solid var(--ink);border-radius:999px;padding:2px 9px;background:#fff}
+.axchip b{font-size:.6rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}
+.axchip.good{background:var(--eu-bg);border-color:var(--eu)}
+.axchip.mid{background:var(--op-bg);border-color:var(--op)}
+.axchip.bad{background:var(--dep-bg);border-color:var(--dep)}
+.axchip.na{opacity:.55;border-style:dashed}
+.axnote{font-size:.8rem;color:var(--muted);margin:5px 0 0;line-height:1.35}
+.card.lens-good{outline:3px solid var(--eu);outline-offset:2px}
+.card.lens-mid{outline:3px solid var(--op);outline-offset:2px}
+.card.lens-bad{outline:3px solid var(--dep);outline-offset:2px}
+#insight button.active[data-view="lens"]{background:var(--violet);color:#fff;box-shadow:3px 4px 0 rgba(124,92,196,.25)}
+body.insight-lens .goalbar{display:flex}
+body.insight-lens .goalbar button.active{background:var(--violet);color:#fff;box-shadow:3px 4px 0 rgba(124,92,196,.25)}
 /* layer-level gestalt: green where Europe can field options, red where it can't, dim where the goal doesn't reach */
 body.insight-build .layer{transition:opacity .3s ease,border-color .3s ease,background-color .3s ease}
 .layer.lit{border-color:var(--eu);border-style:solid;background:rgba(47,158,95,.06)}
@@ -160,6 +175,11 @@ html[data-theme="dark"] .box.weak{background:#2a1c1a}
 html[data-theme="dark"] .box.gtm,html[data-theme="dark"] .gtmpanel div{background:#2a2614}
 html[data-theme="dark"] .box.part{background:#241f2e}
 html[data-theme="dark"] .box.latest{background:#1b2a20}
+html[data-theme="dark"] .axchip{background:#23262e}
+html[data-theme="dark"] .axchip.good{background:#1f2b24}
+html[data-theme="dark"] .axchip.mid{background:#2c2517}
+html[data-theme="dark"] .axchip.bad{background:#2e1d1a}
+html[data-theme="dark"] .axchip b,html[data-theme="dark"] .axnote{color:#9aa1ac}
 .wires{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:visible}
 .box.part{border-left-color:var(--violet);background:#f3eefc}
 .box.part ul{margin:6px 0 0 16px;padding:0}
@@ -184,6 +204,7 @@ html[data-theme="dark"] .box.latest{background:#1b2a20}
    <button class="active" data-view="full">full landscape</button>
    <button data-view="build">build &amp; break &#9656;</button>
    <button data-view="imports">show imports &#9656;</button>
+   <button data-view="lens">axis lens &#9656;</button>
   </div>
   <div class="group" id="tiers">
    <span class="lbl">Tiers</span>
@@ -206,7 +227,7 @@ html[data-theme="dark"] .box.latest{background:#1b2a20}
  <section class="legend">
   <h2>How to read it</h2>
   <p><b>Build &amp; break</b> is the quickest way in: pick a goal and the map fades, then lights every European option it has at each layer the goal needs. A layer turns green when Europe can field at least one option, red when it has none. The soft goals -- a sovereign workplace, a sovereign cloud -- come up all green. The AI and compute goals snap red at the same two rungs every time: the AI accelerator and the leading-edge fab. That repeat is the whole argument. A lit ring marks a credible European option, not a packaged sovereign product you can buy off a shelf -- the map names the contenders at each layer, it doesn't crown a winner.</p>
-  <p><b>Full landscape</b> shows every contender and every dependency across the seven layers. The score dots are a sovereignty read across ownership, jurisdiction, operations, supply chain, substitutability and exit -- a low score is not a disqualification, it tells you where the risk lives. The <b>partnership overlay</b> wires up the named deals between players, coloured by deal type (see the key). "European-owned" spans the EU plus EEA/EFTA, Switzerland and the UK by ownership and control -- but ownership and jurisdiction are different axes: a Swiss or UK firm (Proton, Arm) is European yet sits outside the EU legal perimeter, so it scores lower on jurisdiction even when the cap table is European.</p>
+  <p><b>Full landscape</b> shows every contender and every dependency across the seven layers. The score dots are a sovereignty read across ownership, jurisdiction, operations, supply chain, substitutability and exit -- a low score is not a disqualification, it tells you where the risk lives. The <b>partnership overlay</b> wires up the named deals between players, coloured by deal type (see the key). "European-owned" spans the EU plus EEA/EFTA, Switzerland and the UK by ownership and control -- but ownership and jurisdiction are different axes: a Swiss or UK firm (Proton, Arm) is European yet sits outside the EU legal perimeter, so it scores lower on jurisdiction even when the cap table is European. Each card's detail panel now carries a <b>four-axis read</b> -- capability, jurisdiction, operational control, substitutability -- the why underneath its tier, and the <b>axis lens</b> recolours the whole board by any one of those axes (see CONTRIBUTING.md for the rubric).</p>
   <div class="legkey">
    <span><span class="swatch" style="background:var(--eu-bg);border-color:var(--eu)"></span>European-owned (EU + EEA/EFTA, CH, UK)</span>
    <span><span class="swatch" style="background:var(--op-bg);border-color:var(--op)"></span>Sovereign by deployment (US parent)</span>
@@ -252,6 +273,33 @@ function dots(score){
  for(let i=1;i<=5;i++) s+=`<span class="dot ${i<=score?'on':''}"></span>`;
  s+=`<span class="lab">sovereignty read ${score}/5</span></div>`;
  return s;
+}
+// ---------- Four-axis sovereignty lens: the why underneath the tiers ----------
+const AXDEF=[
+ ['capability','Capability',{none:'none',emerging:'emerging',credible:'credible',proven:'proven'}],
+ ['jurisdiction','Jurisdiction',{eu:'EU',mixed:'mixed',extra_eu:'extra-EU'}],
+ ['op_control','Op control',{european:'European',shared:'shared',foreign:'foreign'}],
+ ['substitutability','Substitutability',{swappable:'swappable',hard:'hard',locked:'locked'}]
+];
+const AXSEV={
+ capability:{none:'bad',emerging:'mid',credible:'good',proven:'good'},
+ jurisdiction:{eu:'good',mixed:'mid',extra_eu:'bad'},
+ op_control:{european:'good',shared:'mid',foreign:'bad'},
+ substitutability:{swappable:'good',hard:'mid',locked:'bad'}
+};
+const AXBANNER={
+ capability:'<b>Capability:</b> grades the node itself, whatever its flag -- does a working capability exist here today? <span class="ok">green = proven in production</span>, amber = emerging, <span class="brk">red = none</span>. Grey cards are not scored on this axis.',
+ jurisdiction:'<b>Jurisdiction:</b> whose law reaches the controlling entity. <span class="ok">green = EU legal perimeter</span>, amber = mixed (Swiss/UK ownership, pending acquisitions, EU structures under a US parent), <span class="brk">red = extra-EU control</span> (CLOUD Act et al).',
+ op_control:'<b>Operational control:</b> who holds root, the keys and the off-switch. <span class="ok">green = European hands</span>, amber = shared with a foreign parent or control plane, <span class="brk">red = foreign</span>.',
+ substitutability:'<b>Substitutability:</b> how fast the function could be re-sourced if it had to be. <span class="ok">green = swappable</span>, amber = hard (years and money), <span class="brk">red = locked -- no near-horizon substitute</span>. The two hard breaks light red here.'
+};
+function axChips(c){
+ if(!c.axes)return'';
+ const chips=AXDEF.map(([k,lab,vals])=>{
+  const v=c.axes[k],sev=v?AXSEV[k][v]:null;
+  return `<span class="axchip ${sev||'na'}"><b>${lab}</b>${v?vals[v]:'n/a'}</span>`;
+ }).join('');
+ return `<div class="axes">${chips}</div>${c.axes_note?`<p class="axnote">${c.axes_note}</p>`:''}`;
 }
 function render(){
  board.innerHTML='';
@@ -300,13 +348,14 @@ function select(id){
  document.querySelectorAll('.card').forEach(e=>e.classList.toggle('active',e.dataset.id===id));
  const _conn=new Set([id]),_w=document.body.classList.contains('show-wires');
  if(_w)PARTNERS.forEach(p=>{if(p.a===id)_conn.add(p.b);if(p.b===id)_conn.add(p.a);});
- if(insight!=='build'&&insight!=='imports')document.querySelectorAll('.card').forEach(el=>el.classList.toggle('faded',_w&&!_conn.has(el.dataset.id)));
+ if(insight!=='build'&&insight!=='imports'&&insight!=='lens')document.querySelectorAll('.card').forEach(el=>el.classList.toggle('faded',_w&&!_conn.has(el.dataset.id)));
  const L=LAYERS.find(x=>x.key===c.layer);
  const pls=PARTNERS.filter(p=>p.a===id||p.b===id).map(p=>{const o=p.a===id?p.b:p.a;const on=CARDS.find(x=>x.id===o);return `<li><b>${on?on.name:o}</b> -- ${p.label}${p.year?` (${p.year})`:''}${p.url?` &middot; <a href="${p.url}" target="_blank" rel="noopener">${p.src||'press release'} ↗</a>`:''}</li>`;}).join('');
  drawer.innerHTML=`<button class="dclose" aria-label="Close detail">&times;</button><span class="kick ${c.tier}">${TIERLAB[c.tier]}</span>
   <h2>${c.name}</h2>
   <p class="layref">Layer: ${L.name} &nbsp;|&nbsp; maturity: ${c.maturity}</p>
   ${dots(c.score)}
+  ${axChips(c)}
   ${NEWS[c.id]?`<div class="box latest"><b>Latest &middot; ${NEWS[c.id].date}:</b> ${NEWS[c.id].headline} &middot; <a href="${NEWS[c.id].url}" target="_blank" rel="noopener">${NEWS[c.id].source} ↗</a></div>`:''}
   <p>${c.what}</p>
   <div class="box weak"><b>Weak link:</b> ${c.weak}</div>
@@ -316,7 +365,7 @@ function select(id){
 }
 function drawWires(){
  const svg=document.getElementById('wires');if(!svg)return;
- if(insight==='build'){svg.innerHTML='';return;}
+ if(insight==='build'||insight==='lens'){svg.innerHTML='';return;}
  if(insight==='choke'||insight==='quadrant'){svg.innerHTML='';return;}
  const show=document.body.classList.contains('show-wires');
  svg.setAttribute('width',board.scrollWidth);svg.setAttribute('height',board.scrollHeight);
@@ -359,7 +408,7 @@ function drawWires(){
  }
 }
 function setDepth(d){depth=d;document.body.classList.remove('depth-champion','depth-full','depth-engine');document.body.classList.add('depth-'+d);applyFilters();updateModeButtons();}
-function updateModeButtons(){const cur=insight==='build'?'build':insight==='imports'?'imports':depth;document.querySelectorAll('#insight button').forEach(b=>b.classList.toggle('active',b.dataset.view===cur));}
+function updateModeButtons(){const cur=insight==='build'?'build':insight==='imports'?'imports':insight==='lens'?'lens':depth;document.querySelectorAll('#insight button').forEach(b=>b.classList.toggle('active',b.dataset.view===cur));}
 document.getElementById('tiers').addEventListener('click',e=>{
  if(!e.target.matches('button'))return;
  const t=e.target.dataset.tier;tiers[t]=!tiers[t];
@@ -379,11 +428,12 @@ function cardClick(id){select(id);openSheet();}
 function openSheet(){if(window.matchMedia("(max-width:1080px)").matches)drawer.classList.add("open");}
 drawer.addEventListener("click",e=>{if(e.target.classList.contains("dclose"))drawer.classList.remove("open");});
 function showAllNodes(){depth='full';document.body.classList.remove('depth-champion','depth-engine');document.body.classList.add('depth-full');tiers={eu:true,operated:true,dependency:true};document.querySelectorAll('#tiers button').forEach(b=>b.classList.add('active'));applyFilters();}
-function clearGoal(){curGoal=null;document.querySelectorAll('.card').forEach(el=>{el.classList.remove('cand','proven','brk-node','imp-node','faded');el.style.transitionDelay='';});document.querySelectorAll('.layer').forEach(s=>{s.classList.remove('lit','broke','dim');s.style.transitionDelay='';s.querySelectorAll('.layer-readout').forEach(r=>r.remove());});}
+function clearGoal(){curGoal=null;document.querySelectorAll('.card').forEach(el=>{el.classList.remove('cand','proven','brk-node','imp-node','faded','lens-good','lens-mid','lens-bad');el.style.transitionDelay='';});document.querySelectorAll('.layer').forEach(s=>{s.classList.remove('lit','broke','dim');s.style.transitionDelay='';s.querySelectorAll('.layer-readout').forEach(r=>r.remove());});}
 function clearInsight(){clearGoal();const w=document.getElementById('wires');if(w)w.innerHTML='';document.getElementById('insightbanner').innerHTML='';document.getElementById('goalbar').innerHTML='';}
-function setInsight(m){const was=insight;insight=m;document.body.classList.remove('insight-build','insight-imports');if(m!=='off')document.body.classList.add('insight-'+m);clearInsight();const gb=document.getElementById('goalbar'),bn=document.getElementById('insightbanner');
+function setInsight(m){const was=insight;insight=m;document.body.classList.remove('insight-build','insight-imports','insight-lens');if(m!=='off')document.body.classList.add('insight-'+m);clearInsight();const gb=document.getElementById('goalbar'),bn=document.getElementById('insightbanner');
  if(m==='build'){showAllNodes();gb.innerHTML='<span class="gl">Pick a goal:</span>'+GOALS.map(g=>`<button data-goal="${g.id}">${g.name}</button>`).join('');bn.innerHTML='Pick a goal -- Europe lights up every European option it has at each layer, and the layers where it has none turn red.';}
  if(m==='imports')applyImports();
+ if(m==='lens'){showAllNodes();gb.innerHTML='<span class="gl">Pick an axis:</span>'+AXDEF.map(([k,,])=>`<button data-axis="${k}">${k==='op_control'?'operational control':k}</button>`).join('');bn.innerHTML='Pick an axis -- the board recolours by that single dimension. The tiers stay the primary cut; the axes are the why underneath them (rubric in CONTRIBUTING.md).';}
  if(m==='off'&&was!=='off')applyFilters();
  updateModeButtons();drawWires();}
 // ---------- Show imports: the cross-cutting import spine ----------
@@ -404,6 +454,20 @@ function applyImports(){
  const parts=Object.entries(byTarget).sort((x,y)=>y[1].size-x[1].size).map(([b,s])=>`${s.size} &rarr; ${byId[b].name}`);
  const srcs=new Set(dep.map(p=>p.a));
  document.getElementById('insightbanner').innerHTML=`<b>The import spine:</b> ${srcs.size} nodes on this map lean on imported kit or foreign control. <span class="brk">${parts.join(' &nbsp;&middot;&nbsp; ')}</span><span class="optcount">Dashed red wires are the drawn dependencies. Note what repeats: the same few imports recur across the stack -- the hard breaks are still exactly two, the AI accelerator and the leading-edge fab. Click any lit box for the sourced detail.</span>`;
+}
+// ---------- Axis lens: recolour the board by one axis ----------
+function applyLens(axis){
+ if(!AXSEV[axis])return;
+ showAllNodes();clearGoal();
+ document.querySelectorAll('#goalbar button').forEach(b=>b.classList.toggle('active',b.dataset.axis===axis));
+ const n={good:0,mid:0,bad:0,na:0};
+ document.querySelectorAll('.card').forEach(el=>{
+  const c=byId[el.dataset.id],v=c&&c.axes?c.axes[axis]:null,sev=v?AXSEV[axis][v]:null;
+  if(sev){el.classList.add('lens-'+sev);n[sev]++;}
+  else{el.classList.add('faded');n.na++;}
+ });
+ document.getElementById('insightbanner').innerHTML=`${AXBANNER[axis]}<span class="optcount">${n.good} green &middot; ${n.mid} amber &middot; ${n.bad} red &middot; ${n.na} not scored. Click any box for the per-node call and its one-line rationale.</span>`;
+ const w=document.getElementById('wires');if(w)w.innerHTML='';
 }
 function selectGoal(id){const g=GOALS.find(x=>x.id===id);if(!g)return;
  const q=n=>document.querySelector(`.card[data-id="${n}"]`);
@@ -428,8 +492,8 @@ function selectGoal(id){const g=GOALS.find(x=>x.id===id);if(!g)return;
  const brkline=g.breaks.length?` <span class="brk">Breaks at: ${g.breaks.map(b=>b.label).join(', ')}</span>`:` <span class="ok">No hard break -- buildable in Europe.</span>`;
  document.getElementById('insightbanner').innerHTML=`<b>${g.name}:</b> ${g.verdict}${brkline}<span class="optcount">${opt} European options lit across ${g.needs.length} layers${g.breaks.length?'; '+g.breaks.length+' layer(s) with no European answer':''}. Each lit ring is a credible European option, not a packaged sovereign product you can buy off a shelf.</span>`;
  const w=document.getElementById('wires');if(w)w.innerHTML='';}
-document.getElementById('insight').addEventListener('click',e=>{if(!e.target.matches('button'))return;const v=e.target.dataset.view;if(v==='build'){setInsight('build');}else if(v==='imports'){setInsight('imports');}else{setInsight('off');setDepth(v);}});
-document.getElementById('goalbar').addEventListener('click',e=>{if(!e.target.matches('button'))return;selectGoal(e.target.dataset.goal);});
+document.getElementById('insight').addEventListener('click',e=>{if(!e.target.matches('button'))return;const v=e.target.dataset.view;if(v==='build'){setInsight('build');}else if(v==='imports'){setInsight('imports');}else if(v==='lens'){setInsight('lens');}else{setInsight('off');setDepth(v);}});
+document.getElementById('goalbar').addEventListener('click',e=>{if(!e.target.matches('button'))return;if(e.target.dataset.axis){applyLens(e.target.dataset.axis);return;}selectGoal(e.target.dataset.goal);});
 
 fetch('data/stack.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}).then(d=>{
   LAYERS=d.LAYERS;CARDS=d.CARDS;PARTNERS=d.PARTNERS;NEWS=d.NEWS;GOALS=d.GOALS;
@@ -438,6 +502,7 @@ fetch('data/stack.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.js
   if(/engine/i.test(location.hash))setDepth('engine');
   if(/build/i.test(location.hash)){setInsight('build');const gm=location.hash.match(/goal-([a-z]+)/i);if(gm)selectGoal(gm[1]);}
   if(/imports/i.test(location.hash))setInsight('imports');
+  if(/lens/i.test(location.hash)){setInsight('lens');const lm=location.hash.match(/lens-(capability|jurisdiction|op_control|substitutability)/i);if(lm)applyLens(lm[1].toLowerCase());}
 }).catch(e=>{document.getElementById('board').innerHTML='<p style="padding:24px;font-size:1.05rem;line-height:1.5">Could not load <code>data/stack.json</code> ('+e+'). Browsers block <code>file://</code> data loads, so open the <b>live demo</b> link, or run a local server in the repo folder: <code>python -m http.server</code> then visit <code>http://localhost:8000/</code>. See the README.</p>';});
 </script>
 </body>

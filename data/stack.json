@@ -51,7 +51,14 @@
       "tag": "Europe builds the shelf. It still needs the shopkeeper.",
       "what": "Europe is good at launching programmes and naming consortia. Revenue shows up when a buyer can specify, test, procure, deploy and support a stack without running a research project first. The gap is productisation, not imagination.",
       "maturity": "Thesis",
-      "weak": "The bottleneck is commercial stitching, not components."
+      "weak": "The bottleneck is commercial stitching, not components.",
+      "axes": {
+        "capability": null,
+        "jurisdiction": null,
+        "op_control": null,
+        "substitutability": null
+      },
+      "axes_note": "Editorial meta-node -- the map's own argument, not a capability. Axes not applicable."
     },
     {
       "id": "seal",
@@ -62,7 +69,14 @@
       "tag": "The EU finally graded sovereignty silicon-to-operations.",
       "what": "The Commission's Cloud Sovereignty Framework grades offers on Sovereign European Assurance Levels (SEAL, ~0-4). The top levels demand the whole stack, silicon to operational control, under European hands, with no non-EU entity holding veto rights, data-access clauses or the ability to cut service. April 2026: a EUR 180M award went to OVHcloud, Scaleway and StackIT at the top tier, Proximus/S3NS one below. SUSE even shipped a SEAL self-assessment tool.",
       "maturity": "Live 2026",
-      "weak": "A scoring scheme, not a product. It defines the test; vendors still have to pass it."
+      "weak": "A scoring scheme, not a product. It defines the test; vendors still have to pass it.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": null
+      },
+      "axes_note": "Live Commission instrument with a first EUR 180M award (Apr 2026); substitutability is not meaningful for a rulebook."
     },
     {
       "id": "techpack",
@@ -73,7 +87,14 @@
       "tag": "CADA + Chips Act 2.0 + Open Source Strategy (Jun 2026).",
       "what": "Presented 3 June 2026: a Cloud and AI Development Act (CADA), a demand-led Chips Act 2.0, an EU Open Source Strategy, and an energy/AI roadmap. Headline asks: ~EUR 120bn semiconductors, ~EUR 200bn datacentres by 2036, ~EUR 100bn cloud/AI, EUR 2bn open source.",
       "maturity": "Proposed 2026",
-      "weak": "Proposals and money. Implementation and 'Buy European' teeth are unproven."
+      "weak": "Proposals and money. Implementation and 'Buy European' teeth are unproven.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": null
+      },
+      "axes_note": "Proposed 3 Jun 2026 -- exists on paper; headline sums not yet appropriated."
     },
     {
       "id": "factories",
@@ -85,6 +106,13 @@
       "what": "EuroHPC has selected ~19 AI Factories plus 13 antennas across the EU and partner states (incl. UK, Switzerland, Iceland). InvestAI adds a EUR 20bn fund for up to 5 AI Gigafactories (100k+ accelerators each); 77 proposals across 16 states, official call summer 2026.",
       "maturity": "Rolling 2025-2028",
       "weak": "The compute inside is overwhelmingly Nvidia. Access channel, not silicon sovereignty.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": null
+      },
+      "axes_note": "EU-run EuroHPC instrument; the accelerators it buys are overwhelmingly Nvidia (see import spine).",
       "depends_on": [
         "sys-dep"
       ]
@@ -98,7 +126,14 @@
       "tag": "Caffarra's chips-to-cloud-to-apps blueprint.",
       "what": "A coalition of academics, industrialists and MEPs (chaired by Cristina Caffarra) pushing a full independent European stack framed around capturing economic value, not just defensive security.",
       "maturity": "Advocacy",
-      "weak": "Movement and manifesto, not yet budget lines."
+      "weak": "Movement and manifesto, not yet budget lines.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": null
+      },
+      "axes_note": "Advocacy coalition -- movement and manifesto, not yet budget lines."
     },
     {
       "id": "certs",
@@ -109,7 +144,14 @@
       "tag": "ANSSI, ENISA, plus DMA, Data Act, NIS2, DORA, CRA, eIDAS2.",
       "what": "France's SecNumCloud is the hard bar (S3NS qualified 3.2 in Dec 2025; a March 2026 decree forces sensitive central-admin data onto it). EUCS at ENISA still wrangles whether a sovereignty requirement survives. DMA/Data Act/NIS2/DORA/CRA and the eIDAS2 wallet are demand triggers.",
       "maturity": "Mixed",
-      "weak": "EUCS sovereignty criteria keep getting watered down under lobbying."
+      "weak": "EUCS sovereignty criteria keep getting watered down under lobbying.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": null
+      },
+      "axes_note": "SecNumCloud is a live hard bar (S3NS 3.2, Dec 2025); EUCS sovereignty criteria still contested."
     },
     {
       "id": "sap",
@@ -121,6 +163,13 @@
       "what": "Germany's SAP is Europe's one genuine enterprise-software giant: S/4HANA, Business AI (Joule), and RISE landing on sovereign clouds (S3NS H2 2026, Bleu, Delos). Investing up to EUR 300M in France for sovereign cloud + Business AI.",
       "maturity": "Production",
       "weak": "Increasingly runs RISE on hyperscaler infrastructure; sovereignty depends on which cloud underneath.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "shared",
+        "substitutability": "hard"
+      },
+      "axes_note": "German SE; RISE increasingly lands on hyperscaler infrastructure, so operational control of the hosted service is shared (see depends_on).",
       "depends_on": [
         "hyperscalers"
       ]
@@ -134,7 +183,14 @@
       "tag": "3DEXPERIENCE: the world runs its product design on it.",
       "what": "French PLM/CAD leader (CATIA, SOLIDWORKS, 3DEXPERIENCE) embedded in aerospace, auto, defence and pharma. Quiet, deep European software sovereignty in industrial design and simulation.",
       "maturity": "Production",
-      "weak": "SaaS push raises the same hosting-jurisdiction questions."
+      "weak": "SaaS push raises the same hosting-jurisdiction questions.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "French; PLM/CAD embedded in EU industry -- SaaS hosting jurisdiction is the open flank."
     },
     {
       "id": "opendesk",
@@ -145,7 +201,14 @@
       "tag": "Germany's government-grade Microsoft-365 alternative.",
       "what": "Assembled by ZenDiS from Nextcloud, Collabora, Open-Xchange, Thunderbird, Univention Nubus, OpenProject, Cryptpad and Jitsi/OpenTalk. Adopted by Schleswig-Holstein, the ICC, and now the German armed forces.",
       "maturity": "Deploying",
-      "weak": "A government study found it is not yet a full Microsoft 365 replacement: UX parity and integration gaps remain."
+      "weak": "A government study found it is not yet a full Microsoft 365 replacement: UX parity and integration gaps remain.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "Open-source and forkable by construction; deployed (SH, ICC, Bundeswehr) but a government study still finds M365 parity gaps."
     },
     {
       "id": "schleswig",
@@ -156,7 +219,14 @@
       "tag": "40,000 staff off Microsoft. The proof it can be done.",
       "what": "By Oct 2025 the German state moved 40,000+ civil-servant accounts and 100M+ emails off Exchange/Outlook to Open-Xchange/Thunderbird, and 30,000 PCs from Windows/Office to Linux/LibreOffice; SharePoint to Nextcloud, Teams/Webex to Jitsi.",
       "maturity": "Live",
-      "weak": "A 4M-citizen state, not a multinational. Scale and helpdesk load are the open questions."
+      "weak": "A 4M-citizen state, not a multinational. Scale and helpdesk load are the open questions.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": null
+      },
+      "axes_note": "A completed migration, not a vendor -- the axes grade the proof, not a product."
     },
     {
       "id": "office",
@@ -167,7 +237,14 @@
       "tag": "The open office + groupware substitution layer.",
       "what": "LibreOffice (Document Foundation), Nextcloud, Open-Xchange and Collabora are the buyable, forkable office/collab core. Nextcloud + IONOS are building a packaged 'Euro-Office'.",
       "maturity": "Production",
-      "weak": "Format fidelity and ecosystem add-ons still lag Microsoft."
+      "weak": "Format fidelity and ecosystem add-ons still lag Microsoft.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "Open-source core with multiple European vendors behind it -- forkable, substitutable by design."
     },
     {
       "id": "proton",
@@ -178,7 +255,14 @@
       "tag": "Secure mail, comms, identity.",
       "what": "Proton (encrypted mail/drive/VPN), Tuta (Germany) and Wire (secure messaging) cover privacy-first comms. Strong end-to-end stories for sensitive collaboration.",
       "maturity": "Production",
-      "weak": "Proton is Swiss, not EU; 'European' but outside the EU legal perimeter. Flag it."
+      "weak": "Proton is Swiss, not EU; 'European' but outside the EU legal perimeter. Flag it.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "mixed",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "Swiss: European-owned but outside the EU legal perimeter (the legend's own nuance); Tuta (DE) is the in-EU alternate."
     },
     {
       "id": "vertical-saas",
@@ -189,7 +273,14 @@
       "tag": "Vertical SaaS where Europe quietly leads.",
       "what": "DATEV (German tax/accounting), Doctolib (health booking, FR/DE), Software AG (integration), Visma (Nordic business software), Nemetschek (AEC), TeamViewer. Domain depth beats horizontal scale.",
       "maturity": "Production",
-      "weak": "Fragmented; few break out beyond home markets."
+      "weak": "Fragmented; few break out beyond home markets.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "EU-domiciled domain leaders; the depth in each niche is real and not quickly rebuilt."
     },
     {
       "id": "ms365",
@@ -200,7 +291,14 @@
       "tag": "The installed base everyone is trying to leave.",
       "what": "Microsoft 365, Google Workspace, Salesforce, ServiceNow and Adobe still own the European workplace and CRM by habit, integration and switching cost.",
       "maturity": "Incumbent",
-      "weak": "US-owned, CLOUD Act exposed. The thing the whole sovereignty argument is reacting to."
+      "weak": "US-owned, CLOUD Act exposed. The thing the whole sovereignty argument is reacting to.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "hard"
+      },
+      "axes_note": "US-owned, CLOUD Act exposed; European substitutes exist (openDesk, Euro-Office) -- costly but real, hence hard, not locked."
     },
     {
       "id": "mistral",
@@ -212,6 +310,13 @@
       "what": "French frontier-and-open-weight lab. Sep 2025 Series C of EUR 1.7bn led by ASML (EUR 1.3bn, ~11%) at ~EUR 11.7-14bn; reportedly raising again near EUR 20bn. Mistral Compute targets up to 200MW by 2027 for EU customers wanting non-US infrastructure.",
       "maturity": "Scaling",
       "weak": "Compute base still leans on Nvidia; capital depth far below US labs.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "French lab under EU-run operations; compute base leans on Nvidia (import spine) and capital depth trails US labs.",
       "depends_on": [
         "sys-dep"
       ]
@@ -226,6 +331,13 @@
       "what": "HANA (in-memory DB) and Business AI/Joule embed AI into ERP where the enterprise data already lives. Distribution is the moat Mistral lacks.",
       "maturity": "Production",
       "weak": "Runs increasingly on hyperscaler infra; sovereignty inherited from the cloud beneath.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "shared",
+        "substitutability": "hard"
+      },
+      "axes_note": "Distribution moat inside the ERP; sovereignty of the hosted service is inherited from the cloud beneath.",
       "depends_on": [
         "hyperscalers"
       ]
@@ -239,7 +351,14 @@
       "tag": "The open control plane: Linux, Kubernetes, sovereign AI.",
       "what": "German-rooted (EQT-owned), SUSE is Europe's open-source platform spine: SUSE Linux Enterprise, RKE2/Rancher Prime for Kubernetes, and a SUSE AI stack. Launch partner for the AWS European Sovereign Cloud, partnered with evroc, and signed a 25 June 2026 MoU with OpenChip to certify a sovereign RISC-V stack silicon-to-software. It even shipped a SEAL self-assessment tool.",
       "maturity": "Production",
-      "weak": "The software is sovereign; the silicon underneath usually is not, and upstream open-source is global."
+      "weak": "The software is sovereign; the silicon underneath usually is not, and upstream open-source is global.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "European-owned (EQT) open-source spine; upstream projects are global, and the silicon beneath usually is not European."
     },
     {
       "id": "aleph",
@@ -250,7 +369,14 @@
       "tag": "Pivoted from frontier models to sovereignty tooling.",
       "what": "German lab (EUR ~500M raised) that stepped back from chasing frontier scale toward an orchestration/explainability platform for on-prem, regulated deployment, integrating open-source models.",
       "maturity": "Repositioning",
-      "weak": "Now being acquired by Canada's Cohere (announced Apr 2026, ~$6.8bn, Schwarz-anchored, not yet closed) -- Europe's #2 sovereign-AI lab folding into a transatlantic group. Ownership drifting outside the EU."
+      "weak": "Now being acquired by Canada's Cohere (announced Apr 2026, ~$6.8bn, Schwarz-anchored, not yet closed) -- Europe's #2 sovereign-AI lab folding into a transatlantic group. Ownership drifting outside the EU.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "mixed",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "Cohere acquisition (announced Apr 2026, not closed) drifts ownership outside the EU -- jurisdiction mixed until it closes, then re-grade."
     },
     {
       "id": "eu-models",
@@ -261,7 +387,14 @@
       "tag": "Specialist labs that punch above scale.",
       "what": "DeepL (translation, DE), Black Forest Labs (image, DE), Kyutai (speech, FR), LightOn (enterprise, FR), H Company (agents, FR), Stability. Narrow excellence rather than one big chatbot.",
       "maturity": "Production / scaling",
-      "weak": "Niche revenue; vulnerable to frontier labs absorbing the capability."
+      "weak": "Niche revenue; vulnerable to frontier labs absorbing the capability.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "Narrow excellence across FR/DE labs; each niche has alternates -- frontier absorption is the risk, not lock-in."
     },
     {
       "id": "openeurollm",
@@ -272,7 +405,14 @@
       "tag": "Open multilingual models for all EU languages.",
       "what": "EU-funded consortium (EUR ~37M; Silo AI, Aleph Alpha, LightOn, SURF, universities) building open models covering the EU's 24 languages. EuroLLM is the model line.",
       "maturity": "In progress",
-      "weak": "Open weights and budget far below commercial frontier spend."
+      "weak": "Open weights and budget far below commercial frontier spend.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "EU-funded and open-weights by design; capability still building against frontier-scale budgets."
     },
     {
       "id": "silo-hf",
@@ -283,7 +423,14 @@
       "tag": "European-built, but the cap table isn't.",
       "what": "Silo AI (Finland) is owned by AMD since 2024. Hugging Face was French-founded but is US-incorporated and US-VC-funded. European talent, non-European control.",
       "maturity": "Active",
-      "weak": "Ownership and jurisdiction sit outside the EU. 'European' by heritage, not by control."
+      "weak": "Ownership and jurisdiction sit outside the EU. 'European' by heritage, not by control.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "hard"
+      },
+      "axes_note": "European heritage, non-European control (AMD owns Silo since 2024; Hugging Face is US-incorporated) -- the axes make the tier call visible."
     },
     {
       "id": "us-models",
@@ -294,7 +441,14 @@
       "tag": "The frontier and the toolchain Europe trains on.",
       "what": "OpenAI, Anthropic and Google hold the frontier; Nvidia CUDA is the de-facto training/inference software moat under nearly everything, including European models.",
       "maturity": "Incumbent",
-      "weak": "CUDA lock-in is the deepest dependency in the stack. Hard to design around."
+      "weak": "CUDA lock-in is the deepest dependency in the stack. Hard to design around.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "locked"
+      },
+      "axes_note": "Frontier weights have partial EU answers (Mistral); CUDA does not -- locked is the CUDA call, the software moat under the accelerator break."
     },
     {
       "id": "ovh",
@@ -305,7 +459,14 @@
       "tag": "Europe's largest independent cloud. SEAL-3.",
       "what": "French, listed, owns its datacentres and builds its own servers. Won a slice of the April 2026 EUR 180M EU sovereign-cloud award at SEAL-3. The closest thing Europe has to a hyperscaler alternative.",
       "maturity": "Production",
-      "weak": "Service breadth and managed-AI catalogue trail AWS/Azure."
+      "weak": "Service breadth and managed-AI catalogue trail AWS/Azure.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "Listed French operator that owns its datacentres and builds its own servers; SEAL-3 awardee -- the reference EU-owned cloud."
     },
     {
       "id": "scaleway",
@@ -317,6 +478,13 @@
       "what": "French (Iliad group), aggressive on sovereign AI compute with Nvidia GPU clusters in EU datacentres. Also in the EU sovereign-cloud award.",
       "maturity": "Production",
       "weak": "GPU fleet is Nvidia; sovereign operations, imported silicon.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "French (Iliad); sovereign operations over an imported Nvidia GPU fleet (import spine).",
       "depends_on": [
         "sys-dep"
       ]
@@ -330,7 +498,14 @@
       "tag": "The German sovereign-cloud bench.",
       "what": "IONOS (United Internet), StackIT (Schwarz Group, SEAL-3 awardee) and Deutsche Telekom's Open Telekom Cloud give Germany credible EU-owned IaaS with C5/BSI assurance.",
       "maturity": "Production",
-      "weak": "Mostly infrastructure; thinner on higher-level managed services."
+      "weak": "Mostly infrastructure; thinner on higher-level managed services.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "German EU-owned IaaS with C5/BSI assurance; breadth thinner than the hyperscalers."
     },
     {
       "id": "eu-cloud3",
@@ -341,7 +516,14 @@
       "tag": "National champions across the rest of Europe.",
       "what": "Aruba (Italy), Exoscale (Swiss/EU), UpCloud (Finland), Elastx (Sweden). Smaller, regional, genuinely independent providers for data-residency-sensitive workloads.",
       "maturity": "Production",
-      "weak": "Scale and breadth; fine for targeted workloads, not whole-estate migration."
+      "weak": "Scale and breadth; fine for targeted workloads, not whole-estate migration.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "Regional independents (Exoscale is Swiss -- same perimeter nuance as Proton); fine for targeted workloads."
     },
     {
       "id": "mistral-compute",
@@ -353,6 +535,13 @@
       "what": "Mistral's compute arm, targeting up to 200MW by 2027, explicitly for EU governments and enterprises wanting AI capacity not governed by US infrastructure.",
       "maturity": "Building",
       "weak": "GPUs are Nvidia; sovereignty is in operation and jurisdiction, not silicon.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "Building toward 200MW by 2027; the jurisdiction is the product, the silicon is Nvidia (import spine).",
       "depends_on": [
         "sys-dep"
       ]
@@ -366,7 +555,14 @@
       "tag": "Sweden's attempt at a true sovereign hyperscaler.",
       "what": "Stockholm startup (founded 2022) building what it calls Europe's first sovereign hyperscale cloud: eight datacentres plus three dev hubs by 2028, platform live July 2026, with a sovereign AI platform (evroc Think) and agent (roc). Runs SUSE Linux and Rancher.",
       "maturity": "Launching 2026",
-      "weak": "Tiny next to AWS/Azure; capital depth and scale are the open question."
+      "weak": "Tiny next to AWS/Azure; capital depth and scale are the open question.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "Stockholm hyperscale bid, platform live July 2026; capital depth and scale are the open question."
     },
     {
       "id": "aws-esc",
@@ -378,6 +574,13 @@
       "what": "Generally available 15 Jan 2026, physically and logically separate from other AWS regions, run by EU-resident staff under an EU-controlled legal structure; 90+ services; EUR 7.8bn invested; NL/BE/PT to follow.",
       "maturity": "GA 2026",
       "weak": "Parent is Amazon (US). Independent governance reduces but does not erase CLOUD Act and ownership questions.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "mixed",
+        "op_control": "shared",
+        "substitutability": "hard"
+      },
+      "axes_note": "The operated tier in axis form: EU-resident staffing and legal structure under a US parent -- shared control, mixed jurisdiction.",
       "depends_on": [
         "hyperscalers"
       ]
@@ -392,6 +595,13 @@
       "what": "Bleu (Capgemini + Orange + Microsoft) targets ANSSI SecNumCloud in France. Delos Cloud (SAP/Arvato + Microsoft) targets BSI for German public sector. SAP's RISE will run on both.",
       "maturity": "Ramping 2025-26",
       "weak": "Azure technology and Microsoft IP underneath. Local operator, foreign control plane.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "mixed",
+        "op_control": "shared",
+        "substitutability": "hard"
+      },
+      "axes_note": "Azure technology and Microsoft IP underneath a local operator -- shared control by design.",
       "depends_on": [
         "hyperscalers"
       ]
@@ -406,6 +616,13 @@
       "what": "Thales-Google JV; passed SecNumCloud 3.2 in Dec 2025, the strongest French qualification among the operated tier. SAP available on it H2 2026; part of a Proximus-led EU award.",
       "maturity": "Qualified 2025",
       "weak": "Google Cloud tech underneath; Thales controls operation and keys.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "mixed",
+        "op_control": "shared",
+        "substitutability": "hard"
+      },
+      "axes_note": "SecNumCloud 3.2 with Thales holding operation and keys; Google technology beneath keeps control shared, not European.",
       "depends_on": [
         "hyperscalers"
       ]
@@ -419,7 +636,14 @@
       "tag": "The default, and the Broadcom tax.",
       "what": "Ordinary hyperscaler regions still run most European enterprise workloads. Broadcom's VMware repricing (a EUR 500k bill becoming ~EUR 2M, then +10-20%/yr) earned a CISPE 'red alert' and an EU complaint, turning lock-in into a live sovereignty argument.",
       "maturity": "Incumbent",
-      "weak": "US-owned control plane + CLOUD Act + escalating lock-in cost."
+      "weak": "US-owned control plane + CLOUD Act + escalating lock-in cost.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "hard"
+      },
+      "axes_note": "US control plane, CLOUD Act, and VMware-style repricing; substitutes exist per workload -- whole-estate exit is the hard part."
     },
     {
       "id": "jupiter",
@@ -431,6 +655,13 @@
       "what": "JUPITER at Forschungszentrum Julich is Europe's first exascale system; its CPU cluster uses SiPearl Rhea1, with full readiness targeted end-2026. The JEDI development instrument already ran top-5 on the Top500.",
       "maturity": "Standing up 2026",
       "weak": "The AI/GPU partition is Nvidia Grace-Hopper. European CPU, imported accelerators.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "EuroHPC flagship standing up 2026: European CPU (Rhea1), Nvidia GPU partition (import spine).",
       "depends_on": [
         "sys-dep"
       ]
@@ -444,7 +675,14 @@
       "tag": "Schwarz, Deutsche Telekom, EcoDataCenter, Data4.",
       "what": "Schwarz/StackIT, Deutsche Telekom, Orange, Telefonica, EcoDataCenter (Sweden, low-carbon), Data4 and OVH run European-owned, European-sited capacity with renewable and locality stories.",
       "maturity": "Production",
-      "weak": "Power, land and grid connections are now the binding constraint."
+      "weak": "Power, land and grid connections are now the binding constraint.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "European-owned, European-sited capacity across multiple operators; power and grid, not control, are the binding constraint."
     },
     {
       "id": "gigafactory",
@@ -456,6 +694,13 @@
       "what": "InvestAI's EUR 20bn fund backs up to 5 AI Gigafactories of 100k+ accelerators each; 77 proposals across 16 member states and 60 sites; official EuroHPC call expected summer 2026.",
       "maturity": "Pre-procurement",
       "weak": "Accelerators will be overwhelmingly Nvidia. Scale, not silicon sovereignty.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": null
+      },
+      "axes_note": "Pre-procurement instrument; the accelerators it will buy are the import, not the instrument itself.",
       "depends_on": [
         "sys-dep"
       ]
@@ -469,7 +714,14 @@
       "tag": "Telcos and cables: the quiet sovereignty layer.",
       "what": "Deutsche Telekom, Orange, Telefonica and Nordic operators plus EU subsea-cable initiatives carry the traffic. Routing and landing-station control is an under-discussed sovereignty surface.",
       "maturity": "Production",
-      "weak": "Equipment and some routing still depend on non-EU vendors."
+      "weak": "Equipment and some routing still depend on non-EU vendors.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "European carriage with a non-EU equipment share; landing-station control is the quiet sovereignty surface."
     },
     {
       "id": "eviden",
@@ -481,6 +733,13 @@
       "what": "Builds BullSequana HPC systems and integrates Europe's exascale machines (JUPITER, and the AMD+SiPearl Alice Recoque). In early 2026 the French State bought Bull's Advanced Computing (HPC, quantum, AI) from Atos for up to EUR 404M -- Europe's only supercomputer manufacturing plant, in Angers, is now sovereign-owned.",
       "maturity": "Production",
       "weak": "The European layer is integration and the box; the accelerators inside are still Nvidia.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "locked"
+      },
+      "axes_note": "Sovereign-owned since 2026 (French State, up to EUR 404M); Europe's only supercomputer plant -- sole-source, hence locked.",
       "depends_on": [
         "sys-dep"
       ]
@@ -495,6 +754,13 @@
       "what": "2CRSi (servers, France) and Eclairion (high-density AI datacentre builds) plus regional integrators turn silicon into operable capacity.",
       "maturity": "Production",
       "weak": "Component supply (GPUs, advanced parts) is imported.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "European integration capacity across several players; the components integrated are imported (import spine).",
       "depends_on": [
         "sys-dep"
       ]
@@ -508,7 +774,14 @@
       "tag": "The telecom-gear sovereignty Europe already has.",
       "what": "Nokia (Finland) and Ericsson (Sweden) are two of the three global RAN/core vendors. Real, deep European hardware sovereignty in carrier networking, often overlooked in the cloud debate.",
       "maturity": "Production",
-      "weak": "Silicon inside still draws on non-EU fabs and IP."
+      "weak": "Silicon inside still draws on non-EU fabs and IP.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "Two of the three global RAN vendors are European -- deep and real; the silicon inside draws on non-EU fabs and IP."
     },
     {
       "id": "sys-dep",
@@ -519,7 +792,14 @@
       "tag": "The AI systems Europe actually buys.",
       "what": "Nvidia DGX/HGX and US OEMs (Dell, HPE, Supermicro) dominate AI server reality. Even European-operated AI capacity is mostly built from these.",
       "maturity": "Incumbent",
-      "weak": "The accelerator and reference design are non-European."
+      "weak": "The accelerator and reference design are non-European.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "locked"
+      },
+      "axes_note": "The AI-server import: the accelerator inside is one of the map's two hard breaks -- no European substitute at datacentre class."
     },
     {
       "id": "sipearl",
@@ -531,6 +811,13 @@
       "what": "French. Rhea1 taped out (TSMC N6, 80 Arm Neoverse V1 cores), powered on 13 May 2026, sampling 2026, headed into JUPITER's CPU cluster. EUR 130M Series A; Series B prepping.",
       "maturity": "Sampling 2026",
       "weak": "Arm ISA (not EU) + TSMC manufacturing. European design, borrowed foundations.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "Rhea1 powered on May 2026, sampling; Arm ISA and TSMC manufacturing are the borrowed foundations (import spine).",
       "depends_on": [
         "silicon-dep",
         "arm"
@@ -545,7 +832,14 @@
       "tag": "Barcelona's open-ISA bet for HPC-AI.",
       "what": "Leads the RISC-V vector-accelerator chiplet (VEC) in EuroHPC's DARE project (EUR 240M, BSC-coordinated, 38 partners). RISC-V gives architectural control Arm cannot.",
       "maturity": "Build-out",
-      "weak": "Early: design wins, packaging, compilers and software maturity all still to prove."
+      "weak": "Early: design wins, packaging, compilers and software maturity all still to prove.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "DARE VEC-chiplet lead; RISC-V gives ISA control the Arm route cannot -- silicon still to come."
     },
     {
       "id": "dare-chiplets",
@@ -556,7 +850,14 @@
       "tag": "The other two DARE RISC-V chiplets.",
       "what": "Axelera AI leads the AI-inference chiplet (Titania; EUR 61.6M DARE grant) from edge to server class; Codasip leads the general-purpose RISC-V processor. Inference at the edge is a plausible European beachhead.",
       "maturity": "Development",
-      "weak": "Datacentre-class parts are years from volume; software ecosystem nascent."
+      "weak": "Datacentre-class parts are years from volume; software ecosystem nascent.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "Titania and the DARE general-purpose part are in development; edge inference is the plausible beachhead, datacentre class is years out."
     },
     {
       "id": "riscv-others",
@@ -567,7 +868,35 @@
       "tag": "The wider RISC-V and accelerator field.",
       "what": "Quintauris (Bosch/Infineon/Nordic/NXP/Qualcomm automotive RISC-V JV; STMicro joined as sixth shareholder in 2024), Semidynamics (RISC-V cores), VSORA and GreenWaves (edge AI). A real but fragmented contender field.",
       "maturity": "Mixed",
-      "weak": "Fragmentation; few design wins at volume yet."
+      "weak": "Fragmentation; few design wins at volume yet.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "A real but fragmented contender field; few volume design wins yet."
+    },
+    {
+      "id": "euclyd",
+      "layer": "silicon",
+      "tier": "eu",
+      "name": "Euclyd (CRAFTWERK)",
+      "score": 2,
+      "tag": "Europe's newest accelerator bet still leaves Europe to get made.",
+      "what": "Dutch (Eindhoven) AI-inference silicon startup, founded 2024 by ex-ASML director Bernardo Kastrup. CRAFTWERK is a European-designed inference SiP aimed squarely at the Nvidia gap; a multi-chiplet system is targeted for 2028, and the company is seeking a raise of at least EUR 100M (backers include ex-ASML CEO Peter Wennink).",
+      "maturity": "Prototype",
+      "weak": "Unproven at scale; efficiency claims not independently validated. Design is European, manufacturing is not -- implemented by Korea's ADTechnology (a Samsung Foundry Design Solution Partner) on Samsung FinFET. Not in the EU DARE consortia.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "Prototype-stage Dutch design; fabrication sits with ADTechnology on Samsung Foundry FinFET (Nov 2025) -- European design, imported manufacturing.",
+      "depends_on": [
+        "silicon-dep"
+      ]
     },
     {
       "id": "quantum",
@@ -578,7 +907,14 @@
       "tag": "Where Europe is genuinely at the front.",
       "what": "IQM (Finland) delivering Radiance systems into LRZ's Euro-Q-Exa (54-qubit done, 150-qubit by end-2026); Pasqal (France) delivered a 140-qubit neutral-atom system to CINECA; Alice&Bob in France's EUR 500M PROQCIMA fault-tolerance programme.",
       "maturity": "Deploying",
-      "weak": "Pre-advantage; real workloads still limited. But the lead is real."
+      "weak": "Pre-advantage; real workloads still limited. But the lead is real.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "swappable"
+      },
+      "axes_note": "Delivered systems (LRZ, CINECA) and multiple European vendors -- rare depth, still pre-advantage."
     },
     {
       "id": "photonics",
@@ -589,7 +925,14 @@
       "tag": "A different computing substrate Europe can own.",
       "what": "Q.ANT (Germany) builds photonic processors for energy-efficient compute, a lane where the incumbents have no lock-in. Part of Europe's 'win on the next substrate' bet.",
       "maturity": "Early",
-      "weak": "Unproven at scale; niche software ecosystem."
+      "weak": "Unproven at scale; niche software ecosystem.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "Early-stage bet on a substrate without incumbents; effectively sole-source in Europe today."
     },
     {
       "id": "asml",
@@ -600,7 +943,14 @@
       "tag": "Europe's real silicon power: nobody makes leading chips without it.",
       "what": "Dutch. ASML's EUV lithography is a global monopoly: TSMC, Samsung and Intel all depend on it. Europe's single strongest semiconductor lever, and a EUR 1.3bn investor in Mistral.",
       "maturity": "Production",
-      "weak": "Sells to the world incl. non-EU fabs; leverage, not a finished sovereign chip."
+      "weak": "Sells to the world incl. non-EU fabs; leverage, not a finished sovereign chip.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "locked"
+      },
+      "axes_note": "EUV is a global monopoly -- irreplaceable full stop: Europe's chokepoint leverage, and a sole-source concentration."
     },
     {
       "id": "foundry",
@@ -611,7 +961,14 @@
       "tag": "Manufacturing: the gap the Chips Act is chasing.",
       "what": "TSMC's ESMC and GlobalFoundries in Dresden, plus Infineon, STMicro and Bosch, build mature/automotive nodes. Intel's Magdeburg leading-edge fab was shelved, so leading-edge logic stays in Asia.",
       "maturity": "Building",
-      "weak": "No leading-edge (sub-5nm) logic manufacturing in Europe. The hardest gap to close."
+      "weak": "No leading-edge (sub-5nm) logic manufacturing in Europe. The hardest gap to close.",
+      "axes": {
+        "capability": "credible",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "Mature and automotive nodes are real; sub-5nm logic does not exist in Europe -- the second hard break lives here."
     },
     {
       "id": "arm",
@@ -622,7 +979,14 @@
       "tag": "Europe's CPUs are designed on an ISA licensed from outside the EU.",
       "what": "The dominant CPU instruction-set architecture. Born in Cambridge, but SoftBank-owned and Nasdaq-listed since 2023 (SoftBank ~90%). Almost every European CPU effort licenses it: SiPearl's Rhea1 runs 80 Arm Neoverse V1 cores. March 2026: Arm shipped its first in-house chip in 35 years, now competing with the licensees it used to only sell to. RISC-V (OpenChip, Codasip, Quintauris) is the sovereignty hedge against exactly this ISA-licensing dependency.",
       "maturity": "Incumbent",
-      "weak": "European heritage, non-European control: the ISA and its licensing terms sit with SoftBank and US markets, not the EU. Licensable and shippable -- SiPearl proves it -- so a dependency, not one of the map's two hard breaks."
+      "weak": "European heritage, non-European control: the ISA and its licensing terms sit with SoftBank and US markets, not the EU. Licensable and shippable -- SiPearl proves it -- so a dependency, not one of the map's two hard breaks.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "hard"
+      },
+      "axes_note": "SoftBank-owned ISA: licensable and shippable (SiPearl proves it) -- hard, not locked; RISC-V is the hedge."
     },
     {
       "id": "silicon-dep",
@@ -633,7 +997,14 @@
       "tag": "The borrowed foundations under every European chip.",
       "what": "TSMC (Taiwan) makes the advanced silicon; Nvidia owns AI compute and CUDA; Intel/AMD own x86. The honest base of the stack.",
       "maturity": "Incumbent",
-      "weak": "These are the layers Europe borrows. Naming them is what makes the sovereignty case credible."
+      "weak": "These are the layers Europe borrows. Naming them is what makes the sovereignty case credible.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "locked"
+      },
+      "axes_note": "The two hard breaks in one card: leading-edge fab (TSMC) and the AI accelerator (Nvidia/CUDA) -- no European substitute on any near horizon."
     }
   ],
   "PARTNERS": [
@@ -960,6 +1331,15 @@
       "type": "dependency",
       "src": "Microsoft Learn",
       "url": "https://learn.microsoft.com/en-us/azure/azure-sovereign-clouds/partner/overview-national-partner-clouds"
+    },
+    {
+      "a": "euclyd",
+      "b": "silicon-dep",
+      "label": "CRAFTWERK built by ADTechnology on Samsung Foundry FinFET",
+      "year": 2025,
+      "src": "Euclyd",
+      "url": "https://euclyd.ai/adtechnology-collaborates-with-euclyd-to-develop-ultra-efficient-ai-chip-for-datacenters/",
+      "type": "dependency"
     }
   ],
   "NEWS": {
@@ -1256,6 +1636,12 @@
       "headline": "The Cloud and AI Development Act defines four cloud-sovereignty assurance tiers",
       "source": "European Commission",
       "url": "https://digital-strategy.ec.europa.eu/en/policies/cloud-and-ai-development-act"
+    },
+    "euclyd": {
+      "date": "2025-11-03",
+      "headline": "Development partnership with ADTechnology to take CRAFTWERK to silicon on Samsung Foundry FinFET",
+      "source": "Euclyd",
+      "url": "https://euclyd.ai/adtechnology-collaborates-with-euclyd-to-develop-ultra-efficient-ai-chip-for-datacenters/"
     }
   },
   "GOALS": [
