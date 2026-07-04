@@ -9,9 +9,9 @@ It is deliberately **not** a definitive register. It is a snapshot (dated **June
 
 ## What it shows
 
-Forty-nine players across the seven layers of the stack -- market and policy, applications, data and AI, cloud and compute, datacentre, hardware and systems, silicon -- each tagged by tier, scored for sovereignty, and tied to a dated public source. Named partnerships and dependencies are wired between them.
+Fifty-three players across the eight layers of the stack -- market and policy, applications, data and AI, cloud and compute, datacentre, hardware and systems, chip design & IP, fabrication & equipment -- each tagged by tier, scored for sovereignty, and tied to a dated public source. Named partnerships and dependencies are wired between them.
 
-The headline interaction is **build & break**. Pick a goal -- a sovereign workplace, a sovereign cloud, a sovereign LLM, a national supercomputer -- and the map lights every European option it has at each layer the goal needs, then turns red at the layers where it has none. The soft goals come up all green. The AI and compute goals snap red at the same two rungs every time: the AI accelerator and the leading-edge fab. That repeat is the whole argument.
+The headline interaction is **build & break**. Pick a goal -- a sovereign workplace, a sovereign cloud, a sovereign LLM, a national supercomputer, a European-designed AI chip -- and the map lights every European option it has at each layer the goal needs, then turns red at the layers where it has none. The soft goals come up all green. The AI and compute goals snap red at the same two rungs every time: the AI accelerator and the leading-edge fab. That repeat is the whole argument.
 
 ## How to read it
 

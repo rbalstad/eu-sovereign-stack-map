@@ -36,9 +36,14 @@
       "verdict": "Bull is now French-State-owned and Europe's only supercomputer factory. The accelerators that matter are still mostly Nvidia."
     },
     {
-      "key": "silicon",
-      "name": "Silicon & IP",
-      "verdict": "Several incomplete but complementary bets. Open ISA control via RISC-V; manufacturing and GPUs are the hard gaps."
+      "key": "design",
+      "name": "Chip design & IP",
+      "verdict": "Several credible European design bets and ISA control via RISC-V -- Europe can draw its own chips. The accelerator incumbent still owns the market they are drawing for."
+    },
+    {
+      "key": "fab",
+      "name": "Fabrication & equipment",
+      "verdict": "Europe owns the chokepoint tool (ASML) but not the fabs: no leading-edge logic manufacturing on the continent. The hardest gap."
     }
   ],
   "CARDS": [
@@ -799,11 +804,14 @@
         "op_control": "foreign",
         "substitutability": "locked"
       },
-      "axes_note": "The AI-server import: the accelerator inside is one of the map's two hard breaks -- no European substitute at datacentre class."
+      "axes_note": "The AI-server import: the accelerator inside is one of the map's two hard breaks -- no European substitute at datacentre class.",
+      "depends_on": [
+        "nvidia-cuda"
+      ]
     },
     {
       "id": "sipearl",
-      "layer": "silicon",
+      "layer": "design",
       "tier": "eu",
       "name": "SiPearl (Rhea1)",
       "score": 3,
@@ -819,13 +827,19 @@
       },
       "axes_note": "Rhea1 powered on May 2026, sampling; Arm ISA and TSMC manufacturing are the borrowed foundations (import spine).",
       "depends_on": [
-        "silicon-dep",
+        "leading-edge-fabs",
         "arm"
-      ]
+      ],
+      "roadmap": {
+        "claim": "Rhea1 sampling, then JUPITER's CPU cluster",
+        "year": 2026,
+        "source": "heise",
+        "url": "https://www.heise.de/en/news/Europe-s-most-complex-server-processor-is-running-11308863.html"
+      }
     },
     {
       "id": "openchip",
-      "layer": "silicon",
+      "layer": "design",
       "tier": "eu",
       "name": "OpenChip (RISC-V, DARE)",
       "score": 4,
@@ -839,11 +853,17 @@
         "op_control": "european",
         "substitutability": "hard"
       },
-      "axes_note": "DARE VEC-chiplet lead; RISC-V gives ISA control the Arm route cannot -- silicon still to come."
+      "axes_note": "DARE VEC-chiplet lead; RISC-V gives ISA control the Arm route cannot -- silicon still to come.",
+      "roadmap": {
+        "claim": "VEC vector chiplet tape-out within DARE SGA1's three-year run (TSMC 7nm or below)",
+        "year": 2028,
+        "source": "eeNews Europe",
+        "url": "https://www.eenewseurope.com/en/e240m-dare-project-for-ai-risc-v-chiplets/"
+      }
     },
     {
       "id": "dare-chiplets",
-      "layer": "silicon",
+      "layer": "design",
       "tier": "eu",
       "name": "Axelera, Codasip (DARE chiplets)",
       "score": 3,
@@ -857,11 +877,17 @@
         "op_control": "european",
         "substitutability": "hard"
       },
-      "axes_note": "Titania and the DARE general-purpose part are in development; edge inference is the plausible beachhead, datacentre class is years out."
+      "axes_note": "Titania and the DARE general-purpose part are in development; edge inference is the plausible beachhead, datacentre class is years out.",
+      "roadmap": {
+        "claim": "First Titania-powered systems",
+        "year": 2027,
+        "source": "Axelera AI",
+        "url": "https://community.axelera.ai/product-updates/the-future-of-ai-inference-introducing-titania-133"
+      }
     },
     {
       "id": "riscv-others",
-      "layer": "silicon",
+      "layer": "design",
       "tier": "eu",
       "name": "Quintauris, Semidynamics, VSORA",
       "score": 3,
@@ -875,11 +901,17 @@
         "op_control": "european",
         "substitutability": "hard"
       },
-      "axes_note": "A real but fragmented contender field; few volume design wins yet."
+      "axes_note": "A real but fragmented contender field; few volume design wins yet.",
+      "roadmap": {
+        "claim": "Jotunn8 volume production (taped out Oct 2025, TSMC 5nm)",
+        "year": 2026,
+        "source": "VSORA",
+        "url": "https://vsora.com/vsora-announces-tape-out-of-game-changing-inference-chip-putting-europe-at-the-forefront-of-data-center-ai/"
+      }
     },
     {
       "id": "euclyd",
-      "layer": "silicon",
+      "layer": "design",
       "tier": "eu",
       "name": "Euclyd (CRAFTWERK)",
       "score": 2,
@@ -895,12 +927,18 @@
       },
       "axes_note": "Prototype-stage Dutch design; fabrication sits with ADTechnology on Samsung Foundry FinFET (Nov 2025) -- European design, imported manufacturing.",
       "depends_on": [
-        "silicon-dep"
-      ]
+        "leading-edge-fabs"
+      ],
+      "roadmap": {
+        "claim": "Multi-chiplet CRAFTWERK system targeted",
+        "year": 2028,
+        "source": "CNBC",
+        "url": "https://www.cnbc.com/2026/04/17/nvidia-rivals-chip-market-funding-ai-asml-euclyd.html"
+      }
     },
     {
       "id": "quantum",
-      "layer": "silicon",
+      "layer": "design",
       "tier": "eu",
       "name": "Quantum: IQM, Pasqal, Alice&Bob",
       "score": 4,
@@ -918,7 +956,7 @@
     },
     {
       "id": "photonics",
-      "layer": "silicon",
+      "layer": "design",
       "tier": "eu",
       "name": "Q.ANT (photonic) + analog",
       "score": 3,
@@ -936,7 +974,7 @@
     },
     {
       "id": "asml",
-      "layer": "silicon",
+      "layer": "fab",
       "tier": "eu",
       "name": "ASML (the European chokepoint)",
       "score": 5,
@@ -954,7 +992,7 @@
     },
     {
       "id": "foundry",
-      "layer": "silicon",
+      "layer": "fab",
       "tier": "eu",
       "name": "Fabs: ESMC Dresden, GlobalFoundries, STMicro",
       "score": 2,
@@ -972,7 +1010,7 @@
     },
     {
       "id": "arm",
-      "layer": "silicon",
+      "layer": "design",
       "tier": "dependency",
       "name": "Arm (ISA licensing)",
       "score": 2,
@@ -989,22 +1027,61 @@
       "axes_note": "SoftBank-owned ISA: licensable and shippable (SiPearl proves it) -- hard, not locked; RISC-V is the hedge."
     },
     {
-      "id": "silicon-dep",
-      "layer": "silicon",
+      "id": "nvidia-cuda",
+      "layer": "design",
       "tier": "dependency",
-      "name": "TSMC / Nvidia / Intel-AMD",
+      "name": "Nvidia + CUDA",
       "score": 1,
-      "tag": "The borrowed foundations under every European chip.",
-      "what": "TSMC (Taiwan) makes the advanced silicon; Nvidia owns AI compute and CUDA; Intel/AMD own x86. The honest base of the stack.",
+      "tag": "The AI accelerator -- and the software moat under everything.",
+      "what": "Nvidia's GPUs are the de-facto AI compute substrate and CUDA is the software moat under nearly every stack, European models included. One of the map's two hard breaks: no European accelerator at production scale.",
       "maturity": "Incumbent",
-      "weak": "These are the layers Europe borrows. Naming them is what makes the sovereignty case credible.",
+      "weak": "Locked in by software as much as silicon: CUDA, not the GPU, is the hardest part to substitute.",
       "axes": {
         "capability": "proven",
         "jurisdiction": "extra_eu",
         "op_control": "foreign",
         "substitutability": "locked"
       },
-      "axes_note": "The two hard breaks in one card: leading-edge fab (TSMC) and the AI accelerator (Nvidia/CUDA) -- no European substitute on any near horizon."
+      "axes_note": "One of the two hard breaks -- the accelerator and its CUDA moat have no European substitute at datacentre scale.",
+      "depends_on": [
+        "leading-edge-fabs"
+      ]
+    },
+    {
+      "id": "x86",
+      "layer": "design",
+      "tier": "dependency",
+      "name": "Intel / AMD x86",
+      "score": 2,
+      "tag": "The default server ISA -- borrowed, but substitutable.",
+      "what": "Intel and AMD's x86 runs most European server estates and clouds. A real dependency, but not a break: Arm and RISC-V server alternatives exist and ship.",
+      "maturity": "Incumbent",
+      "weak": "Ubiquity: the installed base and software assumptions keep x86 sticky even where alternatives exist.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "hard"
+      },
+      "axes_note": "A dependency, not a break -- Arm-based and RISC-V server silicon ship today, so substitution is hard, not locked."
+    },
+    {
+      "id": "leading-edge-fabs",
+      "layer": "fab",
+      "tier": "dependency",
+      "name": "Leading-edge fabs (TSMC, Samsung)",
+      "score": 1,
+      "tag": "Every advanced European chip leaves Europe to be made.",
+      "what": "TSMC (Taiwan) and Samsung (Korea) manufacture the advanced logic. Europe's chip designs -- SiPearl on TSMC N6, Euclyd on Samsung FinFET -- all leave the continent for fabrication. The second hard break.",
+      "maturity": "Incumbent",
+      "weak": "No leading-edge (sub-5nm) logic manufacturing exists in Europe; Intel's Magdeburg fab was shelved. The hardest gap to close.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "locked"
+      },
+      "axes_note": "The second hard break: leading-edge fabrication has no European answer on any near horizon."
     }
   ],
   "PARTNERS": [
@@ -1208,7 +1285,7 @@
     },
     {
       "a": "sipearl",
-      "b": "silicon-dep",
+      "b": "leading-edge-fabs",
       "label": "Rhea1 fabbed at TSMC (imported foundry)",
       "year": 2026,
       "type": "dependency",
@@ -1334,7 +1411,7 @@
     },
     {
       "a": "euclyd",
-      "b": "silicon-dep",
+      "b": "leading-edge-fabs",
       "label": "CRAFTWERK built by ADTechnology on Samsung Foundry FinFET",
       "year": 2025,
       "src": "Euclyd",
@@ -1396,12 +1473,6 @@
       "headline": "Arm ships its first in-house chip in 35 years, turning from licensor into competitor",
       "source": "TechCrunch",
       "url": "https://techcrunch.com/2026/03/24/arm-is-releasing-its-first-in-house-chip-in-its-35-year-history/"
-    },
-    "silicon-dep": {
-      "date": "2026-06-22",
-      "headline": "Nvidia anchors a record 35 new European AI supercomputers -- the dependency, visualised",
-      "source": "NVIDIA",
-      "url": "https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers"
     },
     "eviden": {
       "date": "2026-04-01",
@@ -1642,6 +1713,12 @@
       "headline": "Development partnership with ADTechnology to take CRAFTWERK to silicon on Samsung Foundry FinFET",
       "source": "Euclyd",
       "url": "https://euclyd.ai/adtechnology-collaborates-with-euclyd-to-develop-ultra-efficient-ai-chip-for-datacenters/"
+    },
+    "nvidia-cuda": {
+      "date": "2026-06-22",
+      "headline": "Nvidia anchors a record 35 new European AI supercomputers -- the dependency, visualised",
+      "source": "NVIDIA",
+      "url": "https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers"
     }
   },
   "GOALS": [
@@ -1685,7 +1762,8 @@
           "proven": []
         }
       ],
-      "breaks": []
+      "breaks": [],
+      "question": "Can Europe run a sovereign workplace?"
     },
     {
       "id": "cloud",
@@ -1724,7 +1802,8 @@
           "proven": []
         }
       ],
-      "breaks": []
+      "breaks": [],
+      "question": "Can a bank run on a sovereign European cloud?"
     },
     {
       "id": "llm",
@@ -1762,15 +1841,16 @@
       "breaks": [
         {
           "label": "AI accelerator (GPU)",
-          "node": "sys-dep",
+          "node": "nvidia-cuda",
           "why": "no European GPU at scale -- Nvidia"
         },
         {
           "label": "Leading-edge fab",
-          "node": "silicon-dep",
+          "node": "leading-edge-fabs",
           "why": "sub-5nm logic is TSMC"
         }
-      ]
+      ],
+      "question": "Can Europe build its own AI, end to end?"
     },
     {
       "id": "super",
@@ -1810,13 +1890,40 @@
       "breaks": [
         {
           "label": "AI accelerator",
-          "node": "sys-dep",
+          "node": "nvidia-cuda",
           "why": "Nvidia GPUs"
         },
         {
           "label": "Leading-edge fab",
-          "node": "silicon-dep",
+          "node": "leading-edge-fabs",
           "why": "TSMC"
+        }
+      ],
+      "question": "Can Europe build a national supercomputer?"
+    },
+    {
+      "id": "chip",
+      "name": "Sovereign AI chip (design)",
+      "question": "Can Europe design its own AI chip?",
+      "verdict": "Design, yes -- several credible European bets, none shipping at scale yet. Manufacture, no: every design leaves Europe for the fab.",
+      "needs": [
+        {
+          "label": "Chip design & IP",
+          "cand": [
+            "openchip",
+            "dare-chiplets",
+            "euclyd",
+            "riscv-others",
+            "sipearl"
+          ],
+          "proven": []
+        }
+      ],
+      "breaks": [
+        {
+          "label": "Leading-edge fab",
+          "node": "leading-edge-fabs",
+          "why": "no leading-edge logic manufacturing in Europe"
         }
       ]
     }

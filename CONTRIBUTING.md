@@ -86,11 +86,17 @@ Each goal maps the layers a stack needs to the nodes that can fill them, and nam
 LAYERS[]   { key, name, verdict }
 CARDS[]    { id, layer, tier, name, score(0-5), tag, what, maturity, weak,
              axes{capability,jurisdiction,op_control,substitutability}, axes_note,
-             depends_on[]? }
+             roadmap{claim,year,source,url}?, depends_on[]? }
 PARTNERS[] { a, b, label, year, type, src, url }     // a,b are node ids
 NEWS{}     { <nodeId>: { date, headline, source, url } }
-GOALS[]    { id, name, verdict, needs[], breaks[] }   // see above
+GOALS[]    { id, name, question, verdict, needs[], breaks[] }   // see above
 ```
+
+`roadmap` is an optional, forward-looking public milestone -- a vendor claim
+with a primary-source URL, labelled as claimed, never endorsed. No public dated
+statement = no field; the viewer renders that as "no public roadmap date".
+Currently used on the chip-goal design candidates only. `question` is the
+plain-language phrasing of a goal shown in the map's simple view.
 
 `PARTNERS[].type` is one of `invest, partner, codev, deploy, award, dependency, policy, risk` (it sets the wire colour). `layer` on a card must match a `LAYERS[].key`.
 
