@@ -1116,7 +1116,8 @@
         "jurisdiction": "extra_eu",
         "op_control": "foreign",
         "substitutability": "locked"
-      }
+      },
+      "axes_note": "Locked at design time, before any silicon exists: Siemens EDA covers verification but not synthesis, place-and-route or timing signoff, so no design reaches tape-out on European tools alone."
     },
     {
       "id": "memory-dep",

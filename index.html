@@ -488,11 +488,21 @@ function applyImports(){
  const srcs=new Set(dep.map(p=>p.a));
  document.getElementById('insightbanner').innerHTML=`<b>The import spine:</b> ${srcs.size} nodes on this map lean on imported kit or foreign control. <span class="brk">${parts.join(' &nbsp;&middot;&nbsp; ')}</span><span class="optcount">Every imported-tier box is lit; the dashed red wires are the dependencies with a sourced link drawn. Note what repeats: the same few imports recur across the stack -- the hard breaks are still exactly two, the AI accelerator and the leading-edge fab. Click any lit box for the sourced detail.</span>`;
 }
+// On narrow screens the goal/axis row scrolls. Keep the selected chip on screen, or a phone
+// reader lands on an answer with two other, unselected questions visible and no idea which is live.
+function revealActiveChip(){
+ const gb=document.getElementById('goalbar');if(!gb)return;
+ const ab=gb.querySelector('button.active');if(!ab)return;
+ if(gb.scrollWidth<=gb.clientWidth)return;
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ gb.scrollTo({left:Math.max(0,ab.offsetLeft-(gb.clientWidth-ab.offsetWidth)/2),behavior:reduce?'auto':'smooth'});
+}
 // ---------- Axis lens: recolour the board by one axis ----------
 function applyLens(axis){
  if(!AXSEV[axis])return;
  showAllNodes();clearGoal();
  document.querySelectorAll('#goalbar button').forEach(b=>b.classList.toggle('active',b.dataset.axis===axis));
+ revealActiveChip();
  const n={good:0,mid:0,bad:0,na:0};
  document.querySelectorAll('.card').forEach(el=>{
   const c=byId[el.dataset.id],v=c&&c.axes?c.axes[axis]:null,sev=v?AXSEV[axis][v]:null;
@@ -507,6 +517,7 @@ function selectGoal(id){const g=GOALS.find(x=>x.id===id);if(!g)return;
  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
  clearGoal();curGoal=id;
  document.querySelectorAll('#goalbar button').forEach(b=>b.classList.toggle('active',b.dataset.goal===id));
+ revealActiveChip();
  document.querySelectorAll('.card').forEach(el=>el.classList.add('faded'));
  const litBy={},provBy={},brkBy={};let opt=0;
  g.needs.forEach(nd=>{nd.cand.forEach(n=>{const c=byId[n];if(!c)return;(litBy[c.layer]=litBy[c.layer]||[]).push(n);if(nd.proven&&nd.proven.indexOf(n)>=0)(provBy[c.layer]=provBy[c.layer]||[]).push(n);});});
