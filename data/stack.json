@@ -1,7 +1,7 @@
 {
   "_meta": {
     "title": "European Tech Sovereignty Stack",
-    "snapshot": "2026-06",
+    "snapshot": "2026-07",
     "note": "An opinionated, sourced snapshot of where Europe's technology stack is sovereign and where it depends on imported kit. Tiers and scores are editorial judgements, not vendor endorsements. See CONTRIBUTING.md for the rubric. Every node, edge and headline carries a public source."
   },
   "LAYERS": [
@@ -72,9 +72,9 @@
       "name": "SEAL / Cloud Sovereignty Framework",
       "score": 5,
       "tag": "The EU finally graded sovereignty silicon-to-operations.",
-      "what": "The Commission's Cloud Sovereignty Framework grades offers on Sovereign European Assurance Levels (SEAL, ~0-4). The top levels demand the whole stack, silicon to operational control, under European hands, with no non-EU entity holding veto rights, data-access clauses or the ability to cut service. April 2026: a EUR 180M award went to OVHcloud, Scaleway and StackIT at the top tier, Proximus/S3NS one below. SUSE even shipped a SEAL self-assessment tool.",
+      "what": "The Commission's Cloud Sovereignty Framework grades offers on Sovereign European Assurance Levels (SEAL 0-4) plus an overall sovereignty score across 8 weighted categories -- supply chain carries 20%, the only place in any EU instrument where hardware provenance is weighted. April 2026: EUR 180M over six years, four contracts. SEAL-3 went to a partnership led by Post Telecom (with OVHcloud and CleverCloud), to STACKIT and to Scaleway; SEAL-2 to Proximus (with S3NS, Clarence, Mistral). No contract was awarded at SEAL-4 -- nobody has cleared the top bar.",
       "maturity": "Live 2026",
-      "weak": "A scoring scheme, not a product. It defines the test; vendors still have to pass it.",
+      "weak": "A procurement scoring scheme, not law. It defines the test; vendors still have to pass it. The Commission issued a clarification note (1 Jun 2026) and promised an updated framework from tender lessons -- not published as of 25 Jul 2026. Detailed criteria are withheld under procurement rules.",
       "axes": {
         "capability": "credible",
         "jurisdiction": "eu",
@@ -278,7 +278,7 @@
       "tag": "Vertical SaaS where Europe quietly leads.",
       "what": "DATEV (German tax/accounting), Doctolib (health booking, FR/DE), Software AG (integration), Visma (Nordic business software), Nemetschek (AEC), TeamViewer. Domain depth beats horizontal scale.",
       "maturity": "Production",
-      "weak": "Fragmented; few break out beyond home markets.",
+      "weak": "Fragmented; few break out beyond home markets. Ownership is drifting: Software AG's ARIS and Adabas & Natural businesses now sit under Silver Lake-owned Software GmbH (US control), and webMethods and StreamSets went to IBM -- European by heritage, not by control.",
       "axes": {
         "capability": "proven",
         "jurisdiction": "eu",
@@ -356,7 +356,7 @@
       "tag": "The open control plane: Linux, Kubernetes, sovereign AI.",
       "what": "German-rooted (EQT-owned), SUSE is Europe's open-source platform spine: SUSE Linux Enterprise, RKE2/Rancher Prime for Kubernetes, and a SUSE AI stack. Launch partner for the AWS European Sovereign Cloud, partnered with evroc, and signed a 25 June 2026 MoU with OpenChip to certify a sovereign RISC-V stack silicon-to-software. It even shipped a SEAL self-assessment tool.",
       "maturity": "Production",
-      "weak": "The software is sovereign; the silicon underneath usually is not, and upstream open-source is global.",
+      "weak": "The software is sovereign; the silicon underneath usually is not, and upstream open-source is global. Ownership is a watch item: EQT is reported to be exploring a sale at up to $6bn (Reuters, Mar 2026, early stage, no buyer named). A non-EU buyer would change the tier.",
       "axes": {
         "capability": "proven",
         "jurisdiction": "eu",
@@ -374,7 +374,7 @@
       "tag": "Pivoted from frontier models to sovereignty tooling.",
       "what": "German lab (EUR ~500M raised) that stepped back from chasing frontier scale toward an orchestration/explainability platform for on-prem, regulated deployment, integrating open-source models.",
       "maturity": "Repositioning",
-      "weak": "Now being acquired by Canada's Cohere (announced Apr 2026, ~$6.8bn, Schwarz-anchored, not yet closed) -- Europe's #2 sovereign-AI lab folding into a transatlantic group. Ownership drifting outside the EU.",
+      "weak": "Being acquired by Canada's Cohere (announced Apr 2026, ~$6.8bn, Schwarz-anchored). As of 25 Jul 2026 the deal has NOT closed -- it remains subject to shareholder and regulatory approval with no target close date, and no clearance or challenge is on record. Tier moves to imported dependency on close.",
       "axes": {
         "capability": "credible",
         "jurisdiction": "mixed",
@@ -446,7 +446,7 @@
       "tag": "The frontier and the toolchain Europe trains on.",
       "what": "OpenAI, Anthropic and Google hold the frontier; Nvidia CUDA is the de-facto training/inference software moat under nearly everything, including European models.",
       "maturity": "Incumbent",
-      "weak": "CUDA lock-in is the deepest dependency in the stack. Hard to design around.",
+      "weak": "CUDA lock-in is the deepest dependency in the stack. And the jurisdictional kill switch is no longer theoretical: in June 2026 a US export-control directive took two deployed frontier models offline worldwide, cutting off every EU user for eighteen days.",
       "axes": {
         "capability": "proven",
         "jurisdiction": "extra_eu",
@@ -558,7 +558,7 @@
       "name": "evroc",
       "score": 4,
       "tag": "Sweden's attempt at a true sovereign hyperscaler.",
-      "what": "Stockholm startup (founded 2022) building what it calls Europe's first sovereign hyperscale cloud: eight datacentres plus three dev hubs by 2028, platform live July 2026, with a sovereign AI platform (evroc Think) and agent (roc). Runs SUSE Linux and Rancher.",
+      "what": "Stockholm startup (founded 2022) building what it calls Europe's first sovereign hyperscale cloud: eight datacentres plus three dev hubs by 2028. The cloud platform has been live since July 2025; the sovereign AI platform (evroc Think) and the 'roc' agent reached general availability June 2026. Runs SUSE Linux and Rancher.",
       "maturity": "Launching 2026",
       "weak": "Tiny next to AWS/Azure; capital depth and scale are the open question.",
       "axes": {
@@ -576,7 +576,7 @@
       "name": "AWS European Sovereign Cloud",
       "score": 3,
       "tag": "GA Jan 2026, Brandenburg. EU-controlled entity.",
-      "what": "Generally available 15 Jan 2026, physically and logically separate from other AWS regions, run by EU-resident staff under an EU-controlled legal structure; 90+ services; EUR 7.8bn invested; NL/BE/PT to follow.",
+      "what": "Generally available 15 Jan 2026 in Brandenburg, physically and logically separate from other AWS regions, run by EU-resident staff under an EU-controlled legal structure; 90+ services; EUR 7.8bn pledged to 2040. Belgium, the Netherlands and Portugal are announced as sovereign Local Zones, not regions, with no live date published. Runs on leased colocation at launch; own datacentres come later.",
       "maturity": "GA 2026",
       "weak": "Parent is Amazon (US). Independent governance reduces but does not erase CLOUD Act and ownership questions.",
       "axes": {
@@ -657,9 +657,9 @@
       "name": "EuroHPC supercomputers (JUPITER)",
       "score": 4,
       "tag": "Europe's exascale machine, in Julich.",
-      "what": "JUPITER at Forschungszentrum Julich is Europe's first exascale system; its CPU cluster uses SiPearl Rhea1, with full readiness targeted end-2026. The JEDI development instrument already ran top-5 on the Top500.",
-      "maturity": "Standing up 2026",
-      "weak": "The AI/GPU partition is Nvidia Grace-Hopper. European CPU, imported accelerators.",
+      "what": "JUPITER at Forschungszentrum Julich is Europe's first exascale system. The Nvidia Grace-Hopper Booster partition is live and ranked 5th on the June 2026 Top500. The SiPearl Rhea1 CPU cluster is not yet deployed -- the silicon is in bring-up with availability targeted end-2026, and European CPU content was cut from more than 1,300 nodes to 162 Rhea1 nodes, with 582 dual-socket AMD nodes installed instead.",
+      "maturity": "Booster live; CPU cluster pending",
+      "weak": "The AI/GPU partition is Nvidia Grace-Hopper and the European CPU share shrank during delivery. End-2026 full readiness is at risk.",
       "axes": {
         "capability": "credible",
         "jurisdiction": "eu",
@@ -678,7 +678,7 @@
       "name": "EU datacentre operators",
       "score": 4,
       "tag": "Schwarz, Deutsche Telekom, EcoDataCenter, Data4.",
-      "what": "Schwarz/StackIT, Deutsche Telekom, Orange, Telefonica, EcoDataCenter (Sweden, low-carbon), Data4 and OVH run European-owned, European-sited capacity with renewable and locality stories.",
+      "what": "Schwarz/StackIT, Deutsche Telekom, Orange, Telefonica, EcoDataCenter (Sweden, low-carbon) and OVH run European-owned, European-sited capacity with renewable and locality stories. Data4 is French-operated but Brookfield (Canada) owned since 2023 -- siting is not ownership. The DT/Schwarz AI datacentre remains announced talks, with no binding agreement.",
       "maturity": "Production",
       "weak": "Power, land and grid connections are now the binding constraint.",
       "axes": {
@@ -732,12 +732,12 @@
       "id": "eviden",
       "layer": "systems",
       "tier": "eu",
-      "name": "Bull / Eviden (French State)",
+      "name": "Bull (French State)",
       "score": 5,
       "tag": "Europe's supercomputer factory -- now state-owned.",
-      "what": "Builds BullSequana HPC systems and integrates Europe's exascale machines (JUPITER, and the AMD+SiPearl Alice Recoque). In early 2026 the French State bought Bull's Advanced Computing (HPC, quantum, AI) from Atos for up to EUR 404M -- Europe's only supercomputer manufacturing plant, in Angers, is now sovereign-owned.",
+      "what": "Builds BullSequana HPC systems and integrates Europe's exascale machines (JUPITER, and the AMD+SiPearl Alice Recoque). The French State completed its purchase of Bull's Advanced Computing activities from Atos on 31 Mar 2026 for up to EUR 404M -- 100% state-owned, CEO Emmanuel Le Roux, and Europe's only supercomputer manufacturing plant, in Angers, is now sovereign-owned. Delivered Roihu, Finland's national supercomputer, in May 2026.",
       "maturity": "Production",
-      "weak": "The European layer is integration and the box; the accelerators inside are still Nvidia.",
+      "weak": "The European layer is integration and the box; the accelerators inside are still Nvidia or AMD. Angers capacity is being scaled through a partnership with Taiwan's Foxconn (initial investment above EUR 120M) -- sovereign ownership, imported manufacturing capability.",
       "axes": {
         "capability": "proven",
         "jurisdiction": "eu",
@@ -756,9 +756,9 @@
       "name": "2CRSi, Eclairion, integrators",
       "score": 3,
       "tag": "Systems and high-density / immersion builders.",
-      "what": "2CRSi (servers, France) and Eclairion (high-density AI datacentre builds) plus regional integrators turn silicon into operable capacity.",
+      "what": "2CRSi (servers, France), Eclairion (high-density AI datacentre builds), E4 Computer Engineering (Italy, prime contractor on the EUR 80M MeluXina-AI EuroHPC award) and regional integrators turn silicon into operable capacity. 2CRSi posted FY2025/26 revenue of EUR 416.2M, up 88%.",
       "maturity": "Production",
-      "weak": "Component supply (GPUs, advanced parts) is imported.",
+      "weak": "Component supply (GPUs, advanced parts) is imported -- these are integrators, not silicon vendors. Scaling fast carries execution and working-capital risk.",
       "axes": {
         "capability": "credible",
         "jurisdiction": "eu",
@@ -779,7 +779,7 @@
       "tag": "The telecom-gear sovereignty Europe already has.",
       "what": "Nokia (Finland) and Ericsson (Sweden) are two of the three global RAN/core vendors. Real, deep European hardware sovereignty in carrier networking, often overlooked in the cloud debate.",
       "maturity": "Production",
-      "weak": "Silicon inside still draws on non-EU fabs and IP.",
+      "weak": "Silicon inside still draws on non-EU fabs and IP. Nokia's new AI-native RAN platform is built on Nvidia and Marvell silicon, and Nokia has agreed to acquire a US wafer fab (NXP's Chandler, Arizona site) for optics -- the European layer is the system, not the chip.",
       "axes": {
         "capability": "proven",
         "jurisdiction": "eu",
@@ -815,9 +815,9 @@
       "tier": "eu",
       "name": "SiPearl (Rhea1)",
       "score": 3,
-      "tag": "Europe's HPC CPU. Powered on May 2026.",
-      "what": "French. Rhea1 taped out (TSMC N6, 80 Arm Neoverse V1 cores), powered on 13 May 2026, sampling 2026, headed into JUPITER's CPU cluster. EUR 130M Series A; Series B prepping.",
-      "maturity": "Sampling 2026",
+      "tag": "Europe's HPC CPU. Powered on, in bring-up.",
+      "what": "French. Rhea1 taped out (TSMC N6, 80 Arm Neoverse V1 cores) and powered on 13 May 2026, now in a bring-up and functional-validation phase with availability targeted end-2026. Headed into JUPITER's CPU cluster. EUR 130M Series A; Series B not announced as closed.",
+      "maturity": "Bring-up 2026",
       "weak": "Arm ISA (not EU) + TSMC manufacturing. European design, borrowed foundations.",
       "axes": {
         "capability": "emerging",
@@ -846,7 +846,7 @@
       "tag": "Barcelona's open-ISA bet for HPC-AI.",
       "what": "Leads the RISC-V vector-accelerator chiplet (VEC) in EuroHPC's DARE project (EUR 240M, BSC-coordinated, 38 partners). RISC-V gives architectural control Arm cannot.",
       "maturity": "Build-out",
-      "weak": "Early: design wins, packaging, compilers and software maturity all still to prove.",
+      "weak": "Early: design wins, packaging, compilers and software maturity all still to prove. OpenChip has never published a silicon date -- every FPGA, tape-out or production date in circulation is third-party inference or DARE consortium framing, not a company commitment. Ownership is also in flux (SETT, Generalitat, and reported private talks).",
       "axes": {
         "capability": "emerging",
         "jurisdiction": "eu",
@@ -870,7 +870,7 @@
       "tag": "The other two DARE RISC-V chiplets.",
       "what": "Axelera AI leads the AI-inference chiplet (Titania; EUR 61.6M DARE grant) from edge to server class; Codasip leads the general-purpose RISC-V processor. Inference at the edge is a plausible European beachhead.",
       "maturity": "Development",
-      "weak": "Datacentre-class parts are years from volume; software ecosystem nascent.",
+      "weak": "Datacentre-class parts are years from volume; software ecosystem nascent. Consortium risk: Codasip divested its low-end RISC-V processor business to an unnamed public US semiconductor company on 8 Apr 2026 and pivoted to CHERI. DARE states all project activities continue as planned and it is in dialogue with Codasip and EuroHPC JU; no replacement has been named.",
       "axes": {
         "capability": "emerging",
         "jurisdiction": "eu",
@@ -892,9 +892,9 @@
       "name": "Quintauris, Semidynamics, VSORA",
       "score": 3,
       "tag": "The wider RISC-V and accelerator field.",
-      "what": "Quintauris (Bosch/Infineon/Nordic/NXP/Qualcomm automotive RISC-V JV; STMicro joined as sixth shareholder in 2024), Semidynamics (RISC-V cores), VSORA and GreenWaves (edge AI). A real but fragmented contender field.",
-      "maturity": "Mixed",
-      "weak": "Fragmentation; few design wins at volume yet.",
+      "what": "Quintauris (Bosch/Infineon/Nordic/NXP/Qualcomm automotive RISC-V JV, STMicro sixth shareholder), Semidynamics (RISC-V cores, strategic investment from SK hynix Apr 2026, amount undisclosed), VSORA and GreenWaves (edge AI). VSORA's Jotunn8 datacentre inference accelerator taped out in 2025 and, in VSORA's own words on 18 Jun 2026, 'is entering manufacturing' -- no silicon back, no samples, no deployment. Scaleway has committed to be the first production deployment.",
+      "maturity": "Mixed; nothing at volume",
+      "weak": "Fragmentation; no design wins at volume yet. The Jotunn8 commitment is forward-looking: an agreement to deploy the first chips VSORA produces, with no date, no volume and no named end customer.",
       "axes": {
         "capability": "emerging",
         "jurisdiction": "eu",
@@ -979,7 +979,7 @@
       "name": "ASML (the European chokepoint)",
       "score": 5,
       "tag": "Europe's real silicon power: nobody makes leading chips without it.",
-      "what": "Dutch. ASML's EUV lithography is a global monopoly: TSMC, Samsung and Intel all depend on it. Europe's single strongest semiconductor lever, and a EUR 1.3bn investor in Mistral.",
+      "what": "Dutch. ASML's EUV lithography is a global monopoly: TSMC, Samsung and Intel all depend on it. Q2 2026 net sales EUR 9.3bn and net income EUR 2.9bn; FY2026 guidance raised to EUR 43-45bn on 15 Jul 2026. First High-NA EUV high-volume Logic product confirmed at Intel Foundry the same day. Europe's single strongest semiconductor lever, and a EUR 1.3bn investor in Mistral.",
       "maturity": "Production",
       "weak": "Sells to the world incl. non-EU fabs; leverage, not a finished sovereign chip.",
       "axes": {
@@ -997,8 +997,8 @@
       "name": "Fabs: ESMC Dresden, GlobalFoundries, STMicro",
       "score": 2,
       "tag": "Manufacturing: the gap the Chips Act is chasing.",
-      "what": "TSMC's ESMC and GlobalFoundries in Dresden, plus Infineon, STMicro and Bosch, build mature/automotive nodes. Intel's Magdeburg leading-edge fab was shelved, so leading-edge logic stays in Asia.",
-      "maturity": "Building",
+      "what": "TSMC's ESMC and GlobalFoundries in Dresden, plus Infineon, STMicro and Bosch, build mature/automotive nodes. Infineon opened its EUR 5bn Smart Power Fab in Dresden on 2 Jul 2026, alongside a separate EUR 920M German state grant. ESMC Dresden is not yet in equipment move-in -- ESMC states tool-in expected 2027, with the ramp schedule tied to customer demand. Intel's Magdeburg leading-edge fab was shelved, so leading-edge logic stays in Asia.",
+      "maturity": "Building; leading edge still absent",
       "weak": "No leading-edge (sub-5nm) logic manufacturing in Europe. The hardest gap to close.",
       "axes": {
         "capability": "credible",
@@ -1082,6 +1082,77 @@
         "substitutability": "locked"
       },
       "axes_note": "The second hard break: leading-edge fabrication has no European answer on any near horizon."
+    },
+    {
+      "id": "siemens-eda",
+      "layer": "design",
+      "tier": "eu",
+      "name": "Siemens EDA",
+      "score": 4,
+      "tag": "Europe owns a chip-design chokepoint.",
+      "what": "Electronic Design Automation is the software without which no chip is designed, and the world's number three EDA vendor is wholly owned by Siemens AG of Germany, acquired as Mentor Graphics in 2017. Its Calibre physical-verification tool is foundry-mandated for signoff. In May 2026 Siemens signed a strategic framework agreement with the European Chips Joint Undertaking to supply EDA software to smaller companies, startups and research institutions at pre-defined pricing through the EuroCDP project -- the first software provider to do so.",
+      "maturity": "Production",
+      "weak": "Strong in verification, absent in implementation. Synthesis, place-and-route and timing signoff remain US-owned, so a European design still cannot reach tape-out on European tools alone.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "locked"
+      },
+      "axes_note": "German-owned and EU-jurisdiction, but Calibre's foundry-mandated position is a concentration: Europe holds the chokepoint rather than a substitutable option."
+    },
+    {
+      "id": "eda-dep",
+      "layer": "design",
+      "tier": "dependency",
+      "name": "Synopsys / Cadence (EDA)",
+      "score": 1,
+      "tag": "No European chip reaches tape-out without it.",
+      "what": "Synopsys and Cadence, both US-incorporated, dominate logic synthesis, place-and-route and timing signoff. Every European chip design -- SiPearl, OpenChip, Axelera, Euclyd -- runs through this toolchain, which sits under US export-control jurisdiction. The 2025 US export-licence episode covering EDA sales to China demonstrated the lever.",
+      "maturity": "Incumbent",
+      "weak": "A quieter dependency than the GPU and the fab, and arguably an earlier one: it binds at design time, before any silicon exists. No European alternative exists below Siemens EDA -- Silvaco is US-listed, and open-source EDA in Europe is still funding calls rather than product.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "locked"
+      }
+    },
+    {
+      "id": "memory-dep",
+      "layer": "fab",
+      "tier": "dependency",
+      "name": "DRAM / HBM / NAND",
+      "score": 1,
+      "tag": "Europe has made no volume DRAM since 2009.",
+      "what": "Every AI factory and sovereign cloud in Europe runs on memory made entirely outside it. Europe has produced no volume DRAM since Qimonda's insolvency in January 2009 ended Dresden production, and has no NAND and no HBM manufacturing at all. Supply sits with three Asian and US producers.",
+      "maturity": "Incumbent",
+      "weak": "High-bandwidth memory is arguably a tighter constraint on AI compute than logic, and it is the one dependency with no European programme behind it -- no pilot line, no consortium, no announced fab.",
+      "axes": {
+        "capability": "proven",
+        "jurisdiction": "extra_eu",
+        "op_control": "foreign",
+        "substitutability": "locked"
+      },
+      "axes_note": "Complete external dependency with no European production and no announced route back."
+    },
+    {
+      "id": "packaging",
+      "layer": "fab",
+      "tier": "eu",
+      "name": "Advanced packaging (APECS)",
+      "score": 3,
+      "tag": "The chiplet strategy needs a packaging line.",
+      "what": "Europe's chiplet bets -- OpenChip's vector accelerator, Axelera's inference chiplet, Euclyd's multi-chiplet system -- all depend on advanced packaging. The APECS pilot line, coordinated by Fraunhofer with EUR 730M co-funded by the Chips Joint Undertaking and eight member states, runs from November 2024 to June 2029.",
+      "maturity": "Pilot line, 2024-2029",
+      "weak": "A pilot line is capability, not capacity. Europe has essentially no volume outsourced assembly and test, so chiplets designed here are still packaged elsewhere.",
+      "axes": {
+        "capability": "emerging",
+        "jurisdiction": "eu",
+        "op_control": "european",
+        "substitutability": "hard"
+      },
+      "axes_note": "Publicly funded European capability being built; volume packaging capacity does not yet exist on the continent."
     }
   ],
   "PARTNERS": [
@@ -1427,34 +1498,34 @@
       "url": "https://www.heise.de/en/news/Europe-s-most-complex-server-processor-is-running-11308863.html"
     },
     "openchip": {
-      "date": "2026-06-25",
-      "headline": "SUSE and OpenChip sign MoU for a sovereign European RISC-V stack",
-      "source": "HPCwire",
-      "url": "https://www.hpcwire.com/off-the-wire/suse-and-openchip-partner-to-develop-sovereign-european-risc-v-hardware-and-open-source-software-stack/"
+      "date": "2026-07-16",
+      "headline": "Kalray confirms OpenChip did not take majority control -- warrants exercised, partnership extended",
+      "source": "Kalray",
+      "url": "https://www.actusnews.com/en/kalray/pr/2026/07/16/h1-2026-revenue-kalray-confirms-growth-and-relevance-of-its-new-business-model"
     },
     "dare-chiplets": {
-      "date": "2025-03-08",
-      "headline": "Axelera AI launches its Titania inference chiplet under the EU DARE project",
-      "source": "DataCenterDynamics",
-      "url": "https://www.datacenterdynamics.com/en/news/axelera-ai-launches-inferencing-chiplet-supported-by-funding-from-eus-risc-v-project/"
+      "date": "2026-04-09",
+      "headline": "DARE says activities continue after Codasip divests its RISC-V processor business",
+      "source": "DARE",
+      "url": "https://dare-riscv.eu/partner-update-codasip-enters-a-new-strategic-phase/"
     },
     "riscv-others": {
-      "date": "2026-05-07",
-      "headline": "Semidynamics and SiPearl to co-develop an EU-sovereign rack-scale AI platform",
-      "source": "PRNewswire",
-      "url": "https://www.prnewswire.com/news-releases/semidynamics-and-sipearl-announce-strategic-cooperation-to-develop-eu-sovereign-rack-scale-ai-compute-platform-302765480.html"
+      "date": "2026-06-18",
+      "headline": "VSORA says Jotunn8 is entering manufacturing -- no silicon back, no samples, no deployment",
+      "source": "VSORA",
+      "url": "https://www.globenewswire.com/news-release/2026/06/18/3313944/0/en/the-%C3%8Ele-de-france-region-scaleway-vsora-and-zml-commit-to-laying-the-foundations-for-the-next-generation-of-ai-chips-in-europe.html"
     },
     "quantum": {
-      "date": "2026-06-17",
-      "headline": "France makes world-first state purchase of an Alice & Bob cat-qubit computer",
-      "source": "The Quantum Insider",
-      "url": "https://thequantuminsider.com/2026/06/17/france-acquires-alice-and-bob-cat-qubit-quantum-computer-for-national-research-infrastructure/"
+      "date": "2026-07-01",
+      "headline": "IQM completes a SPAC merger and lists on Nasdaq, a European quantum first",
+      "source": "GlobeNewswire",
+      "url": "https://www.globenewswire.com/news-release/2026/07/01/3320409/0/en/iqm-quantum-computers-and-real-asset-acquisition-corp-complete-the-combination-trading-in-iqm-s-adss-and-iqm-warrants-on-nasdaq-stock-market-llc-commences-on-july-2-2026.html"
     },
     "photonics": {
-      "date": "2026-03-17",
-      "headline": "Q.ANT deploys second-gen photonic processors at Germany's LRZ",
-      "source": "DataCenterDynamics",
-      "url": "https://www.datacenterdynamics.com/en/news/photonic-chip-company-qant-deploys-second-gen-photonic-processors-at-germanys-lrz/"
+      "date": "2026-05-19",
+      "headline": "Q.ANT signs IONOS as its first commercial customer for photonic compute",
+      "source": "Q.ANT",
+      "url": "https://qant.com/news/"
     },
     "asml": {
       "date": "2026-01-28",
@@ -1463,82 +1534,82 @@
       "url": "https://www.asml.com/en/news/press-releases/2026/q4-2025-financial-results"
     },
     "foundry": {
-      "date": "2025-11-20",
-      "headline": "TSMC's ESMC Dresden fab wraps structural build, equipment move-in 2H26",
-      "source": "TrendForce",
-      "url": "https://www.trendforce.com/news/2025/11/20/news-tsmc-dresden-fab-reportedly-wraps-structural-build-eyes-equipment-move-in-in-2h26/"
+      "date": "2026-07-02",
+      "headline": "Infineon opens its EUR 5bn Dresden Smart Power Fab, backed by a separate EUR 920m state grant",
+      "source": "Infineon",
+      "url": "https://www.prnewswire.com/news-releases/infineon-opens-the-worlds-largest-fab-for-power-semiconductors-and-analogmixed-signal-technologies-in-dresden-302816962.html"
     },
     "arm": {
-      "date": "2026-03-24",
-      "headline": "Arm ships its first in-house chip in 35 years, turning from licensor into competitor",
-      "source": "TechCrunch",
-      "url": "https://techcrunch.com/2026/03/24/arm-is-releasing-its-first-in-house-chip-in-its-35-year-history/"
+      "date": "2026-05-06",
+      "headline": "Arm posts record FY2026 revenue and launches its own data-centre CPU, competing with licensees",
+      "source": "Arm",
+      "url": "https://newsroom.arm.com/news/arm-holdings-plc-reports-results-for-the-fourth-quarter-and-fiscal-year-ended-2026"
     },
     "eviden": {
-      "date": "2026-04-01",
-      "headline": "French State completes its EUR 404M purchase of Bull (HPC, quantum, AI) from Atos",
-      "source": "DataCenterDynamics",
-      "url": "https://www.datacenterdynamics.com/en/news/french-state-completes-acquisition-of-atos-ai-hpc-and-quantum-group-bull/"
+      "date": "2026-07-24",
+      "headline": "Bull brings AMD Helios rack systems to Europe -- the first named non-Nvidia rack-scale path",
+      "source": "Bull",
+      "url": "https://www.bull.com/en/product-news/bull-brings-amd-helios-ai-systems-europe"
     },
     "sys-builders": {
-      "date": "2025-09-11",
-      "headline": "Eclairion to host Mistral's first dedicated GPU cluster (French AI build-out)",
-      "source": "DataCenterDynamics",
-      "url": "https://www.datacenterdynamics.com/en/analysis/france-ai-data-center-build-out-emmanuel-macron/"
+      "date": "2026-07-23",
+      "headline": "2CRSi reports FY revenue of EUR 416.2m, up 88%, and guides to EUR 1bn",
+      "source": "2CRSi",
+      "url": "https://investors.2crsi.com/wp-content/uploads/2026/07/2CRSi-Announces-2026-Revenue-of-E416.2-Million-an-88-Increase.pdf"
     },
     "networking": {
-      "date": "2026-03-01",
-      "headline": "Nokia and Ericsson deepen cooperation on autonomous networks",
+      "date": "2026-07-23",
+      "headline": "Nokia AI and Cloud sales double; Nokia agrees to buy a US wafer fab for optics",
       "source": "Nokia",
-      "url": "https://www.nokia.com/newsroom/nokia-and-ericsson-strengthen-cooperation-to-accelerate-towards-autonomous-networks/"
+      "url": "https://www.nokia.com/newsroom/nokia-corporation-report-for-q2-and-half-year-2026/"
     },
     "sys-dep": {
-      "date": "2026-06-22",
-      "headline": "Europe unveils 35 new Nvidia AI supercomputers built with Bull, Dell, HPE, Supermicro",
-      "source": "NVIDIA",
-      "url": "https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers"
+      "date": "2026-07-22",
+      "headline": "EuroHPC's newest AI system: EUR 80m, 1,008 Nvidia GB200 GPUs, Dell as subcontractor",
+      "source": "EuroHPC JU",
+      "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-meluxina-ai-new-ai-optimised-supercomputer-luxembourg-ai-factory-2026-07-22_en"
     },
     "jupiter": {
-      "date": "2025-09-05",
-      "headline": "JUPITER inaugurated at Julich as Europe's first exascale supercomputer",
-      "source": "EuroHPC JU",
-      "url": "https://www.eurohpc-ju.europa.eu/jupiter-launching-europes-exascale-era-2025-09-05_en"
+      "date": "2026-06-01",
+      "headline": "JUPITER's Booster ranks 5th on the June 2026 Top500; the European CPU cluster is still pending",
+      "source": "TOP500",
+      "url": "https://top500.org/lists/top500/2026/06/"
     },
     "dc-ops": {
-      "date": "2025-12-01",
-      "headline": "Deutsche Telekom and Schwarz Group to build a major AI datacentre in Germany",
-      "source": "DataCenterDynamics",
-      "url": "https://www.datacenterdynamics.com/en/news/deutsche-telekom-and-lidl-owner-schwarz-group-to-build-ai-data-center-in-germany-report/"
+      "date": "2026-07-17",
+      "headline": "Aruba buys three hydro plants, taking European datacentre power ownership in-house",
+      "source": "Megaproject",
+      "url": "https://megaproject.com/news/powerplant/aruba-s-hydro-acquisition-signals-a-new-ownership-model-for-data-centre-power"
     },
     "gigafactory": {
-      "date": "2026-04-28",
-      "headline": "EuroHPC opens its AI-gigafactory call: up to 5 mega-sites, 77 bids across 16 states",
-      "source": "European Commission",
-      "url": "https://commission.europa.eu/topics/competitiveness/competitiveness-coordination-tool-projects/ai-gigafactories_en"
+      "date": "2026-06-16",
+      "headline": "Gigafactory call still unopened: only a preparatory info session, no tender published",
+      "source": "EuroHPC JU",
+      "url": "https://www.eurohpc-ju.europa.eu/ai-gigafactories/ai-gigafactories-calls_en"
     },
     "connectivity": {
-      "date": "2026-02-23",
-      "headline": "DT, Orange, Telefonica, TIM, Vodafone demo first pan-European federated edge",
-      "source": "Vodafone",
-      "url": "https://www.vodafone.com/news/newsroom/technology/pan-european-federated-edge-continuum"
+      "date": "2026-06-18",
+      "headline": "Second CEF-Digital call opens: EUR 40m to expand Europe's subsea cable repair capacity",
+      "source": "HaDEA",
+      "url": "https://hadea.ec.europa.eu/news/cef-digital-second-call-proposals-increase-europes-submarine-cable-repair-capacities-launched-year-2026-06-18_en"
     },
     "ovh": {
-      "date": "2026-03-25",
-      "headline": "OVHcloud acquires Dragon LLM, launching its first AI lab for sovereign GenAI",
+      "date": "2026-06-25",
+      "headline": "OVHcloud Q3 revenue up 6.9% like-for-like, Public Cloud up 20.2%, guidance confirmed",
       "source": "OVHcloud",
-      "url": "https://corporate.ovhcloud.com/en/newsroom/news/ovhcloud-dragonllm-ailab/"
+      "url": "https://www.globenewswire.com/news-release/2026/06/25/3317268/0/en/Acceleration-of-growth-in-the-third-quarter.html"
     },
     "scaleway": {
-      "date": "2026-04-17",
-      "headline": "Scaleway selected by the European Commission for a sovereign cloud + AI platform",
-      "source": "Scaleway",
-      "url": "https://www.scaleway.com/en/news/scaleway-selected-by-the-european-commission-to-deliver-a-sovereign-public-cloud-and-ai-platform-to-eu-institutions/"
+      "date": "2026-06-18",
+      "headline": "Scaleway commits to be the first production deployment of VSORA's Jotunn8 accelerator",
+      "source": "GlobeNewswire",
+      "url": "https://www.globenewswire.com/news-release/2026/06/18/3313944/0/en/the-%C3%8Ele-de-france-region-scaleway-vsora-and-zml-commit-to-laying-the-foundations-for-the-next-generation-of-ai-chips-in-europe.html"
     },
     "eu-cloud2": {
-      "date": "2026-02-02",
-      "headline": "Deutsche Telekom rebrands Open Telekom Cloud as T Cloud Public, eyes parity by end-2026",
-      "source": "Deutsche Telekom",
-      "url": "https://www.telekom.com/en/media/media-information/archive/t-cloud-public-sovereign-power-1101542"
+      "date": "2026-05-20",
+      "headline": "STACKIT wins the German federal AI platform as cloud foundation, around EUR 250m",
+      "source": "STACKIT",
+      "url": "https://stackit.com/en/news/stackit-will-serve-as-the-cloud-foundation-for-the-federal-government-s-ai-platform-bmds"
     },
     "eu-cloud3": {
       "date": "2026-01-21",
@@ -1553,10 +1624,10 @@
       "url": "https://www.datacenterdynamics.com/en/news/mistral-ai-raises-830m-in-debt-financing-for-data-center-in-paris-france/"
     },
     "evroc": {
-      "date": "2026-03-17",
-      "headline": "evroc launches 'roc' enterprise AI agent and the evroc Think sovereign AI platform",
-      "source": "evroc",
-      "url": "https://news.cision.com/evroc/r/evroc-introduces-roc--a-sovereign-enterprise-ai-agent-powered-by-frontier-models-in-europe,c4322148"
+      "date": "2026-06-22",
+      "headline": "Swedish Armed Forces pick evroc to build a combat cloud for classified data",
+      "source": "DCD",
+      "url": "https://www.datacenterdynamics.com/en/news/swedish-military-teams-up-with-evroc-for-combat-cloud/"
     },
     "aws-esc": {
       "date": "2026-01-14",
@@ -1565,34 +1636,34 @@
       "url": "https://aws.amazon.com/blogs/aws/opening-the-aws-european-sovereign-cloud/"
     },
     "ms-clouds": {
-      "date": "2025-09-24",
-      "headline": "SAP + OpenAI launch 'OpenAI for Germany' on Delos Cloud (running Azure)",
-      "source": "SAP News",
-      "url": "https://news.sap.com/2025/09/sap-openai-partner-launch-sovereign-openai-germany/"
+      "date": "2026-07-25",
+      "headline": "Bleu is still listed by ANSSI as in qualification, not qualified -- the target slips again",
+      "source": "ANSSI",
+      "url": "https://cyber.gouv.fr/offre-de-service/solutions-certifiees-et-qualifiees/services-de-securite-evalue/solutions-en-cours-de-qualification/prestataires-secnumcloud"
     },
     "s3ns": {
-      "date": "2025-12-18",
-      "headline": "S3NS wins ANSSI SecNumCloud 3.2 qualification for its PREMI3NS offering",
-      "source": "Business Wire",
-      "url": "https://www.businesswire.com/news/home/20251218817208/en/S3NS-Announces-SecNumCloud-Qualification-for-PREMI3NS-its-Trusted-Cloud-Offering"
+      "date": "2026-05-20",
+      "headline": "Thales and Google launch a German sovereign cloud -- this time Thales owns the entity outright",
+      "source": "Thales",
+      "url": "https://www.thalesgroup.com/en/news-centre/press-releases/thales-announces-strategic-partnership-google-cloud-launch-new-sovereign"
     },
     "hyperscalers": {
-      "date": "2026-06-24",
-      "headline": "CISPE declares Broadcom's VMware Cloud Foundation 'not sovereign' (CLOUD Act, kill switch)",
-      "source": "CISPE",
-      "url": "https://www.cispe.cloud/broadcom-is-not-sovereign/"
+      "date": "2026-07-15",
+      "headline": "Five cloud industry bodies urge EU interim measures against Broadcom over VMware",
+      "source": "Reuters",
+      "url": "https://www.thestar.com.my/tech/tech-news/2026/07/15/five-cloud-business-groups-urge-eu-interim-measures-against-broadcom"
     },
     "mistral": {
-      "date": "2026-06-12",
-      "headline": "Mistral reported in talks to raise EUR 3bn at a EUR 20bn valuation",
-      "source": "TechCrunch",
-      "url": "https://techcrunch.com/2026/06/12/mistral-is-rumored-to-be-raising-e3b-at-e20-valuation/"
+      "date": "2026-07-21",
+      "headline": "Microsoft commits multibillion dollars to buy European GPU capacity from Mistral",
+      "source": "Microsoft",
+      "url": "https://news.microsoft.com/source/2026/07/21/microsoft-and-mistral-expand-strategic-partnership-to-give-enterprises-and-regulated-industries-frontier-ai-they-can-control/"
     },
     "sap-ai": {
-      "date": "2026-05-13",
-      "headline": "SAP unveils Joule Studio and the Business AI Platform at Sapphire 2026",
-      "source": "SAP News",
-      "url": "https://news.sap.com/2026/05/new-joule-studio-enterprise-scale-agentic-development/"
+      "date": "2026-07-17",
+      "headline": "SAP completes Prior Labs acquisition, commits EUR 1bn+ to a European frontier AI lab",
+      "source": "SAP",
+      "url": "https://news.sap.com/2026/07/sap-completes-prior-labs-acquisition/"
     },
     "suse": {
       "date": "2026-06-25",
@@ -1602,57 +1673,57 @@
     },
     "aleph": {
       "date": "2026-04-24",
-      "headline": "Cohere to acquire Aleph Alpha in a ~$6.8bn transatlantic sovereign-AI merger (not yet closed)",
-      "source": "TechCrunch",
-      "url": "https://techcrunch.com/2026/04/24/cohere-acquires-merges-with-german-based-startup-to-create-a-transatlantic-ai-powerhouse/"
+      "headline": "Cohere and Aleph Alpha announce a merger -- still unclosed three months on",
+      "source": "Business Wire",
+      "url": "https://www.businesswire.com/news/home/20260424174908/en/Sovereign-AI-for-the-World-Cohere-and-Aleph-Alpha-to-Form-Global-AI-Powerhouse-as-Nations-and-Enterprises-Demand-Control-Over-Their-Technology"
     },
     "eu-models": {
-      "date": "2026-03-31",
-      "headline": "H Company releases Holo3, 122B open-weights computer-use agents (Apache-2)",
-      "source": "H Company",
-      "url": "https://hcompany.ai/holo3"
+      "date": "2026-07-23",
+      "headline": "Black Forest Labs ships FLUX 3, a multimodal frontier model, in early access",
+      "source": "Black Forest Labs",
+      "url": "https://bfl.ai/announcements"
     },
     "openeurollm": {
-      "date": "2025-02-01",
-      "headline": "OpenEuroLLM launches: EUR 37.4M consortium for open models in all 24 EU languages",
+      "date": "2026-07-31",
+      "headline": "First OpenEuroLLM models are due -- no consortium model had been released as of 25 Jul 2026",
       "source": "OpenEuroLLM",
-      "url": "https://openeurollm.eu/launch-press-release"
+      "url": "https://www.openeurollm.eu/deliverables"
     },
     "silo-hf": {
-      "date": "2026-06-01",
-      "headline": "AMD's Silo AI and Delphyr collaborate to scale clinical AI",
-      "source": "AMD",
-      "url": "https://www.amd.com/en/blogs/2026/amd-silo-ai-delphyr-ai-collaborate-to-scale-practical.html"
+      "date": "2026-07-01",
+      "headline": "Hugging Face turns down a reported $500m Nvidia investment, stays US-incorporated",
+      "source": "Observer",
+      "url": "https://observer.com/list/clement-delangue-hugging-face-ai-power-list-interview-2026/"
     },
     "sap": {
-      "date": "2025-09-02",
-      "headline": "SAP to invest 20bn+ EUR in European sovereign cloud over the decade",
-      "source": "SAP News",
-      "url": "https://news.sap.com/2025/09/sap-deepens-european-cloud-sovereignty-offering-unlock-regional-ai-innovation/"
+      "date": "2026-06-09",
+      "headline": "BSI grants VS-NfD authorization for SAP Cloud Infrastructure in German datacentres",
+      "source": "SAP",
+      "url": "https://news.sap.com/2026/06/vs-nfd-authorization-sap-cloud-infrastructure/"
     },
     "dassault": {
-      "date": "2025-11-26",
-      "headline": "Mistral's Le Chat Enterprise and AI Studio go live on Dassault's OUTSCALE sovereign cloud",
+      "date": "2026-06-10",
+      "headline": "OUTSCALE launches AI Factories and Kubernetes-as-a-Service on its sovereign cloud",
       "source": "Dassault Systemes",
-      "url": "https://www.3ds.com/newsroom/press-releases/new-era-sovereign-ai-dassault-systemes-and-mistral-ai-deepen-their-partnership"
+      "url": "https://www.3ds.com/newsroom/press-releases/outscale-experiences-2026-outscale-strengthens-its-sovereign-cloud-and-ai-foundation-critical-organizations"
     },
     "opendesk": {
-      "date": "2025-11-06",
-      "headline": "The International Criminal Court switches from Microsoft Office to openDesk",
-      "source": "OpenProject",
-      "url": "https://www.openproject.org/blog/digital-sovereignty-government-germany-opendesk/"
+      "date": "2026-07-21",
+      "headline": "German social insurers close the openDesk crisis-communication pilot positively",
+      "source": "openDesk",
+      "url": "https://www.opendesk.eu/en/blog/ckki-abschluss"
     },
     "schleswig": {
-      "date": "2025-12-04",
-      "headline": "Schleswig-Holstein reaches ~80% of workplaces migrated to LibreOffice",
-      "source": "Schleswig-Holstein",
-      "url": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/I/Presse/PI/2025/cds/251204_cds_open-source"
+      "date": "2026-07-03",
+      "headline": "Mecklenburg-Vorpommern completes its SharePoint-to-Nextcloud migration -- a second state follows",
+      "source": "Landesregierung M-V",
+      "url": "https://www.regierung-mv.de/Landesregierung/fm/Aktuell/?id=221531"
     },
     "office": {
-      "date": "2026-02-04",
-      "headline": "The Document Foundation ships LibreOffice 26.2",
-      "source": "Document Foundation",
-      "url": "https://blog.documentfoundation.org/blog/2026/02/04/libreoffice-26-2-is-here/"
+      "date": "2026-06-09",
+      "headline": "Euro-Office reaches general availability inside Nextcloud Hub 26",
+      "source": "Nextcloud",
+      "url": "https://nextcloud.com/blog/nextcloud-hub26-spring/"
     },
     "proton": {
       "date": "2026-03-31",
@@ -1661,40 +1732,40 @@
       "url": "https://proton.me/business/blog/proton-workspace"
     },
     "vertical-saas": {
-      "date": "2026-04-13",
-      "headline": "Nemetschek to acquire HCSS from Thoma Bravo for $2.4bn",
+      "date": "2026-07-01",
+      "headline": "Nemetschek closes its $2.4bn HCSS acquisition; Thoma Bravo takes a segment minority",
       "source": "Nemetschek",
-      "url": "https://www.nemetschek.com/en/news-media/ngroup-to-acquire-hcss"
+      "url": "https://www.nemetschek.com/en/newsroom/hcss-acquisition-closing"
     },
     "ms365": {
-      "date": "2025-09-12",
-      "headline": "EU Commission accepts Microsoft's commitments to unbundle Teams from Office",
-      "source": "Euronews",
-      "url": "https://www.euronews.com/2025/09/12/microsoft-makes-commitments-on-teams-to-allay-eu-antitrust-concerns"
+      "date": "2026-06-25",
+      "headline": "Commission takes the provisional position that Azure and AWS fall under the DMA as cloud gatekeepers",
+      "source": "ACM",
+      "url": "https://www.acm.nl/en/publications/european-commissions-provisional-position-market-investigation-acm-microsoft-and-amazon-cloud-services-fall-under-dma"
     },
     "thesis": {
-      "date": "2026-06-03",
-      "headline": "Commission's Tech Sovereignty Package: Europe still rents most of its cloud from US providers",
-      "source": "European Commission",
-      "url": "https://commission.europa.eu/news-and-media/news/strengthening-europes-tech-sovereignty-2026-06-03_en"
+      "date": "2026-07-22",
+      "headline": "EuroHPC signs EUR 80m MeluXina-AI: EU money, 1,008 Nvidia GPUs, Dell inside",
+      "source": "EuroHPC JU",
+      "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-meluxina-ai-new-ai-optimised-supercomputer-luxembourg-ai-factory-2026-07-22_en"
     },
     "seal": {
-      "date": "2026-04-17",
-      "headline": "Commission awards its first sovereignty-criteria cloud tender (up to EUR 180m) to four EU providers",
+      "date": "2026-06-01",
+      "headline": "Commission publishes a Sovereign Cloud Framework clarification, updated version promised",
       "source": "European Commission",
-      "url": "https://commission.europa.eu/news-and-media/news/commission-advances-cloud-sovereignty-through-strategic-procurement-2026-04-17_en"
+      "url": "https://commission.europa.eu/news-and-media/news/sovereign-cloud-framework-explained-2026-06-01_en"
     },
     "techpack": {
-      "date": "2026-06-03",
-      "headline": "Commission presents the Tech Sovereignty Package: Chips Act 2.0, CADA, Open Source Strategy",
-      "source": "European Commission",
-      "url": "https://commission.europa.eu/news-and-media/news/strengthening-europes-tech-sovereignty-2026-06-03_en"
+      "date": "2026-06-04",
+      "headline": "CADA transmitted to Council: first-reading start, no rapporteur, no Council position",
+      "source": "Council of the EU",
+      "url": "https://data.consilium.europa.eu/doc/document/ST-10104-2026-INIT/en/pdf"
     },
     "factories": {
-      "date": "2026-03-16",
-      "headline": "EuroHPC signs the contract to deploy the HammerHAI AI supercomputer in Stuttgart",
+      "date": "2026-07-16",
+      "headline": "EuroHPC opens a tender for INNOVATE, an industrial supercomputer in Bologna",
       "source": "EuroHPC JU",
-      "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-deploy-ai-supercomputer-hammerhai-2026-03-16_en"
+      "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-launches-call-tender-new-industrial-supercomputer-bologna-italy-2026-07-16_en"
     },
     "eurostack": {
       "date": "2026-01-02",
@@ -1704,21 +1775,63 @@
     },
     "certs": {
       "date": "2026-06-03",
-      "headline": "The Cloud and AI Development Act defines four cloud-sovereignty assurance tiers",
-      "source": "European Commission",
-      "url": "https://digital-strategy.ec.europa.eu/en/policies/cloud-and-ai-development-act"
+      "headline": "CADA proposes four Union cloud sovereignty levels -- and puts hardware outside their scope",
+      "source": "EUR-Lex",
+      "url": "https://data.consilium.europa.eu/doc/document/ST-10104-2026-ADD-1/en/pdf"
     },
     "euclyd": {
-      "date": "2025-11-03",
-      "headline": "Development partnership with ADTechnology to take CRAFTWERK to silicon on Samsung Foundry FinFET",
-      "source": "Euclyd",
-      "url": "https://euclyd.ai/adtechnology-collaborates-with-euclyd-to-develop-ultra-efficient-ai-chip-for-datacenters/"
+      "date": "2026-06-24",
+      "headline": "Euclyd is reported to be seeking EUR 200m, double its original target; round not closed",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-06-24/chip-startup-backed-by-ex-asml-ceo-seeks-to-raise-200-million"
     },
     "nvidia-cuda": {
       "date": "2026-06-22",
       "headline": "Nvidia anchors a record 35 new European AI supercomputers -- the dependency, visualised",
       "source": "NVIDIA",
       "url": "https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers"
+    },
+    "us-models": {
+      "date": "2026-06-13",
+      "headline": "A US export order takes two frontier models offline worldwide, cutting off every EU user",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/us-blocks-foreign-access-anthropics-most-advanced-ai-models-axios-reports-2026-06-13/"
+    },
+    "x86": {
+      "date": "2026-07-13",
+      "headline": "Intel commits EUR 5bn of its own capital to expand Leixlip in Ireland on Intel 3",
+      "source": "Intel",
+      "url": "https://newsroom.intel.com/intel-foundry/intel-invests-5-billion-euro-to-expand-manufacturing-in-europe"
+    },
+    "leading-edge-fabs": {
+      "date": "2026-06-03",
+      "headline": "Chips Act 2.0 names advanced manufacturing and chip design as third-country dependencies",
+      "source": "European Commission",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/proposal-chips-act-20"
+    },
+    "siemens-eda": {
+      "date": "2026-05-12",
+      "headline": "Siemens is first software vendor to sign an EDA framework with the European Chips JU",
+      "source": "Siemens",
+      "url": "https://news.siemens.com/en-us/siemens-chipju-software-framework/"
+    },
+    "eda-dep": {
+      "date": "2026-05-12",
+      "headline": "The Chips JU has to buy EDA access for European startups -- the tools are not European",
+      "source": "Siemens",
+      "url": "https://news.siemens.com/en-us/siemens-chipju-software-framework/"
+    },
+    "memory-dep": {
+      "date": "2026-06-03",
+      "headline": "Chips Act 2.0 names third-country supplier dependency; memory has no European programme at all",
+      "source": "European Commission",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/proposal-chips-act-20"
+    },
+    "packaging": {
+      "date": "2026-06-03",
+      "headline": "Chips Act 2.0 keeps advanced packaging in scope; APECS remains a pilot line, not capacity",
+      "source": "European Commission",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/proposal-chips-act-20"
     }
   },
   "GOALS": [

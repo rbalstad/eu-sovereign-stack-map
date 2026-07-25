@@ -2,14 +2,14 @@
 
 An opinionated, sourced map of where Europe's technology stack is actually sovereign -- silicon to market -- and where it is still renting American kit with a European label.
 
-It is deliberately **not** a definitive register. It is a snapshot (dated **June 2026**), built from public material, with editorial judgement in every tier call and every score. The point of open-sourcing it is to make those judgements correctable: if a node is wrong, [open a PR with a source](CONTRIBUTING.md).
+It is deliberately **not** a definitive register. It is a snapshot (dated **July 2026**), built from public material, with editorial judgement in every tier call and every score. The point of open-sourcing it is to make those judgements correctable: if a node is wrong, [open a PR with a source](CONTRIBUTING.md).
 
 **Live map:** `https://rbalstad.github.io/eu-sovereign-stack-map/` (live once GitHub Pages is enabled)
 **Straight to the punchline:** add `#build-goal-llm` to the URL.
 
 ## What it shows
 
-Fifty-three players across the eight layers of the stack -- market and policy, applications, data and AI, cloud and compute, datacentre, hardware and systems, chip design & IP, fabrication & equipment -- each tagged by tier, scored for sovereignty, and tied to a dated public source. Named partnerships and dependencies are wired between them.
+Fifty-seven players across the eight layers of the stack -- market and policy, applications, data and AI, cloud and compute, datacentre, hardware and systems, chip design & IP, fabrication & equipment -- each tagged by tier, scored for sovereignty, and tied to a dated public source. Named partnerships and dependencies are wired between them.
 
 The headline interaction is **build & break**. Pick a goal -- a sovereign workplace, a sovereign cloud, a sovereign LLM, a national supercomputer, a European-designed AI chip -- and the map lights every European option it has at each layer the goal needs, then turns red at the layers where it has none. The soft goals come up all green. The AI and compute goals snap red at the same two rungs every time: the AI accelerator and the leading-edge fab. That repeat is the whole argument.
 
@@ -52,4 +52,4 @@ The code (`index.html`) is [MIT](LICENSE). The data (`data/stack.json`) is [CC B
 
 ## Maintainer
 
-Built and maintained by Reidar Balstad, RB Consult AB. LinkedIn: https://www.linkedin.com/in/rbalstad/ Sources are public Commission and EuroHPC releases, company announcements and credible trade press as of June 2026. Vendors are named as public contenders, not as participants in any confidential process.
+Built and maintained by Reidar Balstad, RB Consult AB. LinkedIn: https://www.linkedin.com/in/rbalstad/ Sources are public Commission and EuroHPC releases, company announcements and credible trade press as of July 2026. Vendors are named as public contenders, not as participants in any confidential process.
