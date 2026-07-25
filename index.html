@@ -33,6 +33,7 @@ h1,h2,h3,.hand{font-family:"Caveat","Segoe Print","Comic Sans MS",cursive}
 .hero::before{left:40px;transform:rotate(-7deg)}.hero::after{right:54px;transform:rotate(6deg)}
 h1{margin:0 0 6px;font-size:clamp(2.1rem,4.4vw,4rem);line-height:.92;letter-spacing:-.01em}
 .subtitle{max-width:1050px;font-size:1.06rem;color:#26303d;line-height:1.5;margin:0}
+.crosslink{margin:10px 0 0;font-size:.92rem;color:var(--muted)}
 .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:18px 0 6px}
 .group{display:flex;flex-wrap:wrap;gap:7px;align-items:center;background:rgba(255,255,255,.74);border:2px solid var(--ink);border-radius:18px;padding:7px 9px;box-shadow:4px 5px 0 rgba(0,0,0,.09)}
 .group .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:2px}
@@ -173,7 +174,7 @@ body.insight-build .card .champ{display:none}
 html[data-theme="dark"]{--ink:#e9e7e0}
 html[data-theme="dark"] body{background:radial-gradient(circle at 17px 21px, rgba(150,170,230,.08) 0 1.2px, transparent 1.7px) 0 0/27px 27px,linear-gradient(135deg,#15171c,#191c23 60%,#1c1813);color:#e9e7e0}
 html[data-theme="dark"] .hero,html[data-theme="dark"] .board,html[data-theme="dark"] .drawer,html[data-theme="dark"] .legend,html[data-theme="dark"] .sources{background:rgba(32,35,42,.93);border-color:#0c0d10}
-html[data-theme="dark"] .subtitle,html[data-theme="dark"] .layer-head .verdict,html[data-theme="dark"] .card p,html[data-theme="dark"] .drawer p,html[data-theme="dark"] .legend p,html[data-theme="dark"] .sources p{color:#c5c8d0}
+html[data-theme="dark"] .subtitle,html[data-theme="dark"] .crosslink,html[data-theme="dark"] .layer-head .verdict,html[data-theme="dark"] .card p,html[data-theme="dark"] .drawer p,html[data-theme="dark"] .legend p,html[data-theme="dark"] .sources p{color:#c5c8d0}
 html[data-theme="dark"] .card{background:#23262e;box-shadow:4px 6px 0 rgba(0,0,0,.4)}
 html[data-theme="dark"] .card.eu{background:linear-gradient(180deg,#1f2b24,#23262e 60%)}
 html[data-theme="dark"] .card.operated{background:linear-gradient(180deg,#2c2517,#23262e 60%)}
@@ -210,6 +211,7 @@ html[data-theme="dark"] .box.roadmap{background:#1a2230}
   <h1>Europe's sovereign full stack</h1>
   <p style="margin:0 0 6px;font-family:'Caveat',cursive;font-size:1.15rem;color:#7c5cc4">Pick a question. Watch where Europe holds -- and where the stack snaps.</p>
   <p class="subtitle">Europe can build a sovereign workplace and cloud today -- and every AI and compute goal snaps at the same two rungs: the AI accelerator and the leading-edge fab. Click any box for the sourced detail.</p>
+  <p class="crosslink">This map shows where Europe holds. Its companion, <a href="https://rbalstad.github.io/eu-sovereignty-ledger/">Where the sovereign euro goes</a>, follows the money instead: who receives European public funding for AI and compute, and which definition of sovereign it is measured against.</p>
  </header>
 
  <div class="toolbar">

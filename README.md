@@ -7,6 +7,8 @@ It is deliberately **not** a definitive register. It is a snapshot (dated **July
 **Live map:** `https://rbalstad.github.io/eu-sovereign-stack-map/` (live once GitHub Pages is enabled)
 **Straight to the punchline:** add `#build-goal-llm` to the URL.
 
+**Companion asset:** [Where the sovereign euro goes](https://rbalstad.github.io/eu-sovereignty-ledger/) follows the money -- who receives European public funding for AI and compute infrastructure, and which of the eight competing definitions of "sovereign" it is being measured against. This map shows where Europe holds; that one shows where the euro lands.
+
 ## What it shows
 
 Fifty-seven players across the eight layers of the stack -- market and policy, applications, data and AI, cloud and compute, datacentre, hardware and systems, chip design & IP, fabrication & equipment -- each tagged by tier, scored for sovereignty, and tied to a dated public source. Named partnerships and dependencies are wired between them.
