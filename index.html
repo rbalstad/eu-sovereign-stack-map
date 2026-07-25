@@ -479,11 +479,14 @@ function applyImports(){
  const es=impEdges(),q=n=>document.querySelector(`.card[data-id="${n}"]`);
  const touched=new Set();es.forEach(p=>{touched.add(p.a);touched.add(p.b);});
  touched.forEach(n=>{const el=q(n);if(!el)return;el.classList.remove('faded');const c=byId[n];if(c&&c.tier==='dependency')el.classList.add('imp-node');});
+ // every imported-tier node lights, edges or not: a dependency with no sourced per-company
+ // edge yet (EDA, memory) is still an import, and fading it out of the imports view reads as a bug
+ CARDS.forEach(c=>{if(c.tier!=='dependency')return;const el=q(c.id);if(!el)return;el.classList.remove('faded');el.classList.add('imp-node');});
  const dep=es.filter(p=>p.type==='dependency'&&byId[p.b]&&byId[p.b].tier==='dependency');
  const byTarget={};dep.forEach(p=>{(byTarget[p.b]=byTarget[p.b]||new Set()).add(p.a);});
  const parts=Object.entries(byTarget).sort((x,y)=>y[1].size-x[1].size).map(([b,s])=>`${s.size} &rarr; ${byId[b].name}`);
  const srcs=new Set(dep.map(p=>p.a));
- document.getElementById('insightbanner').innerHTML=`<b>The import spine:</b> ${srcs.size} nodes on this map lean on imported kit or foreign control. <span class="brk">${parts.join(' &nbsp;&middot;&nbsp; ')}</span><span class="optcount">Dashed red wires are the drawn dependencies. Note what repeats: the same few imports recur across the stack -- the hard breaks are still exactly two, the AI accelerator and the leading-edge fab. Click any lit box for the sourced detail.</span>`;
+ document.getElementById('insightbanner').innerHTML=`<b>The import spine:</b> ${srcs.size} nodes on this map lean on imported kit or foreign control. <span class="brk">${parts.join(' &nbsp;&middot;&nbsp; ')}</span><span class="optcount">Every imported-tier box is lit; the dashed red wires are the dependencies with a sourced link drawn. Note what repeats: the same few imports recur across the stack -- the hard breaks are still exactly two, the AI accelerator and the leading-edge fab. Click any lit box for the sourced detail.</span>`;
 }
 // ---------- Axis lens: recolour the board by one axis ----------
 function applyLens(axis){
