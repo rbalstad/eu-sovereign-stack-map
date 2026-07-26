@@ -816,7 +816,7 @@
       "name": "SiPearl (Rhea1)",
       "score": 3,
       "tag": "Europe's HPC CPU. Powered on, in bring-up.",
-      "what": "French. Rhea1 taped out (TSMC N6, 80 Arm Neoverse V1 cores) and powered on 13 May 2026, now in a bring-up and functional-validation phase with availability targeted end-2026. Headed into JUPITER's CPU cluster. EUR 130M Series A; Series B not announced as closed.",
+      "what": "French. Rhea1 taped out (TSMC N6, 80 Arm Neoverse V1 cores) and powered on 13 May 2026, now in a bring-up and functional-validation phase with availability targeted end-2026. Headed into JUPITER's CPU cluster. EUR 130M Series A; Series B not announced as closed. Named in the EUR 290M IT4LIA AI Factory contract (Bologna, 22 Apr 2026), whose inference partition pairs SiPearl CPUs with Axelera accelerators -- the one published European system configuration that is not all-Nvidia.",
       "maturity": "Bring-up 2026",
       "weak": "Arm ISA (not EU) + TSMC manufacturing. European design, borrowed foundations.",
       "axes": {
@@ -868,7 +868,7 @@
       "name": "Axelera, Codasip (DARE chiplets)",
       "score": 3,
       "tag": "The other two DARE RISC-V chiplets.",
-      "what": "Axelera AI leads the AI-inference chiplet (Titania; EUR 61.6M DARE grant) from edge to server class; Codasip leads the general-purpose RISC-V processor. Inference at the edge is a plausible European beachhead.",
+      "what": "Axelera AI leads the AI-inference chiplet (Titania; EUR 61.6M DARE grant) from edge to server class; Codasip leads the general-purpose RISC-V processor. Inference at the edge is a plausible European beachhead. First procurement evidence landed on 22 Apr 2026: the EUR 290M IT4LIA AI Factory contract in Bologna carries a dedicated inference partition on Axelera accelerators alongside SiPearl CPUs. EuroHPC buying European silicon, not only funding it. The release names the company, not the DARE chiplet, so do not read it as a Titania order.",
       "maturity": "Development",
       "weak": "Datacentre-class parts are years from volume; software ecosystem nascent. Consortium risk: Codasip divested its low-end RISC-V processor business to an unnamed public US semiconductor company on 8 Apr 2026 and pivoted to CHERI. DARE states all project activities continue as planned and it is in dialogue with Codasip and EuroHPC JU; no replacement has been named.",
       "axes": {
@@ -1505,10 +1505,10 @@
       "url": "https://www.actusnews.com/en/kalray/pr/2026/07/16/h1-2026-revenue-kalray-confirms-growth-and-relevance-of-its-new-business-model"
     },
     "dare-chiplets": {
-      "date": "2026-04-09",
-      "headline": "DARE says activities continue after Codasip divests its RISC-V processor business",
-      "source": "DARE",
-      "url": "https://dare-riscv.eu/partner-update-codasip-enters-a-new-strategic-phase/"
+      "date": "2026-04-22",
+      "headline": "IT4LIA contract gives Axelera accelerators and SiPearl CPUs an inference partition in a EUR 290M EuroHPC system",
+      "source": "EuroHPC JU",
+      "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-boost-ai-capabilities-it4lia-ai-factory-2026-04-22_en"
     },
     "riscv-others": {
       "date": "2026-06-18",
