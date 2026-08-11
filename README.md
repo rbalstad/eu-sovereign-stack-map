@@ -4,7 +4,7 @@ An opinionated, sourced map of where Europe's technology stack is actually sover
 
 It is deliberately **not** a definitive register. It is a snapshot (dated **July 2026**), built from public material, with editorial judgement in every tier call and every score. The point of open-sourcing it is to make those judgements correctable: if a node is wrong, [open a PR with a source](CONTRIBUTING.md).
 
-**Live map:** `https://map.sovereigntymonitor.eu/` (live once GitHub Pages is enabled)
+**Live map:** `https://map.sovereigntymonitor.eu/`
 **Straight to the punchline:** add `#build-goal-llm` to the URL.
 
 **Companion asset:** [Where the sovereign euro goes](https://ledger.sovereigntymonitor.eu/) follows the money -- who receives European public funding for AI and compute infrastructure, and which of the eight competing definitions of "sovereign" it is being measured against. This map shows where Europe holds; that one shows where the euro lands.
