@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Europe's Sovereign Full Stack -- silicon to market</title>
+<link rel="stylesheet" href="https://sovereigntymonitor.eu/assets/css/system.css?v=1.7.3">
 <style>
 /* Self-hosted so the page makes no third-party request. Caveat and Patrick Hand are both
    SIL Open Font License; the licence texts travel with them in fonts/. Caveat is a variable
@@ -215,9 +216,106 @@ html[data-theme="dark"] .box.roadmap{background:#1a2230}
 .box.latest a,.box.part a{color:#1f6fc4;text-decoration:none;font-weight:700;white-space:nowrap}
 .box.part a:hover{text-decoration:underline}
 #overlay button.active{background:var(--violet);color:#fff;box-shadow:3px 4px 0 rgba(124,92,196,.25)}
+
+/* ---- European Sovereignty Monitor chrome: type ----
+   Declared here rather than in the shared system.css because Ghost(Pro) serves woff2 with no
+   Access-Control-Allow-Origin, and fonts are always fetched in CORS mode. The stylesheet itself
+   is not CORS-restricted, which is why everything else in it crosses the boundary fine. */
+@font-face { font-family: "Barlow Condensed"; src: url("fonts/BarlowCondensed-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url("fonts/Barlow-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url("fonts/Barlow-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url("fonts/Barlow-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+
+/* ---- European Sovereignty Monitor chrome: tokens, scoped ----
+   This repo defines --ink, --muted and --paper in its own :root, and its stylesheet loads after
+   system.css, so the repo wins. Correct for the board and the tables, wrong for the chrome,
+   which would then sit on the datasets' cream rather than the newsletter's paper. Re-asserting
+   them on the two chrome elements keeps both right. Delete this block during the restyle, when
+   the two palettes become one. */
+.site-head, .site-foot {
+  --paper: #f2f2f3;  --ink: #1d1f20;    --ink-head: #15171a; --ink-body: #2c2c2c;
+  --muted: #5d5d60;  --faint: #7a7a7d;  --quiet: #98989b;
+  --hair: #d4d4d7;   --hair-soft: #e0e0e3;
+  --steel: #5980a6;  --steel-deep: #416180;
+}
 </style>
 </head>
 <body class="depth-full">
+<!-- ============================================================================
+     European Sovereignty Monitor: shared chrome for the dataset sites.
+
+     Generated from the live theme partials (site-header.hbs, nav-issues.hbs, nav-areas.hbs,
+     nav-resources.hbs, nav-about.hbs, site-footer.hbs) at theme v1.6.1, with Handlebars
+     resolved to absolute URLs. It supersedes the header block in datasets/CHROME.md, which was
+     written against a flat four-item nav; the live menu is four items of which three are
+     disclosures.
+
+     Two things a maintainer needs to know:
+
+     1. The MENU IS HARD-CODED HERE. On sovereigntymonitor.eu the top level comes from Ghost's
+        navigation setting, so a change there does NOT reach this file. Changing the menu means
+        editing this block in both repos. That is the cost of having identical chrome on three
+        surfaces, two of which have no template engine.
+
+     2. Mark the current page. Each repo flags its own item as the current one, which is why
+        this file is not byte-identical between the two of them. The build script does the
+        substitution; the placeholder comments below show where.
+     ============================================================================ -->
+
+<header class="site-head">
+  <div class="shell head-shell">
+    <a class="brand" href="https://sovereigntymonitor.eu" aria-label="European Sovereignty Monitor">
+      <span class="mark" aria-hidden="true"><i></i><i></i></span>
+      <span class="brand-name">European Sovereignty Monitor</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a class="nav-link" href="https://sovereigntymonitor.eu/issues/">Issues</a>
+
+      <span class="nav-group" data-nav-group>
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false"
+                aria-controls="nav-areas" data-nav-button>Areas<i class="nav-caret" aria-hidden="true"></i></button>
+        <span class="nav-menu" id="nav-areas" data-nav-menu hidden>
+          <a href="https://sovereigntymonitor.eu/areas/">All four areas</a>
+          <a href="https://sovereigntymonitor.eu/policy-and-law/"><b>01</b> Policy and law</a>
+          <a href="https://sovereigntymonitor.eu/compute-and-infrastructure/"><b>02</b> Compute and infrastructure</a>
+          <a href="https://sovereigntymonitor.eu/defence-and-space/"><b>03</b> Defence and space</a>
+          <a href="https://sovereigntymonitor.eu/industry-investment-and-rd/"><b>04</b> Industry, investment and R&amp;D</a>
+        </span>
+      </span>
+
+      <span class="nav-group" data-nav-group>
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false"
+                aria-controls="nav-resources" data-nav-button>Resources<i class="nav-caret" aria-hidden="true"></i></button>
+        <span class="nav-menu" id="nav-resources" data-nav-menu hidden>
+          <a href="https://sovereigntymonitor.eu/resources/">Sources and databases</a>
+          <a href="https://sovereigntymonitor.eu/dictionary/">Dictionary</a>
+          <a class="is-current" aria-current="page" href="https://map.sovereigntymonitor.eu">The stack map</a>
+          <a href="https://ledger.sovereigntymonitor.eu">The ledger</a>
+        </span>
+      </span>
+
+      <span class="nav-group" data-nav-group>
+        <button class="nav-link nav-toggle" type="button" aria-expanded="false"
+                aria-controls="nav-about" data-nav-button>About<i class="nav-caret" aria-hidden="true"></i></button>
+        <span class="nav-menu" id="nav-about" data-nav-menu hidden>
+          <a href="https://sovereigntymonitor.eu/about/">About the publication</a>
+          <a href="https://sovereigntymonitor.eu/method/">Method and scoring</a>
+          <a href="https://sovereigntymonitor.eu/editor/">The editor</a>
+        </span>
+      </span>
+    </nav>
+
+    <div class="head-tools">
+      <!-- No language switcher: neither dataset is translated, and a switcher that lands a
+           reader on an untranslated page is worse than none.
+           No appearance toggle yet: the three surfaces implement dark mode three different
+           ways, so the control would do nothing here. See CHROME.md. -->
+      <a class="btn btn-primary" href="https://sovereigntymonitor.eu/#/portal/signup">Subscribe</a>
+    </div>
+  </div>
+</header>
+
 <div class="wrap">
  <header class="hero">
   <h1>Europe's sovereign full stack</h1>
@@ -572,6 +670,66 @@ fetch('data/stack.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.js
   if(/imports/i.test(location.hash))setInsight('imports');
   if(/lens/i.test(location.hash)){setInsight('lens');const lm=location.hash.match(/lens-(capability|jurisdiction|op_control|substitutability)/i);if(lm)applyLens(lm[1].toLowerCase());}
 }).catch(e=>{document.getElementById('board').innerHTML='<p style="padding:24px;font-size:1.05rem;line-height:1.5">Could not load <code>data/stack.json</code> ('+e+'). Browsers block <code>file://</code> data loads, so open the <b>live demo</b> link, or run a local server in the repo folder: <code>python -m http.server</code> then visit <code>http://localhost:8000/</code>. See the README.</p>';});
+</script>
+
+<footer class="site-foot">
+  <div class="shell foot-shell">
+    <p class="foot-note">Nodes across the European technology stack, each with its dependencies named and tied to a dated public source. Companion to the monthly record at sovereigntymonitor.eu.</p>
+    <nav class="foot-nav" aria-label="Secondary">
+      <a href="https://sovereigntymonitor.eu/#/portal/signup">Sign up</a>
+      <a href="https://sovereigntymonitor.eu/about/">About</a>
+      <a href="https://sovereigntymonitor.eu/method/">Method</a>
+      <a href="https://github.com/rbalstad/eu-sovereign-stack-map/blob/main/LICENSE-DATA.txt">Data licence</a>
+      <a href="https://github.com/rbalstad/eu-sovereign-stack-map">Repo</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+/* European Sovereignty Monitor: the shared chrome's only behaviour.
+   Lifted verbatim from the theme's assets/js/theme.js at v1.6.1 so the three surfaces behave
+   identically. Self-contained, no dependencies, safe to inline at the end of <body>.
+
+   A button rather than a hover menu: hover cannot be operated by touch or by keyboard. Closed
+   is the default and `hidden` sits on the markup, so with JS unavailable the button does
+   nothing rather than leaving a panel lying open across the page. */
+(function () {
+  var groups = document.querySelectorAll("[data-nav-group]");
+  for (var g = 0; g < groups.length; g++) {
+    (function (group) {
+      var btn = group.querySelector("[data-nav-button]");
+      var menu = group.querySelector("[data-nav-menu]");
+      if (!btn || !menu) { return; }
+      function setOpen(open) {
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) { menu.removeAttribute("hidden"); } else { menu.setAttribute("hidden", ""); }
+      }
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        setOpen(btn.getAttribute("aria-expanded") !== "true");
+      });
+      document.addEventListener("click", function (e) {
+        if (!group.contains(e.target)) { setOpen(false); }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") { setOpen(false); btn.focus(); }
+      });
+      group.addEventListener("focusout", function (e) {
+        if (!group.contains(e.relatedTarget)) { setOpen(false); }
+      });
+    }(groups[g]));
+  }
+
+  /* Off-site links open in a new tab. On the datasets that means links back to the newsletter,
+     which is the same courtesy the newsletter extends coming this way. Same-host links are
+     skipped, so nothing internal to the board or the tables is touched. */
+  var offsite = document.querySelectorAll('a[href^="http"]');
+  for (var i = 0; i < offsite.length; i++) {
+    if (offsite[i].hostname === window.location.hostname) { continue; }
+    offsite[i].setAttribute("target", "_blank");
+    offsite[i].setAttribute("rel", "noopener");
+  }
+}());
 </script>
 </body>
 </html>
