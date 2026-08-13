@@ -196,7 +196,14 @@ body.insight-build .card .champ{display:none}
 @media (prefers-reduced-motion:reduce){.card,body.insight-build .layer{transition-duration:.01ms}.card.brk-node{animation:none}}
 
 #themeBtn{font-size:.85rem}
-html[data-theme="dark"]{--ink:#e9e7e0}
+/* Temporary scaffolding for the phase-one rename: --hair, --edge and --ink-body carry the same
+   light value as --ink (see :root) but, unlike --ink, had no dark-mode flip of their own, so any
+   border moved onto them would stay light against the dark board. Flipping all four together
+   here reproduces the dark rendering these borders had before the rename, when they were still
+   var(--ink). Phase two deletes :root's six lines and this override block together, at which
+   point system.css supplies --hair and --edge (and --ink-body) in both themes and this line is
+   no longer needed. */
+html[data-theme="dark"]{--ink:#e9e7e0; --hair:#e9e7e0; --edge:#e9e7e0; --ink-body:#e9e7e0}
 html[data-theme="dark"] body{background:radial-gradient(circle at 17px 21px, rgba(150,170,230,.08) 0 1.2px, transparent 1.7px) 0 0/27px 27px,linear-gradient(135deg,#15171c,#191c23 60%,#1c1813);color:#e9e7e0}
 html[data-theme="dark"] .hero,html[data-theme="dark"] .board,html[data-theme="dark"] .drawer,html[data-theme="dark"] .legend,html[data-theme="dark"] .sources{background:rgba(32,35,42,.93);border-color:#0c0d10}
 html[data-theme="dark"] .subtitle,html[data-theme="dark"] .crosslink,html[data-theme="dark"] .layer-head .verdict,html[data-theme="dark"] .card p,html[data-theme="dark"] .drawer p,html[data-theme="dark"] .legend p,html[data-theme="dark"] .sources p{color:#c5c8d0}
