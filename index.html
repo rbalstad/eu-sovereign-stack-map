@@ -28,6 +28,18 @@
  --dep:#c2412d; --dep-bg:#fbe7e2;
  --blue:#1f6fc4; --violet:#7c5cc4;
  --shadow:0 14px 34px rgba(20,24,28,.13);
+
+ /* Phase one of the design-system convergence. These carry the repo's own values for now, so
+    nothing renders differently; the interior below is being renamed onto these names. Phase two
+    deletes these lines and the same names then resolve to system.css, which is where the
+    palette actually changes. Do not delete them before the interior rename is complete: an
+    unresolvable var() resets the property rather than falling through. */
+ --up:#2f9e5f; --up-bg:#e9f7ee;
+ --both:#d98a1f; --both-bg:#fcf2dd;
+ --down:#c2412d; --down-bg:#fbe7e2;
+ --none:#4b5563;
+ --steel:#1f6fc4; --steel-deep:#1f6fc4;
+ --hair:#1a1d22; --edge:#1a1d22; --ink-body:#1a1d22;
 }
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%}
@@ -41,73 +53,73 @@ body{
 }
 .wrap{max-width:1500px;margin:0 auto;padding:22px 20px 56px}
 h1,h2,h3,.hand{font-family:"Caveat","Segoe Print","Comic Sans MS",cursive}
-.hero{position:relative;padding:20px 24px;background:rgba(255,253,244,.86);border:3px solid var(--ink);border-radius:26px;box-shadow:var(--shadow);transform:rotate(-.2deg)}
+.hero{position:relative;padding:20px 24px;background:rgba(255,253,244,.86);border:3px solid var(--hair);border-radius:26px;box-shadow:var(--shadow);transform:rotate(-.2deg)}
 .hero::before,.hero::after{content:"";position:absolute;width:92px;height:26px;background:rgba(248,231,161,.7);top:-14px;border:1px dashed rgba(0,0,0,.18)}
 .hero::before{left:40px;transform:rotate(-7deg)}.hero::after{right:54px;transform:rotate(6deg)}
 h1{margin:0 0 6px;font-size:clamp(2.1rem,4.4vw,4rem);line-height:.92;letter-spacing:-.01em}
 .subtitle{max-width:1050px;font-size:1.06rem;color:#26303d;line-height:1.5;margin:0}
 .crosslink{margin:10px 0 0;font-size:.92rem;color:var(--muted)}
 .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:18px 0 6px}
-.group{display:flex;flex-wrap:wrap;gap:7px;align-items:center;background:rgba(255,255,255,.74);border:2px solid var(--ink);border-radius:18px;padding:7px 9px;box-shadow:4px 5px 0 rgba(0,0,0,.09)}
+.group{display:flex;flex-wrap:wrap;gap:7px;align-items:center;background:rgba(255,255,255,.74);border:2px solid var(--hair);border-radius:18px;padding:7px 9px;box-shadow:4px 5px 0 rgba(0,0,0,.09)}
 .group .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:2px}
-button{font:inherit;appearance:none;border:2px solid var(--ink);border-radius:999px;padding:7px 13px;background:#fff;color:var(--ink);cursor:pointer;transform:rotate(-.4deg);box-shadow:3px 4px 0 rgba(0,0,0,.12);transition:transform .12s,background .12s}
+button{font:inherit;appearance:none;border:2px solid var(--edge);border-radius:999px;padding:7px 13px;background:#fff;color:var(--ink);cursor:pointer;transform:rotate(-.4deg);box-shadow:3px 4px 0 rgba(0,0,0,.12);transition:transform .12s,background .12s}
 button:nth-child(even){transform:rotate(.5deg)}
 button:hover{transform:translateY(-1px) rotate(0)}
 button.active{background:var(--blue);color:#fff;box-shadow:3px 4px 0 rgba(31,111,196,.25)}
-button.tier.active[data-tier="eu"]{background:var(--eu);box-shadow:3px 4px 0 rgba(47,158,95,.25)}
-button.tier.active[data-tier="operated"]{background:var(--op);box-shadow:3px 4px 0 rgba(217,138,31,.25)}
-button.tier.active[data-tier="dependency"]{background:var(--dep);box-shadow:3px 4px 0 rgba(194,65,45,.25)}
+button.tier.active[data-tier="eu"]{background:var(--up);box-shadow:3px 4px 0 rgba(47,158,95,.25)}
+button.tier.active[data-tier="operated"]{background:var(--both);box-shadow:3px 4px 0 rgba(217,138,31,.25)}
+button.tier.active[data-tier="dependency"]{background:var(--down);box-shadow:3px 4px 0 rgba(194,65,45,.25)}
 button.tier{opacity:.5;filter:grayscale(.4)}
 button.tier.active{opacity:1;filter:none}
-input{font:inherit;min-width:min(280px,100%);padding:9px 13px;border:2px solid var(--ink);border-radius:999px;background:#fffefa;box-shadow:3px 4px 0 rgba(0,0,0,.10)}
+input{font:inherit;min-width:min(280px,100%);padding:9px 13px;border:2px solid var(--edge);border-radius:999px;background:#fffefa;box-shadow:3px 4px 0 rgba(0,0,0,.10)}
 .hint{font-size:.86rem;color:var(--muted);margin:8px 2px 14px}
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 396px;gap:18px;align-items:start}
-.board{position:relative;padding:14px;background:rgba(255,255,250,.84);border:4px solid var(--ink);border-radius:30px;box-shadow:16px 20px 0 rgba(20,24,28,.06),var(--shadow)}
+.board{position:relative;padding:14px;background:rgba(255,255,250,.84);border:4px solid var(--hair);border-radius:30px;box-shadow:16px 20px 0 rgba(20,24,28,.06),var(--shadow)}
 .layer{position:relative;border:2px dashed rgba(26,29,34,.22);border-radius:18px;padding:10px 12px 12px;margin:12px 0}
 .layer-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 2px 9px}
 .layer-head h3{margin:0;font-size:1.5rem;line-height:1}
 .layer-head .verdict{font-size:.92rem;color:#33414f;flex:1;min-width:240px}
 .layer-no{font-family:"Caveat",cursive;font-size:1.2rem;color:var(--blue);border:2px solid var(--blue);border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
 .cards{display:flex;flex-wrap:wrap;gap:11px}
-.card{position:relative;width:228px;min-height:96px;padding:11px 12px 26px;background:#fff;border-radius:16px;cursor:pointer;box-shadow:4px 6px 0 rgba(0,0,0,.10);border-left:7px solid var(--muted);transition:transform .12s,opacity .12s,filter .12s}
+.card{position:relative;width:228px;min-height:96px;padding:11px 12px 26px;background:#fff;border-radius:16px;cursor:pointer;box-shadow:4px 6px 0 rgba(0,0,0,.10);border-left:7px solid var(--none);transition:transform .12s,opacity .12s,filter .12s}
 .card:nth-child(3n){transform:rotate(.5deg)}.card:nth-child(3n+1){transform:rotate(-.6deg)}
 .card:hover{transform:translateY(-3px) rotate(0)}
-.card.eu{border-left-color:var(--eu);background:linear-gradient(180deg,var(--eu-bg),#fff 60%)}
-.card.operated{border-left-color:var(--op);background:linear-gradient(180deg,var(--op-bg),#fff 60%)}
-.card.dependency{border-left-color:var(--dep);background:linear-gradient(180deg,var(--dep-bg),#fff 60%)}
+.card.eu{border-left-color:var(--up);background:linear-gradient(180deg,var(--up-bg),#fff 60%)}
+.card.operated{border-left-color:var(--both);background:linear-gradient(180deg,var(--both-bg),#fff 60%)}
+.card.dependency{border-left-color:var(--down);background:linear-gradient(180deg,var(--down-bg),#fff 60%)}
 .card.active{outline:3px solid rgba(31,111,196,.4)}
 .card.hidden{display:none}
 .card h4{margin:0 0 3px;font-family:"Caveat",cursive;font-size:1.24rem;line-height:1.02}
 .card p{margin:0;font-size:.83rem;color:#36414f;line-height:1.22}
-.card .champ{position:absolute;right:-9px;top:-11px;background:var(--violet);color:#fff;font-family:"Caveat",cursive;font-size:.86rem;padding:1px 9px;border:2px solid var(--ink);border-radius:999px;transform:rotate(6deg)}
+.card .champ{position:absolute;right:-9px;top:-11px;background:var(--violet);color:#fff;font-family:"Caveat",cursive;font-size:.86rem;padding:1px 9px;border:2px solid var(--hair);border-radius:999px;transform:rotate(6deg)}
 .card .score{position:absolute;left:11px;bottom:7px;font-size:.74rem;color:var(--muted);letter-spacing:1px}
 .card .tierdot{position:absolute;right:10px;bottom:6px;font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;font-weight:700}
-.card.eu .tierdot{color:var(--eu)}.card.operated .tierdot{color:var(--op)}.card.dependency .tierdot{color:var(--dep)}
+.card.eu .tierdot{color:var(--up)}.card.operated .tierdot{color:var(--both)}.card.dependency .tierdot{color:var(--down)}
 .card .gtm-ribbon{display:none;margin-top:7px;font-size:.78rem;color:#5a4410;background:rgba(248,231,161,.5);border-radius:8px;padding:5px 7px;line-height:1.2}
 body.depth-engine .card .gtm-ribbon{display:block}
-.drawer{position:sticky;top:14px;padding:18px;background:#fffef8;border:4px solid var(--ink);border-radius:26px;min-height:460px;box-shadow:12px 15px 0 rgba(0,0,0,.07),var(--shadow);transform:rotate(.2deg)}
+.drawer{position:sticky;top:14px;padding:18px;background:#fffef8;border:4px solid var(--hair);border-radius:26px;min-height:460px;box-shadow:12px 15px 0 rgba(0,0,0,.07),var(--shadow);transform:rotate(.2deg)}
 .drawer::before{content:"";position:absolute;left:36px;top:-14px;width:90px;height:24px;background:rgba(248,231,161,.72);border:1px dashed rgba(0,0,0,.2);transform:rotate(-6deg)}
 .kick{display:inline-block;font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-size:.72rem;padding:2px 8px;border-radius:999px;color:#fff;margin-top:4px}
-.kick.eu{background:var(--eu)}.kick.operated{background:var(--op)}.kick.dependency{background:var(--dep)}
+.kick.eu{background:var(--up)}.kick.operated{background:var(--both)}.kick.dependency{background:var(--down)}
 .drawer h2{font-size:1.9rem;margin:8px 0 4px;line-height:1}
 .drawer .layref{font-size:.85rem;color:var(--muted);margin:0 0 10px}
 .drawer p{font-size:.95rem;line-height:1.48;color:#27313d}
 .scorebar{display:flex;gap:4px;align-items:center;margin:8px 0 4px}
-.scorebar .dot{width:15px;height:15px;border:2px solid var(--ink);border-radius:50%}
-.scorebar .dot.on{background:var(--eu)}
+.scorebar .dot{width:15px;height:15px;border:2px solid var(--hair);border-radius:50%}
+.scorebar .dot.on{background:var(--up)}
 .scorebar .lab{font-size:.8rem;color:var(--muted);margin-left:6px}
 .box{border-left:5px solid var(--blue);background:#f4faff;padding:9px 11px;border-radius:0 14px 14px 0;margin-top:10px;font-size:.9rem;line-height:1.4}
-.box.weak{border-left-color:var(--dep);background:#fdf0ed}
-.box.mat{border-left-color:var(--muted);background:#f5f5f3}
-.box.gtm{border-left-color:var(--op);background:#fff8df}
+.box.weak{border-left-color:var(--down);background:#fdf0ed}
+.box.mat{border-left-color:var(--none);background:#f5f5f3}
+.box.gtm{border-left-color:var(--both);background:#fff8df}
 body.depth-champion .box.gtm{display:none}
 body:not(.depth-engine) .box.gtm{display:none}
-.legend,.sources{margin-top:16px;padding:15px 18px;border:3px solid var(--ink);border-radius:22px;background:rgba(255,255,250,.85);box-shadow:8px 10px 0 rgba(0,0,0,.06)}
+.legend,.sources{margin-top:16px;padding:15px 18px;border:3px solid var(--hair);border-radius:22px;background:rgba(255,255,250,.85);box-shadow:8px 10px 0 rgba(0,0,0,.06)}
 .legend h2,.sources h2{margin:0 0 8px;font-size:1.4rem}
 .legend p,.sources p{font-size:.92rem;line-height:1.45;margin:.4rem 0}
 .legkey{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
 .legkey span{display:inline-flex;align-items:center;gap:7px;font-size:.88rem}
-.swatch{width:18px;height:18px;border:2px solid var(--ink);border-radius:5px}
+.swatch{width:18px;height:18px;border:2px solid var(--hair);border-radius:5px}
 .sources details{margin-top:6px}.sources summary{cursor:pointer;font-family:"Caveat",cursive;font-size:1.1rem}
 .sources a{color:var(--blue);word-break:break-word}
 .sources li{font-size:.82rem;margin:3px 0;line-height:1.35}
@@ -121,7 +133,7 @@ html[data-theme="dark"] .dclose{background:#23262e;color:#e9e7e0}}
 @media (max-width:620px){.card{width:100%}}
 .gtmpanel{display:none;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 2px 11px}
 body.depth-engine .gtmpanel{display:grid}
-.gtmpanel div{font-size:.8rem;border-left:4px solid var(--op);background:#fff8df;border-radius:0 10px 10px 0;padding:6px 9px;line-height:1.25}
+.gtmpanel div{font-size:.8rem;border-left:4px solid var(--both);background:#fff8df;border-radius:0 10px 10px 0;padding:6px 9px;line-height:1.25}
 .gtmpanel b{display:block;color:#8a6d12;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
 .card{transition:transform .12s,opacity .28s ease,filter .28s ease}
 .card.faded{opacity:.17;filter:grayscale(.65)}
@@ -129,33 +141,33 @@ body.depth-engine .gtmpanel{display:grid}
 body.insight-build .goalbar{display:flex}
 .goalbar .gl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:2px}
 .goalbar button{font-size:.92rem}
-.goalbar button.active{background:var(--eu);color:#fff;box-shadow:3px 4px 0 rgba(47,158,95,.25)}
+.goalbar button.active{background:var(--up);color:#fff;box-shadow:3px 4px 0 rgba(47,158,95,.25)}
 .insightbanner{font-size:.98rem;color:#33414f;margin:0 2px 12px;min-height:1.2em;max-width:1120px}
-.insightbanner .brk{color:var(--dep);font-weight:700}
-.insightbanner .ok{color:var(--eu);font-weight:700}
+.insightbanner .brk{color:var(--down);font-weight:700}
+.insightbanner .ok{color:var(--up);font-weight:700}
 .insightbanner .optcount{display:block;margin-top:4px;font-size:.85rem;color:var(--muted)}
-#insight button.active{background:var(--eu);color:#fff;box-shadow:3px 4px 0 rgba(47,158,95,.25)}
+#insight button.active{background:var(--up);color:#fff;box-shadow:3px 4px 0 rgba(47,158,95,.25)}
 /* lit candidate = credible European option (dashed); proven = documented deployment (solid + tag) */
-.card.cand{outline:2.5px dashed var(--eu);outline-offset:2px}
+.card.cand{outline:2.5px dashed var(--up);outline-offset:2px}
 .card.cand.proven{outline-style:solid;outline-width:3px}
-.card.cand.proven::after{content:"proven";position:absolute;left:10px;top:-10px;background:var(--eu);color:#fff;font-size:.62rem;font-family:"Patrick Hand",sans-serif;padding:0 7px;border-radius:8px;border:1.5px solid var(--ink);transform:rotate(-4deg)}
-.card.brk-node{outline:3px solid var(--dep);outline-offset:2px;animation:pulsebrk 1.3s infinite}
-@keyframes pulsebrk{0%,100%{outline-color:var(--dep)}50%{outline-color:rgba(194,65,45,.22)}}
+.card.cand.proven::after{content:"proven";position:absolute;left:10px;top:-10px;background:var(--up);color:#fff;font-size:.62rem;font-family:"Patrick Hand",sans-serif;padding:0 7px;border-radius:8px;border:1.5px solid var(--hair);transform:rotate(-4deg)}
+.card.brk-node{outline:3px solid var(--down);outline-offset:2px;animation:pulsebrk 1.3s infinite}
+@keyframes pulsebrk{0%,100%{outline-color:var(--down)}50%{outline-color:rgba(194,65,45,.22)}}
 /* show-imports mode: imported-tier nodes lit steady red (no pulse -- the imports are the resting state, not an alarm) */
-.card.imp-node{outline:3px solid var(--dep);outline-offset:2px}
-#insight button.active[data-view="imports"]{background:var(--dep);color:#fff;box-shadow:3px 4px 0 rgba(194,65,45,.25)}
+.card.imp-node{outline:3px solid var(--down);outline-offset:2px}
+#insight button.active[data-view="imports"]{background:var(--down);color:#fff;box-shadow:3px 4px 0 rgba(194,65,45,.25)}
 /* four-axis readout (detail panel) + axis lens: the why underneath the tiers */
 .axes{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
-.axchip{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;border:2px solid var(--ink);border-radius:999px;padding:2px 9px;background:#fff}
+.axchip{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;border:2px solid var(--hair);border-radius:999px;padding:2px 9px;background:#fff}
 .axchip b{font-size:.6rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}
-.axchip.good{background:var(--eu-bg);border-color:var(--eu)}
-.axchip.mid{background:var(--op-bg);border-color:var(--op)}
-.axchip.bad{background:var(--dep-bg);border-color:var(--dep)}
+.axchip.good{background:var(--up-bg);border-color:var(--up)}
+.axchip.mid{background:var(--both-bg);border-color:var(--both)}
+.axchip.bad{background:var(--down-bg);border-color:var(--down)}
 .axchip.na{opacity:.55;border-style:dashed}
 .axnote{font-size:.8rem;color:var(--muted);margin:5px 0 0;line-height:1.35}
-.card.lens-good{outline:3px solid var(--eu);outline-offset:2px}
-.card.lens-mid{outline:3px solid var(--op);outline-offset:2px}
-.card.lens-bad{outline:3px solid var(--dep);outline-offset:2px}
+.card.lens-good{outline:3px solid var(--up);outline-offset:2px}
+.card.lens-mid{outline:3px solid var(--both);outline-offset:2px}
+.card.lens-bad{outline:3px solid var(--down);outline-offset:2px}
 #insight button.active[data-view="lens"]{background:var(--violet);color:#fff;box-shadow:3px 4px 0 rgba(124,92,196,.25)}
 body.insight-lens .goalbar{display:flex}
 body.insight-lens .goalbar button.active{background:var(--violet);color:#fff;box-shadow:3px 4px 0 rgba(124,92,196,.25)}
@@ -173,12 +185,12 @@ body.view-simple .goalbar button{font-size:1rem}
 }
 /* layer-level gestalt: green where Europe can field options, red where it can't, dim where the goal doesn't reach */
 body.insight-build .layer{transition:opacity .3s ease,border-color .3s ease,background-color .3s ease}
-.layer.lit{border-color:var(--eu);border-style:solid;background:rgba(47,158,95,.06)}
-.layer.broke{border-color:var(--dep);border-style:solid;border-width:3px;background:rgba(194,65,45,.15)}
+.layer.lit{border-color:var(--up);border-style:solid;background:rgba(47,158,95,.06)}
+.layer.broke{border-color:var(--down);border-style:solid;border-width:3px;background:rgba(194,65,45,.15)}
 .layer.dim{opacity:.34}
 .layer-readout{font-family:"Caveat",cursive;font-size:1.12rem;flex:0 0 auto;padding:0 11px;border-radius:999px;border:2px solid currentColor;white-space:nowrap}
-.layer-readout.r-lit{color:var(--eu)}
-.layer-readout.r-broke{color:var(--dep)}
+.layer-readout.r-lit{color:var(--up)}
+.layer-readout.r-broke{color:var(--down)}
 .layer-readout.r-dim{color:var(--muted);font-size:1rem}
 body.insight-build .card .champ{display:none}
 @media (prefers-reduced-motion:reduce){.card,body.insight-build .layer{transition-duration:.01ms}.card.brk-node{animation:none}}
@@ -387,9 +399,9 @@ html[data-theme="dark"] .site-head, html[data-theme="dark"] .site-foot {
   <p><b>Build &amp; break</b> is the quickest way in: pick a goal and the map fades, then lights every European option it has at each layer the goal needs. A layer turns green when Europe can field at least one option, red when it has none. The soft goals -- a sovereign workplace, a sovereign cloud -- come up all green. The AI and compute goals snap red at the same two rungs every time: the AI accelerator and the leading-edge fab. That repeat is the whole argument. A lit ring marks a credible European option, not a packaged sovereign product you can buy off a shelf -- the map names the contenders at each layer, it doesn't crown a winner.</p>
   <p><b>Full landscape</b> shows every contender and every dependency across the eight layers. The score dots are a sovereignty read across ownership, jurisdiction, operations, supply chain, substitutability and exit -- a low score is not a disqualification, it tells you where the risk lives. The <b>partnership overlay</b> wires up the named deals between players, coloured by deal type (see the key). "European-owned" spans the EU plus EEA/EFTA, Switzerland and the UK by ownership and control -- but ownership and jurisdiction are different axes: a Swiss or UK firm (Proton, Arm) is European yet sits outside the EU legal perimeter, so it scores lower on jurisdiction even when the cap table is European. Each card's detail panel now carries a <b>four-axis read</b> -- capability, jurisdiction, operational control, substitutability -- the why underneath its tier, and the <b>axis lens</b> recolours the whole board by any one of those axes (see CONTRIBUTING.md for the rubric).</p>
   <div class="legkey">
-   <span><span class="swatch" style="background:var(--eu-bg);border-color:var(--eu)"></span>European-owned (EU + EEA/EFTA, CH, UK)</span>
-   <span><span class="swatch" style="background:var(--op-bg);border-color:var(--op)"></span>Sovereign by deployment (US parent)</span>
-   <span><span class="swatch" style="background:var(--dep-bg);border-color:var(--dep)"></span>Imported dependency</span>
+   <span><span class="swatch" style="background:var(--up-bg);border-color:var(--up)"></span>European-owned (EU + EEA/EFTA, CH, UK)</span>
+   <span><span class="swatch" style="background:var(--both-bg);border-color:var(--both)"></span>Sovereign by deployment (US parent)</span>
+   <span><span class="swatch" style="background:var(--down-bg);border-color:var(--down)"></span>Imported dependency</span>
   </div>
  </section>
 
